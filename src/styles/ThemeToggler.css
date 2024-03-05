@@ -1,0 +1,11 @@
+.theme-toggler {
+    cursor: pointer;
+  }
+  
+  .toggler-icon {
+    color: var(--text-dark);
+  }
+  .toggler-icon.dark {
+    color: var(--text-light);
+  }
+  

@@ -5,7 +5,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  list-style: none;
 }
+.centered-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.transparent {
+  opacity: 0.2; /* Adjust the opacity value as needed */
+}
+.feature-box{
+  padding:5px 15px;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
