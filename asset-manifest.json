@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/DANHIKA/portfolio/static/css/main.28bb872e.css",
+    "main.js": "/DANHIKA/portfolio/static/js/main.54db62b1.js",
+    "static/media/profile.png": "/DANHIKA/portfolio/static/media/profile.749af01837f13a307aae.png",
+    "index.html": "/DANHIKA/portfolio/index.html",
+    "main.28bb872e.css.map": "/DANHIKA/portfolio/static/css/main.28bb872e.css.map",
+    "main.54db62b1.js.map": "/DANHIKA/portfolio/static/js/main.54db62b1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28bb872e.css",
+    "static/js/main.54db62b1.js"
+  ]
+}
