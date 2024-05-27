@@ -1,0 +1,31 @@
+/* Skills.css */
+/* Brand colors for Font Awesome icons */
+.fab.fa-windows { color: #00ADEF; } /* Windows */
+.fab.fa-php { color: #8892BF; } /* PHP */
+.fab.fa-js { color: #F0DB4F; } /* JavaScript */
+.fab.fa-figma { color: #F24E1E; } /* Figma */
+.fab.fa-axure { color: #86B8CF; } /* Axure */
+.fab.fa-react { color: #61DAFB; } /* React.js */
+.fab.fa-node-js { color: #83CD29; } /* Node.js */
+
+/* Skills.css */
+
+/* Custom styles for the skills list */
+
+.skills-list ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.skills-list li {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.skills-list li i {
+    margin-right: 10px;
+}
+
+.progress{
+    height: 2px;
+}

@@ -6,10 +6,10 @@ const Header = () => {
   const { isDarkMode, toggleDarkMode } = useContext(ThemeContext); // Use useContext hook to access context values
 
   return (
-    <header className={`mb-4 text-center ${isDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
+    <header className={`container mb-4 text-center ${isDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
       <div className="container-fluid d-flex justify-content-between align-items-center">
         <div className="logo">
-          <h1 className=" fw-bold ">DAN<span className='text-success'>HIKA</span></h1>
+          <h1 className=" fw-bold ">Logo</h1>
         </div>
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
@@ -19,13 +19,13 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link" href="#projects">Projects</a>
+                  <a className={`nav-link ${isDarkMode ? 'text-light' : 'text-dark'} `} href="#projects">Projects</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#about">About</a>
+                  <a className={`nav-link ${isDarkMode ? 'text-light' : 'text-dark'} `} href="#about">About</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#contact">Contact</a>
+                  <a className={`nav-link ${isDarkMode ? 'text-light' : 'text-dark'} `} href="#contact">Contact</a>
                 </li>
               </ul>
             </div>

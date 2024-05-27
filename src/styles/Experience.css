@@ -1,0 +1,63 @@
+.flip {
+    animation: flip-animation 0.5s forwards;
+}
+
+@keyframes flip-animation {
+    0% {
+        transform: perspective(400px) rotateX(0deg);
+    }
+    50% {
+        transform: perspective(400px) rotateX(90deg);
+    }
+    100% {
+        transform: perspective(400px) rotateX(0deg);
+    }
+}
+
+.experience-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .experience-timer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .experience-card {
+    display: flex;
+    align-items: center;
+  }
+  
+  .digit {
+    font-size: 3rem;
+    margin: 0 0.2rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.5s ease-in-out;
+}
+
+  
+  .flip {
+    transform: rotateX(90deg);
+  }
+  
+  .colon {
+    font-size: 3rem;
+    margin: 0 0.2rem;
+  }
+  
+  .experience-label {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+  
+  .my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
