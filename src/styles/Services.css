@@ -1,0 +1,33 @@
+/* Custom styles for Services component */
+
+.vertical-line {
+    width: 2px;
+    height: 100%;
+    background-color: #333;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  
+  .dot-navigation {
+    position: relative;
+  }
+  
+  .dot {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .dot img {
+    width: 30px; /* Adjust as needed */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .active-dot {
+    color: #0145ff;
+    font-weight: bold;
+  }
+  

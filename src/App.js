@@ -1,80 +1,46 @@
 import React, { useContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeContext } from './contexts/ThemeContext';
+import { SkeletonTheme } from 'react-loading-skeleton';
 import Header from './components/Header';
+import HeaderSkeleton from './skeletons/HeaderSkeleton';
 import HeroSection from './components/HeroSection';
+import HeroSectionSkeleton from './skeletons/HeroSectionSkeleton';
+import Projects from './components/Projects';
+import ProjectsSkeleton from './skeletons/ProjectsSkeleton';
+import Contact from './components/Contact';
+import ContactSkeleton from './skeletons/ContactSkeleton';
+import Services from './components/Services';
+import ServicesSkeleton from './skeletons/ServicesSkeleton';
 import Skills from './components/Skills';
-import Experience from './components/Experience'; // Corrected typo
-import ProjectCard from './components/ProjectCard';
-import ProjectCardSkeleton from './skeletons/ProjectCardSkeleton';
-import Testimonial from './components/Testimonial';
 
 function App() {
   const { isDarkMode } = useContext(ThemeContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    // Simulate data fetching
-    setTimeout(() => {
-      setProjects([
-        {
-          title: "Project 1",
-          image: "https://placehold.co/400",
-          features: ["Feature 1", "Feature 2", "Feature 3"],
-          languages: [
-            { name: "JavaScript", color: "#f0db4f", percentage: "70%" },
-            { name: "HTML/CSS", color: "#61dafb", percentage: "30%" }
-          ]
-        },
-        {
-          title: "Project 2",
-          image: "https://placehold.co/400",
-          features: ["Feature A", "Feature B", "Feature C"],
-          languages: [
-            { name: "Python", color: "#3572a5", percentage: "80%" },
-            { name: "Java", color: "#b07219", percentage: "20%" }
-          ]
-        },
-        {
-          title: "Project 3",
-          image: "https://placehold.co/400",
-          features: ["Feature X", "Feature Y", "Feature Z"],
-          languages: [
-            { name: "Ruby", color: "#701516", percentage: "60%" },
-            { name: "PHP", color: "#8892bf", percentage: "40%" }
-          ]
-        }
-      ]);
+    // Simulate a loading delay of 2 seconds
+    const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // Simulate 2 seconds of loading time
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
-  return (
+  return ( 
+    <SkeletonTheme
+      baseColor={isDarkMode ? "#4c4c4c" : "#d2d2d2"}
+      highlightColor={isDarkMode ? "#c2c2c2" : "#333"}
+    >
     <div className={`${isDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
-      <Header />
-      <HeroSection />
-      <Skills />
-      <Experience />
-      <div className="container row mx-auto">
-        {isLoading ? (
-          Array(3).fill().map((_, index) => (
-            <ProjectCardSkeleton key={index} />
-          ))
-        ) : (
-          projects.map((project, index) => (
-            <ProjectCard 
-              key={index}
-              image={project.image}
-              title={project.title}
-              features={project.features}
-              languages={project.languages}
-            />
-          ))
-        )}
-      </div>
-      <Testimonial />
+      {isLoading ? <HeaderSkeleton /> : <Header />}
+      {isLoading ? <HeroSectionSkeleton /> : <HeroSection />}
+      {isLoading ? <ServicesSkeleton /> : <Services />}
+      {isLoading ? <ProjectsSkeleton /> : <Projects />}
+      <Skills/>
+      {isLoading ? <ContactSkeleton /> : <Contact />}
     </div>
+    </SkeletonTheme>
   );
 }
 

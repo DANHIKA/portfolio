@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 import '../styles/ThemeToggler.css';
 
 const ThemeToggler = ({ isDarkMode, toggleDarkMode }) => {
@@ -11,7 +11,7 @@ const ThemeToggler = ({ isDarkMode, toggleDarkMode }) => {
 
   return (
     <div className={`theme-toggler ${isDarkMode ? 'dark' : 'light'}`} onClick={handleClick}>
-      <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className="toggler-icon mx-2" />
+      <FontAwesomeIcon icon={isDarkMode ? faToggleOff : faToggleOn} className="toggler-icon mx-2" />
     </div>
   );
 };

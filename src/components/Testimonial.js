@@ -1,62 +1,73 @@
 import React from 'react';
-import { Container, Carousel } from 'react-bootstrap';
+import '../styles/Testimonial.css'
 
 const Testimonial = () => {
     return (
-        <section>
-            <Container>
-                <div className="row text-center">
-                    <div className="col-md-12">
-                        {/* Carousel wrapper */}
-                        <Carousel>
-                            {/* Single item */}
-                            <Carousel.Item>
-                                <p className="lead font-italic mx-4 mx-md-5">
-                                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-                                    numquam iure provident voluptate esse quasi, voluptas nostrum quisquam!"
-                                </p>
-                                <div className="mt-5 mb-4">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
-                                        className="rounded-circle img-fluid shadow-1-strong" alt="smaple image" width="100"
-                                        height="100" />
-                                </div>
-                                <p className="text-muted mb-0">- Anna Morian</p>
-                            </Carousel.Item>
+        <section className='container'>
+            <div className="row d-flex justify-content-center">
+                <div className="col-md-10 col-xl-8 text-center">
+                    <h3 className="mb-4">Testimonials</h3>
+                    <p className="mb-4 pb-2 mb-md-5 pb-md-0">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+                        numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+                        quisquam eum porro a pariatur veniam.
+                    </p>
+                </div>
+            </div>
 
-                            {/* Single item */}
-                            <Carousel.Item>
-                                <p className="lead font-italic mx-4 mx-md-5">
-                                    "Neque cupiditate assumenda in maiores repudiandae mollitia adipisci maiores
-                                    repudiandae mollitia consectetur adipisicing architecto elit sed adipiscing
-                                    elit."
-                                </p>
-                                <div className="mt-5 mb-4">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
-                                        className="rounded-circle img-fluid shadow-1-strong" alt="smaple image" width="100"
-                                        height="100" />
-                                </div>
-                                <p className="text-muted mb-0">- Teresa May</p>
-                            </Carousel.Item>
-
-                            {/* Single item */}
-                            <Carousel.Item>
-                                <p className="lead font-italic mx-4 mx-md-5">
-                                    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur est laborum neque cupiditate assumenda in
-                                    maiores."
-                                </p>
-                                <div className="mt-5 mb-4">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
-                                        className="rounded-circle img-fluid shadow-1-strong" alt="smaple image" width="100"
-                                        height="100" />
-                                </div>
-                                <p className="text-muted mb-0">- Kate Allise</p>
-                            </Carousel.Item>
-                        </Carousel>
-                        {/* Carousel wrapper */}
+            <div className="row text-center d-flex align-items-stretch">
+                <div className="col-md-4 mb-5 mb-md-0 d-flex align-items-stretch">
+                    <div className="card testimonial-card">
+                        <div className="card-up" style={{ backgroundColor: '#9d789b' }}></div>
+                        <div className="avatar mx-auto bg-white">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+                                className="rounded-circle img-fluid" alt="Sample avatar" />
+                        </div>
+                        <div className="card-body">
+                            <h4 className="mb-4">Maria Smantha</h4>
+                            <hr />
+                            <p className="dark-grey-text mt-4">
+                                <i className="fas fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet eos adipisci,
+                                consectetur adipisicing elit.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </Container>
+                <div className="col-md-4 mb-5 mb-md-0 d-flex align-items-stretch">
+                    <div className="card testimonial-card">
+                        <div className="card-up" style={{ backgroundColor: '#7a81a8' }}></div>
+                        <div className="avatar mx-auto bg-white">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                                className="rounded-circle img-fluid" alt="Sample avatar" />
+                        </div>
+                        <div className="card-body">
+                            <h4 className="mb-4">Lisa Cudrow</h4>
+                            <hr />
+                            <p className="dark-grey-text mt-4">
+                                <i className="fas fa-quote-left pe-2"></i>Neque cupiditate assumenda in maiores
+                                repudi mollitia architecto.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-4 mb-0 d-flex align-items-stretch">
+                    <div className="card testimonial-card">
+                        <div className="card-up" style={{ backgroundColor: '#6d5b98' }}></div>
+                        <div className="avatar mx-auto bg-white">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+                                className="rounded-circle img-fluid" alt="Sample avatar" />
+                        </div>
+                        <div className="card-body">
+                            <h4 className="mb-4">John Smith</h4>
+                            <hr />
+                            <p className="dark-grey-text mt-4">
+                                <i className="fas fa-quote-left pe-2"></i>Delectus impedit saepe officiis ab
+                                aliquam repellat rem unde ducimus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };

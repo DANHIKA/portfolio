@@ -27,3 +27,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.text-cyan{
+  color: cyan;
+}
+.text-pink{
+  color: pink;
+}
+.text-yellow{
+  color: yellow;
+}
+.text-green{
+  color: teal;
+}
+.text-purple{
+  color: purple;
+}
+.text-light-blue{
+  color: lightblue;
+}
+.dark-bg{
+  background-color: #2E3440;
+}
+
