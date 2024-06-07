@@ -1,30 +1,25 @@
-import React, { createContext, useState, useEffect } from 'react';
+// contexts/ThemeContext.js
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
-const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
   useEffect(() => {
-    // Check local storage for the theme preference
-    const savedTheme = localStorage.getItem('isDarkMode');
-    if (savedTheme) {
-      setIsDarkMode(JSON.parse(savedTheme));
-    }
-  }, []);
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
-  const toggleDarkMode = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    // Save the theme preference to local storage
-    localStorage.setItem('isDarkMode', JSON.stringify(newTheme));
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
-export { ThemeContext, ThemeProvider };
+export const useTheme = () => useContext(ThemeContext);

@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard';
-import { ThemeContext } from '../contexts/ThemeContext';
 
 const Projects = () => {
-  const { isDarkMode } = useContext(ThemeContext);
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ const Projects = () => {
     <section className="container row mx-auto">
       <div className="row justify-content-center">
         <div className="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-          <h2 className={`mb-4 display-5 text-center ${isDarkMode ? 'text-light' : 'text-dark'}`}>Projects</h2>
+          <h2 className={`mb-4 display-5 text-center`}>Projects</h2>
           <p className="text-secondary mb-5 text-center lead fs-4">
             Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
           </p>

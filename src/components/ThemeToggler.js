@@ -1,19 +1,20 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../contexts/ThemeContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
-import '../styles/ThemeToggler.css';
+// components/ThemeToggle.js
+import React from 'react';
+import { useTheme } from '../contexts/ThemeContext';
+import { DarkSide } from '@theme-toggles/react';
 
-const ThemeToggler = ({ isDarkMode, toggleDarkMode }) => {
-  const handleClick = () => {
-    toggleDarkMode(); // Call the toggleDarkMode function directly
-  };
+const ThemeToggle = () => {
+  const { theme, toggleTheme } = useTheme();
+  const isToggled = theme === 'dark';
 
   return (
-    <div className={`theme-toggler ${isDarkMode ? 'dark' : 'light'}`} onClick={handleClick}>
-      <FontAwesomeIcon icon={isDarkMode ? faToggleOff : faToggleOn} className="toggler-icon mx-2" />
-    </div>
+    <DarkSide
+      toggled={isToggled}
+      toggle={toggleTheme}
+      className="me-3"
+      aria-label="Toggle theme"
+    />
   );
 };
 
-export default ThemeToggler;
+export default ThemeToggle;

@@ -6,7 +6,7 @@
   .language-bar-container {
     display: flex;
     flex-direction: row;
-    overflow: hidden; /* Ensure overflow is hidden to prevent the progress bar from overflowing */
+    overflow: hidden; 
     height: 5px; /* Set height to match the height of the progress bar */
     margin-bottom: 5px; /* Add margin bottom to create space between the progress bar and language names */
   }

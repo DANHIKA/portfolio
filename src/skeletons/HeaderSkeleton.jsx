@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { ThemeContext } from '../contexts/ThemeContext';
 
 const HeaderSkeleton = () => {
-  const { isDarkMode } = useContext(ThemeContext);
 
   return (
-    <header className={`container mb-4 text-center ${isDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
+    <header className={`container mb-4 text-center`}>
       <div className="container-fluid d-flex justify-content-between align-items-center">
         <div className="logo">
           <Skeleton width={100} height={40} />

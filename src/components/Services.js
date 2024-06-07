@@ -6,17 +6,17 @@ const Services = () => {
   const services = [
     {
       title: 'Web Developing',
-      image: 'https://img.freepik.com/free-vector/organic-flat-computer-programming-illustration_23-2148955255.jpg?t=st=1716910884~exp=1716914484~hmac=cc030ee6ad2e4eee066747a3b1d46dc527ab7ffb34f156bdb68cc554b94378ea',
+      image: 'https://placehold.co/400',
       description: 'We create stunning and user-friendly websites tailored to your needs.',
     },
     {
       title: 'Mobile App Development',
-      image: 'https://img.freepik.com/free-vector/interaction-design-concept-illustration_114360-1863.jpg?t=st=1716910982~exp=1716914582~hmac=4287498ee9ee034ad74f49821cc20790163b773b502e5e8d8ecbea5dd914fe3d',
+      image: 'https://placehold.co/400',
       description: 'Build custom mobile applications for iOS and Android platforms.',
     },
     {
       title: 'UX/UI Design',
-      image: 'https://img.freepik.com/free-vector/ui-ux-app-development-concept_52683-48848.jpg?t=st=1716911061~exp=1716914661~hmac=40b3224fe66539f72773c2c5fc4c04737345ef14d9eacf23e4e4f508588b899e',
+      image: 'https://placehold.co/400',
       description: 'Craft intuitive and visually appealing user interfaces for optimal user experience.',
     },
   ];

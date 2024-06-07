@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { ThemeContext } from '../contexts/ThemeContext';
 
 const LanguageBar = ({ languages }) => {
   return (
@@ -38,10 +37,9 @@ const LanguageBar = ({ languages }) => {
 };
 
 const ProjectCard = ({ title, features, image, languages }) => {
-  const { isDarkMode } = useContext(ThemeContext);
   return (
     <section id='Projects' className="col-lg-4 col-md-6 mb-4">
-      <div className={`card h-100 shadow-lg ${isDarkMode ? 'dark-bg text-light' : 'bg-light text-dark'}`}>
+      <div className={`card h-100 shadow-lg`}>
         <img src={image} className="card-img-top" alt={title} style={{ maxHeight: '250px', objectFit: 'cover' }} />
         <div className="card-body d-flex flex-column">
           <h5 className="card-title">{title}</h5>

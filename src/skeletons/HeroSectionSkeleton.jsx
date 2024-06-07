@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { ThemeContext } from '../contexts/ThemeContext';
 import '../styles/HeroSection.css'; // Ensure this CSS file exists and is imported for consistent styling
 
 const HeroSectionSkeleton = () => {
-  const { isDarkMode } = useContext(ThemeContext);
 
   return (
-    <section className={`hero-section py-5 ${isDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
+    <section className={`hero-section py-5`}>
       <div className="container">
         <div className="row align-items-center">
           {/* Left side with text */}
