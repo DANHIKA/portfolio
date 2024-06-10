@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { Moon } from './Moon'; // Import the Moon component correctly
+import Moon from './Moon'; // Make sure the import path is correct
 
 const MoonScene = () => {
   return (
