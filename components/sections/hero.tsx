@@ -1,35 +1,51 @@
 "use client";
 
-
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import CircularText from "@/animations/CircularText/CircularText";
+import { AnimatedCard } from "@/components/ui/animated-card";
+import ChatCard from "@/components/ui/chat-card";
+import ProfileCard from "@/components/ui/profile-card";
+import StatsCard from "@/components/ui/stats-card";
+import NotificationCard from "@/components/ui/notification-card";
 
 export default function Hero() {
-
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      <BackgroundBeams className="absolute inset-0" />
+    <section className="relative min-h-screen flex items-center px-6 py-32">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px]" />
       
-      <div className="z-10 text-center px-6 max-w-7xl mx-auto">
-        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight leading-[1.15] mb-8">
-          Crafting digital <span className="block mt-3 bg-clip-text text-transparent bg-gradient-to-r from-neutral-100 to-neutral-400">experiences</span>
-        </h1>
-        
-        <div className="space-y-6">
-          <p className="text-base md:text-lg font-light leading-[1.6] tracking-wide max-w-2xl mx-auto text-balance opacity-80">
-            Delivering scalable solutions, pixel-perfect interfaces, and exceptional user experiences that drive business growth
-          </p>
-        </div>
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Text Content */}
+          <div className="space-y-6">
+            <h1 className="text-4xl font-bold tracking-tight md:text-6xl leading-[1.1]">
+              Hi, I&apos;m Daniel Ntandika
+            </h1>
+            <p className="text-lg text-muted-foreground md:text-xl max-w-[50ch] leading-relaxed">
+              I&apos;m a software engineer specializing in building exceptional digital experiences.
+            </p>
+          </div>
 
-        <div className="mt-16">
-          <CircularText 
-            text="Scroll  to  reveal "
-            spinDuration={15}
-            onHover="slowDown"
-            className="opacity-60 hover:opacity-100 transition-opacity w-28 h-28 mx-auto"
-          />
+          {/* Cards Grid */}
+          <div className="relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 transform rotate-6">
+              <div className="space-y-4 md:space-y-6">
+                <AnimatedCard title="Team Chat">
+                  <ChatCard />
+                </AnimatedCard>
+                <AnimatedCard title="Analytics">
+                  <StatsCard />
+                </AnimatedCard>
+              </div>
+              <div className="space-y-4 md:space-y-6 mt-4 sm:mt-8">
+                <AnimatedCard title="Profile">
+                  <ProfileCard />
+                </AnimatedCard>
+                <AnimatedCard title="Notifications">
+                  <NotificationCard />
+                </AnimatedCard>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

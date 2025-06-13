@@ -58,11 +58,11 @@ export default function DeveloperStats() {
             className="bg-gray-50 p-6 rounded-xl relative border border-dashed border-gray-300 h-[160px]"
           >
             <div className="space-y-2">
-              <div className="text-4xl font-bold tracking-tight flex items-center">
-                <Counter from={0} to={16} className="text-4xl font-bold" />
-                <span className="ml-1">+</span>
+              <div className="text-4xl font-bold tracking-tight flex items-center text-gray-900">
+                <Counter from={0} to={16} className="text-4xl font-bold text-gray-900" />
+                <span className="ml-1 text-gray-900">+</span>
               </div>
-              <h3 className="text-xl font-medium">Projects</h3>
+              <h3 className="text-xl font-medium text-gray-900">Projects</h3>
               <p className="text-gray-600 text-sm">
                 Delivered across various industries
               </p>

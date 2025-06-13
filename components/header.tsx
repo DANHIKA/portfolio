@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-
+import Image from "next/image";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -43,8 +43,13 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 z-50">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-              DN
+            <div className="relative w-8 h-8">
+              <Image
+                src="https://api.dicebear.com/7.x/notionists/svg?seed=Daniel&backgroundColor=5b46f8"
+                alt="Daniel Ntandika"
+                fill
+                className="rounded-full ring-2 ring-primary/20"
+              />
             </div>
             <span className={`font-semibold text-lg transition-all ${
               isScrolled ? "text-foreground" : "text-foreground"
@@ -132,11 +137,6 @@ export default function Header() {
                 </a>
               ))}
               <div className="mt-4 pt-4">
-                {/* <Button className="w-full" size="lg">
-                  <a href="#contact" className="flex items-center justify-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    Get in Touch
-                  </a>
-                </Button> */}
                 <ThemeToggle />
               </div>
             </nav>
