@@ -1,25 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function StatsCard() {
-  // Generate random contribution data
-  const generateContributions = () => {
-    const contributions = [];
-    for (let i = 0; i < 5; i++) {
-      for (let j = 0; j < 7; j++) {
-        contributions.push({
-          count: Math.floor(Math.random() * 4),
-          day: j,
-          week: i,
-        });
-      }
-    }
-    return contributions;
-  };
+  const [contributions, setContributions] = useState(Array(35).fill({ count: 0 }));
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const contributions = generateContributions();
-  
+  useEffect(() => {
+    // Generate random contribution data after component mounts
+    const newContributions = Array(35).fill(null).map(() => ({
+      count: Math.floor(Math.random() * 4)
+    }));
+    setContributions(newContributions);
+    setIsLoaded(true);
+  }, []);
+
   const getContributionColor = (count: number) => {
     if (count === 0) return "bg-neutral-800";
     if (count === 1) return "bg-emerald-900/70";
@@ -36,7 +32,7 @@ export default function StatsCard() {
             <motion.div
               key={i}
               initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
+              animate={{ scale: isLoaded ? 1 : 0 }}
               transition={{ duration: 0.2, delay: i * 0.01 }}
               className={`aspect-square w-4 rounded-[2px] ${getContributionColor(contribution.count)}`}
               title={`${contribution.count} contributions`}

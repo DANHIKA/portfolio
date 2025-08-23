@@ -43,7 +43,7 @@ export default function ProfileCard() {
                     src={`https://api.dicebear.com/7.x/notionists/svg?seed=${member.seed}&backgroundColor=${member.color}`}
                     alt={`Team member ${member.seed}`}
                     fill
-                    className="rounded-full border-2 border-neutral-900"
+                    className="rounded-full border-2"
                   />
                 </motion.div>
               </div>

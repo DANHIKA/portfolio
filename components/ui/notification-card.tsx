@@ -18,9 +18,9 @@ export default function NotificationCard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex items-center gap-3 p-3 rounded-lg bg-neutral-900/50 hover:bg-neutral-900/80 transition-colors"
+              className="flex items-center gap-3 p-3 rounded-lg bg-muted transition-colors"
             >
-              <div className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-900 flex items-center justify-center">
                 <span className="text-sm">{item.icon}</span>
               </div>
               <div className="flex-1">

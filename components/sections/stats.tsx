@@ -39,8 +39,8 @@ export default function DeveloperStats() {
   const isInView = useInView(containerRef, { once: true })
 
   return (
-    <section className="w-full py-16 md:py-24" ref={containerRef}>
-      <div className="w-full container mx-auto px-4">
+    <section className="w-full py-4 md:py-6" ref={containerRef}>
+      <div className="max-w-4xl mx-auto px-4">
         <div className="mb-12 ">
         <h2 className="text-center text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400"> Stats</h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-6xl">

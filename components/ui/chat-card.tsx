@@ -57,7 +57,7 @@ export default function ChatCard() {
                 <div className={`mt-1 px-4 py-2 rounded-2xl ${
                   msg.isUser 
                     ? 'bg-blue-500 text-white rounded-tr-none' 
-                    : 'bg-neutral-800 rounded-tl-none'
+                    : 'bg-muted rounded-tl-none'
                 }`}>
                   <p className="text-sm">{msg.message}</p>
                 </div>
@@ -70,9 +70,9 @@ export default function ChatCard() {
           <input
             type="text"
             placeholder="Type a message..."
-            className="w-full px-4 py-2 bg-neutral-800 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 bg-muted rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <button className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-blue-500 rounded-full hover:bg-blue-600 transition-colors">
+          <button className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-primary rounded-full hover:bg-blue-600 transition-colors">
             <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
             </svg>

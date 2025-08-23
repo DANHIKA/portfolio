@@ -1,49 +1,63 @@
 "use client";
 
-import { AnimatedCard } from "@/components/ui/animated-card";
-import ChatCard from "@/components/ui/chat-card";
-import ProfileCard from "@/components/ui/profile-card";
-import StatsCard from "@/components/ui/stats-card";
-import NotificationCard from "@/components/ui/notification-card";
+import { Button } from "@/components/ui/button";
+import RotatingText from "@/animations/RotatingText/RotatingText";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center px-6 py-32">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px_40px]" />
+    <section className="relative flex items-center py-10 md:py-16">
+      <div className="absolute inset-0 -z-10 w-full" />
       
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div className="space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight md:text-6xl leading-[1.1]">
-              Hi, I&apos;m Daniel Ntandika
-            </h1>
-            <p className="text-lg text-muted-foreground md:text-xl max-w-[50ch] leading-relaxed">
-              I&apos;m a software engineer specializing in building exceptional digital experiences.
-            </p>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="relative">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 transform rotate-6">
-              <div className="space-y-4 md:space-y-6">
-                <AnimatedCard title="Team Chat">
-                  <ChatCard />
-                </AnimatedCard>
-                <AnimatedCard title="Analytics">
-                  <StatsCard />
-                </AnimatedCard>
-              </div>
-              <div className="space-y-4 md:space-y-6 mt-4 sm:mt-8">
-                <AnimatedCard title="Profile">
-                  <ProfileCard />
-                </AnimatedCard>
-                <AnimatedCard title="Notifications">
-                  <NotificationCard />
-                </AnimatedCard>
-              </div>
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center gap-8 text-center">
+          {/* Hero Content */}
+          <div className="w-full max-w-3xl space-y-8">
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+                Building{" "}
+                <RotatingText
+                  texts={[
+                    "digital experiences",
+                    "modern web apps",
+                    "delightful interfaces",
+                  ]}
+                  rotationInterval={2500}
+                  splitBy="characters"
+                  staggerDuration={0.02}
+                  mainClassName="inline-flex bg-primary text-white rounded-lg px-4 py-2"
+                  elementLevelClassName="will-change-transform"
+                />
+              </h1>
+              
+              <p className="text-lg leading-relaxed max-w-lg mx-auto">
+                I create modern web applications and digital solutions that bring ideas to life with clean code and thoughtful design.
+              </p>
             </div>
+
+            <Button className="mx-auto flex items-center gap-4 px-8 py-4 rounded-lg font-semibold transition-all duration-300">
+              View My Work
+            </Button>
           </div>
+          {/**
+           * Card section commente  d out for centered hero layout
+           *
+           * <div className="lg:col-span-5">
+           *   <ProfileCard
+           *     name="Daniel Ntandika"
+           *     title="Software Engineer"
+           *     handle="danhika"
+           *     status="Online"
+           *     contactText="Contact Me"
+           *     avatarUrl="/me.png"
+           *     showUserInfo={true}
+           *     enableTilt={true}
+           *     enableMobileTilt={false}
+           *     onContactClick={() => console.log('Contact clicked')}
+           *     iconUrl="/iconpattern.png"
+           *     showBehindGradient
+           *   />
+           * </div>
+           */}
         </div>
       </div>
     </section>

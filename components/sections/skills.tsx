@@ -35,7 +35,7 @@ export default function SkillsCarousel() {
   const carousel2Ref = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="skills" className="py-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+    <section id="skills" className="py-6 overflow-hidden bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4">
         {/* Simple, clean title */}
         <motion.div 
