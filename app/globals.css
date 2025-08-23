@@ -33,7 +33,7 @@
   }
 
   section {
-    @apply py-32 flex flex-col items-center;
+    @apply flex flex-col items-center;
   }
 
   .content-container {
