@@ -39,9 +39,15 @@ export default function Projects() {
               >
                 {/* Main content area */}
                 <div className="relative flex-1 overflow-hidden rounded-lg bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 m-4 mb-2">
-                  <div className="flex h-48 items-center justify-center">
-                    {/* Simple preview placeholder */}
-                  </div>
+                  <div
+                    className="h-48 opacity-60 dark:opacity-70"
+                    style={{
+                      backgroundImage: "url(/iconpattern.png)",
+                      backgroundRepeat: "repeat",
+                      backgroundPosition: "center",
+                      backgroundSize: "96px 96px",
+                    }}
+                  />
                   
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
