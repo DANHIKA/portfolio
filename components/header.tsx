@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 import Image from "next/image";
 
 const navItems = [
@@ -80,7 +80,7 @@ export default function Header() {
               </a>
             </Button>
             <div className="ml-2">
-              <ThemeToggle />
+              <AnimatedThemeToggler className="h-9 w-9 inline-flex items-center justify-center rounded-md border border-border hover:bg-accent transition-colors" />
             </div>
           </nav>
 
@@ -137,7 +137,7 @@ export default function Header() {
                 </a>
               ))}
               <div className="mt-4 pt-4">
-                <ThemeToggle />
+                <AnimatedThemeToggler className="h-10 w-10 inline-flex items-center justify-center rounded-md border border-border hover:bg-accent transition-colors" />
               </div>
             </nav>
           </motion.div>

@@ -6,7 +6,7 @@ import RippleGrid from "@/backgrounds/RippleGrid/RippleGrid";
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col py-10 md:py-16">
+    <section className="relative flex flex-col">
       <div className="relative h-[500px] overflow-hidden">
         {/* Background layer */}
         <div className="absolute inset-0 -z-10">
@@ -43,9 +43,9 @@ export default function Hero() {
                     elementLevelClassName="will-change-transform"
                   />
                 </h1>
-                <p className="text-lg leading-relaxed max-w-lg mx-auto">
+                {/* <p className="text-lg leading-relaxed max-w-lg mx-auto">
                   I create modern web applications and digital solutions that bring ideas to life with clean code and thoughtful design.
-                </p>
+                </p> */}
                 <Button className="mx-auto flex items-center gap-4 px-8 py-4 rounded-lg font-semibold transition-all duration-300">
                   View My Work
                 </Button>

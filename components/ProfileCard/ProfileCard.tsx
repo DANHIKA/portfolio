@@ -326,8 +326,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               alt={`${name || "User"} avatar`}
               loading="lazy"
               onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = "none";
+                e.currentTarget.style.display = "none";
               }}
             />
             {showUserInfo && (
@@ -340,9 +339,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                       alt={`${name || "User"} mini avatar`}
                       loading="lazy"
                       onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.opacity = "0.5";
-                        target.src = avatarUrl;
+                        e.currentTarget.style.opacity = "0.5";
+                        e.currentTarget.src = avatarUrl;
                       }}
                     />
                   </div>

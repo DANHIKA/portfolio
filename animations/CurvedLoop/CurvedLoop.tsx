@@ -101,7 +101,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     dragRef.current = true;
     lastXRef.current = e.clientX;
     velRef.current = 0;
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    e.currentTarget.setPointerCapture(e.pointerId);
   };
 
   const onPointerMove = (e: PointerEvent) => {

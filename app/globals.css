@@ -51,7 +51,6 @@ body {
   font-family: "Poppins", serif;
 }
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -109,7 +108,6 @@ body {
   }
 }
 
-
 @layer base {
   * {
     @apply border-border;
@@ -138,4 +136,8 @@ body {
       overflow-y: scroll; /* Fallback to always reserve scrollbar space */
     }
   }
+}
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }
