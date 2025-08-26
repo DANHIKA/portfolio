@@ -19,6 +19,7 @@ export default function SkillsCarousel() {
     { name: "Node.js", icon: "devicon-nodejs-plain colored" },
     { name: "Express", icon: "devicon-express-original" },
     { name: "GraphQL", icon: "devicon-graphql-plain colored" },
+    { name: "C#", icon: "devicon-csharp-plain colored" },
     
     // Tools & Others
     { name: "Git", icon: "devicon-git-plain colored" },

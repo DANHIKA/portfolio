@@ -58,7 +58,7 @@ export default function Home() {
         containerClassName="h-80 md:h-102 overflow-hidden"
         curveAmount={100}
       />
-      <Testimonials />
+      {/* <Testimonials />
       <CurvedLoop
         marqueeText="✦ Experience ✦ Roles ✦ Achievements ✦ Impact ✦"
         compact
@@ -66,7 +66,7 @@ export default function Home() {
         className="text-[4rem] md:text-[6rem] fill-gray-900 dark:fill-white"
         containerClassName="h-80 md:h-102 overflow-hidden"
         curveAmount={100}
-      />
+      /> */}
       <Experience />
       <CurvedLoop
         marqueeText="✦ Get In Touch ✦ Contact ✦ Email ✦ Connect ✦ Collaborate ✦"

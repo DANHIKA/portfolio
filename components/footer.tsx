@@ -35,10 +35,6 @@ export default function Footer() {
             </a>
           </div>
           
-          {/* Disclaimer */}
-          <p className="text-xs text-gray-400 dark:text-gray-500 max-w-sm">
-            This chatbot-style portfolio is designed to showcase my work and skills in an interactive format
-          </p>
         </div>
       </div>
     </footer>
