@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["aceternity.com", "api.dicebear.com", "assets.aceternity.com"],
+    domains: ["aceternity.com", "api.dicebear.com", "assets.aceternity.com", "oxymor-ns.tailus.io"],
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     remotePatterns: [
