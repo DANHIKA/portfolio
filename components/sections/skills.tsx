@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import { motion } from "framer-motion";
+import { LogoLoop } from "@/components/logo-loop";
 
 export default function SkillsCarousel() {
   const skills = [
@@ -28,17 +28,9 @@ export default function SkillsCarousel() {
     { name: "Jest", icon: "devicon-jest-plain colored" },
   ];
 
-  // Duplicate skills array to create seamless loop effect
-  const fullSkillsSet = [...skills, ...skills];
-  
-  // References for the two carousels (moving in opposite directions)
-  const carousel1Ref = useRef<HTMLDivElement>(null);
-  const carousel2Ref = useRef<HTMLDivElement>(null);
-
   return (
     <section id="skills" className="py-6 overflow-hidden bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Simple, clean title */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -48,80 +40,12 @@ export default function SkillsCarousel() {
           <h2 className="text-center">Skills & Technologies</h2>
         </motion.div>
 
-        {/* First carousel - moving right */}
-        <div className="relative mb-8">
-          <div className="overflow-hidden py-4 mb-2">
-            <motion.div
-              ref={carousel1Ref}
-              className="flex"
-              animate={{
-                x: [0, -2000],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
-            >
-              {fullSkillsSet.map((skill, index) => (
-                <div 
-                  key={`${skill.name}-1-${index}`} 
-                  className="flex-shrink-0 mx-6"
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                      <i className={`${skill.icon} text-3xl md:text-4xl`}></i>
-                    </div>
-                    <span className="mt-2 text-sm text-gray-600 dark:text-gray-300">{skill.name}</span>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
+        <LogoLoop items={skills} />
+        
 
-        {/* Second carousel - moving left */}
-        <div className="relative">
-          <div className="overflow-hidden py-4">
-            <motion.div
-              ref={carousel2Ref}
-              className="flex"
-              animate={{
-                x: [-2000, 0],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
-            >
-              {fullSkillsSet.reverse().map((skill, index) => (
-                <div 
-                  key={`${skill.name}-2-${index}`} 
-                  className="flex-shrink-0 mx-6"
-                >
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                      <i className={`${skill.icon} text-3xl md:text-4xl`}></i>
-                    </div>
-                    <span className="mt-2 text-sm text-gray-600 dark:text-gray-300">{skill.name}</span>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-
+        {/* Add Devicon stylesheet */}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </div>
-
-      {/* Add Devicon stylesheet */}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     </section>
   );
 }

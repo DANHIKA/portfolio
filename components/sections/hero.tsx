@@ -1,10 +1,56 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import RotatingText from "@/animations/RotatingText/RotatingText";
 import RippleGrid from "@/backgrounds/RippleGrid/RippleGrid";
+import SmoothDrawer from "@/components/smooth-drawer";
+import Link from "next/link";
+import { sendEmail } from "@/lib/api/email";
 
 export default function Hero() {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [error, setError] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formState.name || !formState.email || !formState.message) {
+      setStatus("error");
+      setError("Please fill out all fields");
+      return;
+    }
+    
+    setStatus("loading");
+    
+    const { success, error: apiError } = await sendEmail(formState);
+    
+    if (success) {
+      setStatus("success");
+      setFormState({
+        name: "",
+        email: "",
+        message: ""
+      });
+    } else {
+      setStatus("error");
+      setError(apiError || "Failed to send message. Please try again later.");
+    }
+  };
+
   return (
     <section className="relative flex flex-col">
       <div className="relative h-[500px] overflow-hidden">
@@ -43,34 +89,23 @@ export default function Hero() {
                     elementLevelClassName="will-change-transform"
                   />
                 </h1>
-                {/* <p className="text-lg leading-relaxed max-w-lg mx-auto">
-                  I create modern web applications and digital solutions that bring ideas to life with clean code and thoughtful design.
-                </p> */}
-                <Button className="mx-auto flex items-center gap-4 px-8 py-4 rounded-lg font-semibold transition-all duration-300">
-                  View My Work
-                </Button>
+                <div className="flex gap-4 justify-center">
+                  <Link href="#projects">
+                    <Button className="flex items-center gap-4 px-8 py-4 rounded-lg font-semibold transition-all duration-300">
+                      View My Work
+                    </Button>
+                  </Link>
+                  <SmoothDrawer 
+                    type="contact"
+                    formState={formState}
+                    onFormChange={handleChange}
+                    onSubmit={handleSubmit}
+                    status={status}
+                    error={error}
+                  />                                              
+                </div>
               </div>
             </div>
-            {/**
-             * Card section commented out for centered hero layout
-             *
-             * <div className="lg:col-span-5">
-             *   <ProfileCard
-             *     name="Daniel Ntandika"
-             *     title="Software Engineer"
-             *     handle="danhika"
-             *     status="Online"
-             *     contactText="Contact Me"
-             *     avatarUrl="/me.png"
-             *     showUserInfo={true}
-             *     enableTilt={true}
-             *     enableMobileTilt={false}
-             *     onContactClick={() => console.log('Contact clicked')}
-             *     iconUrl="/iconpattern.png"
-             *     showBehindGradient
-             *   />
-             * </div>
-             */}
           </div>
         </div>
       </div>

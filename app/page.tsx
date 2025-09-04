@@ -2,7 +2,6 @@
 
 import AboutMe from "@/components/sections/about-me";
 import Contact from "@/components/sections/contact";
-import Experience from "@/components/sections/experience";
 import Hero from "@/components/sections/hero";
 import Projects from "@/components/sections/projects";
 // import Testimonials from "@/components/sections/testimonials";
@@ -23,41 +22,41 @@ export default function Home() {
         curveAmount={100}
       />
       <Stats /> 
-      <CurvedLoop
+      {/* <CurvedLoop
         marqueeText="✦ About Me ✦ Developer ✦ Designer ✦ Builder ✦ Problem Solver ✦"
         compact
         interactive={false}
         className="text-[4rem] md:text-[6rem] fill-gray-900 dark:fill-white"
         containerClassName="h-80 md:h-102 overflow-hidden"
         curveAmount={100}
-      />
+      /> */}
       <AboutMe />
-      <CurvedLoop
+      {/* <CurvedLoop
         marqueeText="✦ Skills ✦ Frontend ✦ Backend ✦ DevOps ✦ Cloud ✦ AI ✦"
         compact
         interactive={false}
         className="text-[4rem] md:text-[6rem] fill-gray-900 dark:fill-white"
         containerClassName="h-80 md:h-102  overflow-hidden"
         curveAmount={100}
-      />
+      /> */}
       <SkillsSlider />
-      <CurvedLoop
+      {/* <CurvedLoop
         marqueeText="✦ Projects ✦ Case Studies ✦ Open Source ✦ Experiments ✦"
         compact
         interactive={false}
         className="text-[4rem] md:text-[6rem] fill-gray-900 dark:fill-white"
         containerClassName="h-80 md:h-102 overflow-hidden"
         curveAmount={100}
-      />
+      /> */}
       <Projects />
-      <CurvedLoop
+      {/* <CurvedLoop
         marqueeText="✦ Testimonials ✦ Kind Words ✦ Recommendations ✦"
         compact
         interactive={false}
         className="text-[4rem] md:text-[6rem] fill-gray-900 dark:fill-white"
         containerClassName="h-80 md:h-102 overflow-hidden"
         curveAmount={100}
-      />
+      /> */}
       {/* <Testimonials />
       <CurvedLoop
         marqueeText="✦ Experience ✦ Roles ✦ Achievements ✦ Impact ✦"
@@ -67,7 +66,7 @@ export default function Home() {
         containerClassName="h-80 md:h-102 overflow-hidden"
         curveAmount={100}
       /> */}
-      <Experience />
+      {/* <Experience />
       <CurvedLoop
         marqueeText="✦ Get In Touch ✦ Contact ✦ Email ✦ Connect ✦ Collaborate ✦"
         compact
@@ -75,9 +74,8 @@ export default function Home() {
         className="text-[4rem] md:text-[6rem] fill-gray-900 dark:fill-white"
         containerClassName="h-80 md:h-102 overflow-hidden"
         curveAmount={100}
-      />
+      /> */}
       <Contact />
     </>
   );
 }
-
