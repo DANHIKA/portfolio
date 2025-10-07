@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import RotatingText from "@/animations/RotatingText/RotatingText";
-import RippleGrid from "@/backgrounds/RippleGrid/RippleGrid";
+import LightRays from "@/backgrounds/LightRays"
 import SmoothDrawer from "@/components/smooth-drawer";
 import Link from "next/link";
 import { sendEmail } from "@/lib/api/email";
@@ -56,16 +56,29 @@ export default function Hero() {
       <div className="relative h-[500px] overflow-hidden">
         {/* Background layer */}
         <div className="absolute inset-0 -z-10">
-          <RippleGrid
-            enableRainbow={false}
-            gridColor="#a855f7"
-            rippleIntensity={0.05}
-            gridSize={10}
-            gridThickness={15}
-            mouseInteraction={true}
-            mouseInteractionRadius={1.2}
-            opacity={0.8}
-          />
+        <LightRays
+
+raysOrigin="top-center"
+
+raysColor="#00ffff"
+
+raysSpeed={1.5}
+
+lightSpread={0.8}
+
+rayLength={1.2}
+
+followMouse={true}
+
+mouseInfluence={0.1}
+
+noiseAmount={0.1}
+
+distortion={0.05}
+
+className="custom-rays"
+
+/>
         </div>
 
         {/* Foreground content */}

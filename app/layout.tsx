@@ -4,6 +4,8 @@ import "@/components/ProfileCard/ProfileCard.css";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
+import { BlueprintContainer } from "@/components/ui/blueprint-container";
+import { FullWidthDivider } from "@/components/ui/divider";
 
 export const metadata: Metadata = {
   title: "Daniel Ntandika | Portfolio",
@@ -58,13 +60,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="max-w-8xl mx-auto px-4 py-20 pb-28 md:pb-32 min-h-screen">
+          <BlueprintContainer maxWidth="6xl" className="py-20 pb-28 md:pb-32 min-h-screen">
             <Header />
+            <FullWidthDivider className="mt-24 mb-12" />
             <main>
               {children}
             </main>
+            <FullWidthDivider className="my-12" />
             <Footer />
-          </div>
+          </BlueprintContainer>
         </ThemeProvider>
       </body>
     </html>
