@@ -26,15 +26,6 @@ export function BlueprintContainer({
       {/* Right vertical line */}
       <div className="absolute right-0 top-0 bottom-0 w-px bg-border/20 hidden md:block" />
       
-      {/* Top left corner marker */}
-      <div className="absolute left-0 top-0 w-2 h-2 hidden md:flex items-center justify-center">
-        <div className="w-1.5 h-1.5 rotate-45 border border-border/40" />
-      </div>
-      
-      {/* Top right corner marker */}
-      <div className="absolute right-0 top-0 w-2 h-2 hidden md:flex items-center justify-center">
-        <div className="w-1.5 h-1.5 rotate-45 border border-border/40" />
-      </div>
       
       {/* Content */}
       <div className="relative z-10">

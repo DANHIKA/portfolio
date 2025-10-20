@@ -19,7 +19,7 @@ export default function AnalyticsComponent() {
         {data.map((item, i) => (
           <div key={item.label} className="flex flex-col items-center gap-2 group">
             <motion.div
-              className="w-6 bg-gradient-to-t from-blue-500 to-violet-500 rounded-t-sm relative"
+              className="w-6 bg-linear-to-t from-blue-500 to-violet-500 rounded-t-sm relative"
               initial={{ height: 0 }}
               animate={{ height: `${(item.value / maxValue) * 80}px` }}
               transition={{ delay: i * 0.1, duration: 0.4, ease: "easeOut" }}

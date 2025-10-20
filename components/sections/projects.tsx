@@ -1,6 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import {
+  motion
+} from "framer-motion";
+import { Safari } from "@/components/ui/safari";
 
 export default function Projects() {
   const sites = [
@@ -20,7 +23,7 @@ export default function Projects() {
           transition={{ duration: 1, delay: 0.2 }}
           className="mb-8 flex flex-col items-center justify-center gap-4 px-4 text-center"
         >
-          <h2 className="text-6xl font-bold text-neutral-900 sm:text-5xl dark:bg-gradient-to-b dark:from-neutral-50 dark:to-neutral-400 dark:bg-clip-text dark:text-transparent">
+            <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
             Featured Projects
           </h2>
         </motion.div>
@@ -37,25 +40,21 @@ export default function Projects() {
                 className="group relative cursor-pointer flex h-full flex-col overflow-hidden transition-all duration-300"
                 onClick={() => window.open(site.url, '_blank', 'noopener,noreferrer')}
               >
-                {/* Main content area */}
-                <div className="relative flex-1 overflow-hidden rounded-lg bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 m-4 mb-2">
-                  <div
-                    className="h-48 opacity-60 dark:opacity-70"
-                    style={{
-                      backgroundImage: "url(/iconpattern.png)",
-                      backgroundRepeat: "repeat",
-                      backgroundPosition: "center",
-                      backgroundSize: "96px 96px",
-                    }}
+                {/* Safari mockup */}
+                <div className="relative m-4 mb-2 flex-1">
+                  <Safari
+                    url={site.url.replace(/^https?:\/\//, "")}
+                    mode="simple"
+                    className="w-full drop-shadow-lg"
                   />
-                  
+
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
 
                 {/* Project info */}
                 <div className="p-4 pt-2">
-                  <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
+                  <h3 className="text-6xl font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
                     {site.name}
                   </h3>
                   <p className="text-xs text-neutral-500 dark:text-neutral-400">

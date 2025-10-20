@@ -1,42 +1,80 @@
 "use client";
 
-import { Heart } from "lucide-react";
+import { Heart, ExternalLink } from "lucide-react";
 
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="py-8 mt-12 border-t border-gray-200/30 dark:border-gray-800/30">
-      <div className="max-w-3xl mx-auto">
-        <div className="flex flex-col items-center text-center space-y-4">
-          {/* Credits */}
-          <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5 flex-wrap justify-center">
-            <span>© {currentYear} Daniel Ntandika.</span>
-            <span className="hidden sm:inline">·</span>
-            <span className="flex items-center gap-1">
-              Made with <Heart className="h-3 w-3 text-red-500 fill-red-500" /> using
-            </span>
+    <footer>
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          {/* Left: Name */}
+          <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Daniel Ntandika
+          </div>
+
+          {/* Center: Navigation Links */}
+          <nav className="flex flex-col flex-wrap gap-6 text-sm">
             <a
-              href="https://nextjs.org"
-              target="_blank"
-              rel="noreferrer"
-              className="underline-offset-2 hover:text-primary transition-colors underline"
+              href="#about"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
             >
-              Next.js
+              About
             </a>
-            <span>+</span>
             <a
-              href="https://tailwindcss.com"
-              target="_blank"
-              rel="noreferrer"
-              className="underline-offset-2 hover:text-primary transition-colors underline"
+              href="#projects"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
             >
-              Tailwind
+              Projects
+            </a>
+            <a
+              href="#experience"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+            >
+              Experience
+            </a>
+            <a
+              href="#contact"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+            >
+              Contact
+            </a>
+          </nav>
+
+          {/* Right: Social Links */}
+          <div className="flex flex-col gap-4 text-sm">
+            <a
+              href="https://twitter.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors flex items-center gap-1"
+            >
+              Twitter
+              <ExternalLink className="h-3 w-3" />
+            </a>
+            <a
+              href="https://linkedin.com/in/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors flex items-center gap-1"
+            >
+              LinkedIn
+              <ExternalLink className="h-3 w-3" />
+            </a>
+            <a
+              href="https://facebook.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors flex items-center gap-1"
+            >
+              Facebook
+              <ExternalLink className="h-3 w-3" />
             </a>
           </div>
-          
         </div>
+
       </div>
     </footer>
   );
-} 
+}

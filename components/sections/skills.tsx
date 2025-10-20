@@ -37,7 +37,9 @@ export default function SkillsCarousel() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <h2 className="text-center">Skills & Technologies</h2>
+            <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
+              Skills & Technologies
+            </h2>
         </motion.div>
 
         <LogoLoop items={skills} />

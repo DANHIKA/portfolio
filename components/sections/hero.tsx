@@ -1,124 +1,31 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import RotatingText from "@/animations/RotatingText/RotatingText";
-import LightRays from "@/backgrounds/LightRays"
-import SmoothDrawer from "@/components/smooth-drawer";
 import Link from "next/link";
-import { sendEmail } from "@/lib/api/email";
+import { Button } from "@/components/ui/button";
 
 export default function Hero() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-  
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [error, setError] = useState("");
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formState.name || !formState.email || !formState.message) {
-      setStatus("error");
-      setError("Please fill out all fields");
-      return;
-    }
-    
-    setStatus("loading");
-    
-    const { success, error: apiError } = await sendEmail(formState);
-    
-    if (success) {
-      setStatus("success");
-      setFormState({
-        name: "",
-        email: "",
-        message: ""
-      });
-    } else {
-      setStatus("error");
-      setError(apiError || "Failed to send message. Please try again later.");
-    }
-  };
-
   return (
-    <section className="relative flex flex-col">
-      <div className="relative h-[500px] overflow-hidden">
-        {/* Background layer */}
-        <div className="absolute inset-0 -z-10">
-        <LightRays
-
-raysOrigin="top-center"
-
-raysColor="#00ffff"
-
-raysSpeed={1.5}
-
-lightSpread={0.8}
-
-rayLength={1.2}
-
-followMouse={true}
-
-mouseInfluence={0.1}
-
-noiseAmount={0.1}
-
-distortion={0.05}
-
-className="custom-rays"
-
-/>
-        </div>
-
-        {/* Foreground content */}
-        <div className="relative z-10 container mx-auto px-4 md:px-6 h-full flex items-center isolate">
-          <div className="flex flex-col items-center justify-center gap-8 text-center w-full">
-            {/* Hero Content */}
-            <div className="w-full max-w-3xl space-y-8">
-              <div className="space-y-6">
-                <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-                  Building{" "}
-                  <RotatingText
-                    texts={[
-                      "digital experiences",
-                      "modern web apps",
-                      "delightful interfaces",
-                    ]}
-                    rotationInterval={2500}
-                    splitBy="characters"
-                    staggerDuration={0.02}
-                    mainClassName="inline-flex bg-primary text-white rounded-lg px-4 py-2"
-                    elementLevelClassName="will-change-transform"
-                  />
-                </h1>
-                <div className="flex gap-4 justify-center">
-                  <Link href="#projects">
-                    <Button className="flex items-center gap-4 px-8 py-4 rounded-lg font-semibold transition-all duration-300">
-                      View My Work
-                    </Button>
-                  </Link>
-                  <SmoothDrawer 
-                    type="contact"
-                    formState={formState}
-                    onFormChange={handleChange}
-                    onSubmit={handleSubmit}
-                    status={status}
-                    error={error}
-                  />                                              
-                </div>
-              </div>
-            </div>
+    <section className="relative overflow-hidden py-20 md:py-32 lg:py-40">
+      <div className="absolute inset-0 -z-20" aria-hidden="true" />
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col items-center gap-10 text-center">
+          <h1 className="mx-auto mt-2 max-w-2xl text-center text-8xl font-semibold tracking-tight text-primary">
+            Fearless digital experiences.
+          </h1>
+          <p className="max-w-2xl text-lg text-muted-foreground sm:text-xl">
+            Transforming ambitious ideas into immersive digital journeys with clarity, performance, and a touch of drama.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <Link href="#projects" className="sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto">
+                View Projects
+              </Button>
+            </Link>
+            <Link href="mailto:hello@portfolio.dev" className="sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                Start a Project
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

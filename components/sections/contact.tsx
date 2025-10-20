@@ -55,7 +55,7 @@ export default function ContactSection() {
           <Spotlight className="-z-0" size={300} />
           
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">Let&apos;s work together</h2>
+            <h2 className="text-8xl font-bold mb-4 text-primary">Let&apos;s work together</h2>
             <p className="mb-6 max-w-2xl mx-auto">
               Have a project in mind or want to discuss collaboration opportunities?
             </p>

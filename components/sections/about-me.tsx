@@ -2,17 +2,9 @@
 
 import * as React from "react";
 import { Globe } from "@/components/magicui/globe";
-import { Compare } from "@/components/ui/compare";
-import {
-  ContributionGraph,
-  ContributionGraphCalendar,
-  ContributionGraphBlock,
-  ContributionGraphFooter,
-  ContributionGraphLegend,
-  ContributionGraphTotalCount,
-  type Activity,
-} from "@/components/ui/kibo-ui/contribution-graph";
 import Image from "next/image";
+import { WireframeMockup } from "@/components/ui/wireframe-mockup";
+import FullStackFlowDiagram from "@/components/ui/full-stack-flow-diagram";
 
 export default function AboutMe() {
   const toolLogos = React.useMemo(
@@ -27,30 +19,15 @@ export default function AboutMe() {
     []
   );
 
-  // Generate sample activity data (last ~26 weeks) for the contribution graph
-  const activities = React.useMemo<Activity[]>(() => {
-    const DAYS = 26 * 7; // ~6 months
-    const today = new Date();
-    const arr: Activity[] = [];
-    for (let i = DAYS - 1; i >= 0; i--) {
-      const d = new Date(today);
-      d.setDate(today.getDate() - i);
-      const date = d.toISOString().slice(0, 10); // YYYY-MM-DD
-      const base = Math.max(0, Math.sin(i / 5) * 3 + (i % 3));
-      const count = Math.round(base);
-      const level = Math.min(4, Math.max(0, Math.floor(count)));
-      arr.push({ date, count, level });
-    }
-    return arr;
-  }, []);
+  
 
   return (
     <section id="about" className="py-16 md:py-24">
       <div className="mx-auto">
-        <h2 className="text-center text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400">About Me</h2>
-        <p className="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-6xl">
+        <p className="text-center text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">About Me</p>
+        <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
           Building digital experiences that matter
-        </p>
+        </h2>
 
         <div className="mt-12 grid divide-y divide-border/20 bg-transparent">
           <div className="h-px w-full bg-border/20" aria-hidden />
@@ -68,14 +45,7 @@ export default function AboutMe() {
                   scalable architectures, and translating complex ideas into delightful interfaces.
                 </p>
               </div>
-                <Compare
-                  firstImage="https://assets.aceternity.com/code-problem.png"
-                  secondImage="https://assets.aceternity.com/code-solution.png"
-                  firstImageClassName="object-cover object-left-top"
-                  secondImageClassname="object-cover object-left-top"
-                  className="relative z-10 h-[220px] w-full md:h-[260px]"
-                  slideMode="hover"
-                />
+              <FullStackFlowDiagram />
             </div>
 
             {/* Collaboration panel */}
@@ -87,8 +57,8 @@ export default function AboutMe() {
                   Remote-first delivery across time zones, aligning design, engineering, and business teams to ship inclusive experiences.
                 </p>
               </div>
-              <div className="mt-10 flex flex-1 items-end justify-center">
-                <Globe className="h-48 w-48 opacity-80" />
+              <div className="relative mt-10 flex flex-1 items-end justify-center min-h-[240px]">
+                <Globe className="h-64 w-64 opacity-80" />
               </div>
             </div>
           </div>
@@ -101,21 +71,15 @@ export default function AboutMe() {
             {/* Activity panel */}
             <div className="relative border-b border-border/20 p-8 sm:col-span-2 sm:border-b-0 sm:border-r sm:border-border/20 md:p-10">
               <div className="space-y-4">
-                <span className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Activity</span>
-                <h3 className="text-3xl font-semibold tracking-tight">Recent contributions</h3>
+                <span className="text-xs uppercase tracking-[0.35em] text-muted-foreground">UI/UX</span>
+                <h3 className="text-3xl font-semibold tracking-tight">Human-centered design</h3>
                 <p className="text-muted-foreground">
-                  A snapshot of the energy I invest in learning, building, and collaborating on open-source and client projects.
+                  I translate business goals into intuitive flows, wireframes, and interactive interfaces. I prioritize clarity,
+                  accessibility, and feedback loops to craft experiences users love.
                 </p>
               </div>
-              <div className="mt-8 border border-border/40 p-4">
-                <Compare
-                  firstImage="https://assets.aceternity.com/code-problem.png"
-                  secondImage="https://assets.aceternity.com/code-solution.png"
-                  firstImageClassName="object-cover object-left-top"
-                  secondImageClassname="object-cover object-left-top"
-                  className="relative z-10 h-[220px] w-full md:h-[260px]"
-                  slideMode="hover"
-                />
+              <div className="mt-8 p-6 flex items-center justify-center bg-transparent">
+                <WireframeMockup className="max-w-xs opacity-90" mode="simple" />
               </div>
             </div>
 

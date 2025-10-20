@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 import Image from "next/image";
+import { FullWidthDivider } from "@/components/ui/divider";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -27,66 +28,59 @@ export default function Header() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-50 right-50 z-40 transition-all duration-300 ${
         isScrolled
-          ? " backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-5"
+          ? "backdrop-blur-md py-3 shadow-sm"
+          : "py-5"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 z-50">
-            <div className="relative w-8 h-8">
-              <Image
-                src="https://api.dicebear.com/7.x/notionists/svg?seed=Daniel&backgroundColor=5b46f8"
-                alt="Daniel Ntandika"
-                fill
-                className="rounded-full ring-2 ring-primary/20"
-              />
-            </div>
-            <span className={`font-semibold text-lg transition-all ${
-              isScrolled ? "text-foreground" : "text-foreground"
-            }`}>
-              Daniel
-              <span className="hidden sm:inline"> Ntandika</span>
-            </span>
-          </a>
+      <div className="container mx-auto flex items-center justify-between gap-4 px-4 md:px-6">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-3 z-50">
+          <div className="relative h-9 w-9 md:h-10 md:w-10">
+            <Image
+              src="https://api.dicebear.com/7.x/notionists/svg?seed=Daniel&backgroundColor=5b46f8"
+              alt="Daniel Ntandika"
+              fill
+              className="rounded-full ring-2 ring-primary/20"
+            />
+          </div>
+          <span className="text-base font-semibold text-foreground md:text-lg">
+            Daniel
+            <span className="hidden sm:inline"> Ntandika</span>
+          </span>
+        </a>
 
+        <div className="flex items-center gap-3">
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`relative px-3 py-2 text-sm font-medium rounded-md transition-all hover:text-primary ${
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors hover:text-primary ${
                   isScrolled
-                    ? "text-gray-700 dark:text-gray-300"
-                    : "text-gray-800 dark:text-gray-200"
+                    ? "text-muted-foreground"
+                    : "text-foreground/80"
                 }`}
               >
                 {item.name}
               </a>
             ))}
-            <Button className="ml-2" size="sm">
-              <a href="#contact" className="flex items-center gap-1.5">
-                Get in Touch
-              </a>
+            <Button size="sm" className="ml-2">
+              <span className="flex items-center gap-1.5">Get in Touch</span>
             </Button>
-            <div className="ml-2">
-              <AnimatedThemeToggler className="h-9 w-9 inline-flex items-center justify-center rounded-md border border-border hover:bg-accent transition-colors" />
-            </div>
+            <AnimatedThemeToggler className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-md border border-border hover:bg-accent transition-colors" />
           </nav>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="block md:hidden z-50"
+            className="block md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -98,6 +92,8 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      <FullWidthDivider className="mt-3" />
 
       {/* Mobile Menu */}
       <AnimatePresence>

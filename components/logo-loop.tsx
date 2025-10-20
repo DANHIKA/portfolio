@@ -277,7 +277,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             <div
               aria-hidden
               className={cx(
-                'pointer-events-none absolute inset-y-0 left-0 z-[1]',
+                'pointer-events-none absolute inset-y-0 left-0 z-1',
                 'w-[clamp(24px,8%,120px)]',
                 'bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]'
               )}
@@ -285,7 +285,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             <div
               aria-hidden
               className={cx(
-                'pointer-events-none absolute inset-y-0 right-0 z-[1]',
+                'pointer-events-none absolute inset-y-0 right-0 z-1',
                 'w-[clamp(24px,8%,120px)]',
                 'bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]'
               )}
@@ -306,7 +306,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           }}
         >
           {duplicatedItems.map((item, index) => (
-            <div key={`${item.name}-${index}`} className="flex-shrink-0 mx-6">
+            <div key={`${item.name}-${index}`} className="shrink-0 mx-6">
               <div className="flex flex-col items-center">
                 <div className="w-16 h-16 flex items-center justify-center bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
                   <i className={`${item.icon} text-3xl`}></i>

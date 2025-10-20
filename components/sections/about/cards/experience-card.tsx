@@ -21,7 +21,7 @@ export function ExperienceCard({ title, description, onRef }: ExperienceCardProp
       <div className="demo-container relative mt-8 opacity-70 transform translate-y-10">
         <div className="flex flex-col items-center space-y-6">
           <div className="w-full max-w-md h-1 bg-gray-200 dark:bg-gray-700 rounded-full relative">
-            <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-indigo-200 via-indigo-500 to-indigo-600 dark:from-indigo-900 dark:via-indigo-600 dark:to-indigo-400 rounded-full"></div>
+            <div className="absolute top-0 left-0 h-full w-full bg-linear-to-r from-indigo-200 via-indigo-500 to-indigo-600 dark:from-indigo-900 dark:via-indigo-600 dark:to-indigo-400 rounded-full"></div>
             <div className="absolute -top-7 left-0">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>

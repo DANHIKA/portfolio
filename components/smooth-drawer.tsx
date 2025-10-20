@@ -186,10 +186,10 @@ export default function SmoothDrawer({
                   <Link
                     href="https://kokonutui.pro/#pricing"
                     target="_blank"
-                    className="group w-full relative overflow-hidden inline-flex items-center justify-center h-11 rounded-xl bg-gradient-to-r from-rose-500 to-pink-500 dark:from-rose-600 dark:to-pink-600 text-white text-sm font-semibold tracking-wide shadow-lg shadow-rose-500/20 transition-all duration-500 hover:shadow-xl hover:shadow-rose-500/30 hover:from-rose-600 hover:to-pink-600 dark:hover:from-rose-500 dark:hover:to-pink-500"
+                    className="group w-full relative overflow-hidden inline-flex items-center justify-center h-11 rounded-xl bg-linear-to-r from-rose-500 to-pink-500 dark:from-rose-600 dark:to-pink-600 text-white text-sm font-semibold tracking-wide shadow-lg shadow-rose-500/20 transition-all duration-500 hover:shadow-xl hover:shadow-rose-500/30 hover:from-rose-600 hover:to-pink-600 dark:hover:from-rose-500 dark:hover:to-pink-500"
                   >
                     <motion.span
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%]"
+                      className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent translate-x-[-200%]"
                       whileHover={{
                         x: ["-200%", "200%"],
                       }}

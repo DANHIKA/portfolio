@@ -12,7 +12,7 @@ export function BentoCard({ children, onRef, patternId }: BentoCardProps) {
   return (
     <div 
       ref={onRef}
-      className="group relative overflow-hidden rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-700 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800/50 dark:to-gray-900/50 shadow-sm transition-all duration-300"
+      className="group relative overflow-hidden rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-700 bg-linear-to-br from-white to-gray-50 dark:from-gray-800/50 dark:to-gray-900/50 shadow-sm transition-all duration-300"
     >
       <div className="absolute inset-0 opacity-30 pointer-events-none">
         <svg width="100%" height="100%">

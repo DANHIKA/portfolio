@@ -22,7 +22,7 @@ export const GridPattern = () => {
               duration: 0.5,
               type: "spring",
             }}
-            className="w-full h-8 rounded-full bg-gradient-to-r from-neutral-400/10 to-neutral-300/10 border border-neutral-700/50"
+            className="w-full h-8 rounded-full bg-linear-to-r from-neutral-400/10 to-neutral-300/10 border border-neutral-700/50"
           />
         ))}
       </motion.div>

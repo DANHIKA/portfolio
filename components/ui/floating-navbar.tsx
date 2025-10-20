@@ -12,7 +12,7 @@ export const FloatingNav = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="h-14 w-64 rounded-2xl bg-gradient-to-r from-purple-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/10 shadow-xl"
+      className="h-14 w-64 rounded-2xl bg-linear-to-r from-purple-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/10 shadow-xl"
     >
       <nav className="flex items-center justify-around h-full px-4">
         {tabs.map((tab) => (
