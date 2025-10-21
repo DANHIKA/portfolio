@@ -19,7 +19,7 @@ const poppins = Poppins({
 const galgo = localFont({
   src: [
     {
-      path: "./fonts/galgo.ttf",
+      path: "./fonts/Galgo.ttf",
       weight: "400",
       style: "normal",
     },
