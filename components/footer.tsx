@@ -1,8 +1,6 @@
 "use client";
 
-import { Heart, ExternalLink } from "lucide-react";
-
-const currentYear = new Date().getFullYear();
+import { ExternalLink } from "lucide-react";
 
 export default function Footer() {
   return (

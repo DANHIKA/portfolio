@@ -1,9 +1,56 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import SmoothDrawer from "../smooth-drawer";
+import { sendEmail } from "@/lib/api/email";
 
 export default function Hero() {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [error, setError] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formState.name || !formState.email || !formState.message) {
+      setStatus("error");
+      setError("Please fill out all fields");
+      return;
+    }
+
+    setStatus("loading");
+
+    const { success, error: apiError } = await sendEmail(formState);
+
+    if (success) {
+      setStatus("success");
+      setFormState({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } else {
+      setStatus("error");
+      setError(apiError || "Failed to send message. Please try again later.");
+    }
+  };
+
   return (
     <section className="relative overflow-hidden py-20 md:py-32 lg:py-40">
       <div className="absolute inset-0 -z-20" aria-hidden="true" />
@@ -21,11 +68,14 @@ export default function Hero() {
                 View Projects
               </Button>
             </Link>
-            <Link href="mailto:hello@portfolio.dev" className="sm:w-auto">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                Start a Project
-              </Button>
-            </Link>
+            <SmoothDrawer 
+              type="contact"
+              formState={formState}
+              onFormChange={handleChange}
+              onSubmit={handleSubmit}
+              status={status}
+              error={error}
+            />
           </div>
         </div>
       </div>

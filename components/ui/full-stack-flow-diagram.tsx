@@ -3,12 +3,9 @@
 import React from "react";
 import ReactFlow, {
   Background,
-  Controls,
-  MiniMap,
   MarkerType,
   type Edge,
   type Node,
-  Panel,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { AnimatedSvgEdge } from "@/components/animated-svg-edge";
@@ -78,7 +75,7 @@ const FormNode = () => (
         />
       </div>
     </BaseNodeContent>
-    <BaseNodeFooter>
+    <BaseNodeFooter className="!flex-row !items-center justify-end gap-2 pt-1">
       <Button size="sm" className="h-7 px-3 text-[12px] font-semibold">
         Sign in
       </Button>
