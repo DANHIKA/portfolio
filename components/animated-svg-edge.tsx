@@ -88,10 +88,15 @@ export function AnimatedSvgEdge({
   });
 
   const {
-    animated,
-    sourceHandleId,
-    targetHandleId,
-    pathOptions,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    animated: _animated,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    sourceHandleId: _sourceHandleId,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    targetHandleId: _targetHandleId,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    pathOptions: _pathOptions,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     id: _ignoredId,
     ...cleanDelegated
   } = delegated as Record<string, unknown>;

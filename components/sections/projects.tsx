@@ -45,8 +45,7 @@ export default function Projects() {
                 className="group relative cursor-pointer flex h-full flex-col overflow-hidden transition-all duration-300"
                 onClick={() => {
                   // Internal items navigate within the app; external open a new tab
-                  // @ts-ignore - internal flag only present on some items
-                  if ((site as any).internal) {
+                  if ((site as { internal?: boolean }).internal) {
                     router.push(site.url as string);
                   } else {
                     window.open(site.url as string, '_blank', 'noopener,noreferrer');
@@ -56,7 +55,7 @@ export default function Projects() {
                 {/* Safari mockup */}
                 <div className="relative m-4 mb-2 flex-1">
                   {"internal" in site ? (
-                    <Iphone src={(site as any).previewSrc} className="mx-auto h-72 w-auto drop-shadow-lg" />
+                    <Iphone src={(site as { previewSrc?: string }).previewSrc || ""} className="mx-auto h-72 w-auto drop-shadow-lg" />
                   ) : (
                     <Safari
                       url={(site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, ""))}

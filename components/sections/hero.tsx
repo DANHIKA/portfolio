@@ -87,7 +87,7 @@ export default function Hero() {
               className="w-full sm:w-auto group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg"
               asChild
             >
-              <Link href="/resume.pdf" target="_blank">
+              <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <span className="relative z-10">My Resume</span>
                 <span className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               </Link>

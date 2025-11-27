@@ -93,7 +93,7 @@ export function setupStickyScrollSections(
     scrollTriggers.forEach((trigger) => {
       try {
         trigger?.kill();
-      } catch (e) {
+      } catch {
         // Trigger might already be killed, ignore
       }
     });
@@ -104,7 +104,7 @@ export function setupStickyScrollSections(
         if (!scrollTriggers.includes(st)) {
           try {
             st.kill();
-          } catch (e) {
+          } catch {
             // Ignore errors
           }
         }
@@ -168,7 +168,7 @@ export function setupStickyScrollSectionsAdvanced(
     scrollTriggers.forEach((trigger) => {
       try {
         trigger?.kill();
-      } catch (e) {
+      } catch {
         // Trigger might already be killed, ignore
       }
     });

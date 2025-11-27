@@ -93,7 +93,7 @@ export default function TailwindCompare() {
                   </div>
                   
                   <p className="text-foreground/80 leading-relaxed mb-6">
-                    Web design has evolved significantly over the past decade. Today's users expect fast, responsive, and visually appealing experiences across all devices.
+                    Web design has evolved significantly over the past decade. Today&apos;s users expect fast, responsive, and visually appealing experiences across all devices.
                   </p>
                   
                   <div className="flex items-center gap-4">
@@ -129,7 +129,7 @@ export default function TailwindCompare() {
                       </h3>
                       
                       <p className="text-muted-foreground text-lg leading-relaxed">
-                        Web design has evolved significantly over the past decade. Today's users expect fast, responsive, and visually appealing experiences across all devices.
+                        Web design has evolved significantly over the past decade. Today&apos;s users expect fast, responsive, and visually appealing experiences across all devices.
                       </p>
                       
                       <div className="flex items-center justify-between pt-6 border-t border-border/50">

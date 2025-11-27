@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react"
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion"
-import { SketchBackground } from "@/components/ui/sketch-background"
 
 function Counter({ from, to, className }: { from: number; to: number; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null)

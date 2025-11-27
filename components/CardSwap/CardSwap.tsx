@@ -118,7 +118,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
     [children]
   );
   const refs = useMemo<CardRef[]>(
-    () => childArr.map(() => React.createRef<HTMLDivElement>()),
+    () => childArr.map(() => React.createRef<HTMLDivElement>() as CardRef),
     [childArr]
   );
 
@@ -127,7 +127,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
   );
 
   const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const intervalRef = useRef<number>();
+  const intervalRef = useRef<number | undefined>(undefined);
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

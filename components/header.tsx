@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
-import Image from "next/image";
 import { StaggeredMenu } from "./StaggeredMenu";
 
 const navItems = [
@@ -74,13 +73,12 @@ export default function Header() {
 
       {/* Mobile Staggered Menu */}
       <div className="md:hidden fixed inset-0 z-50">
-        {/* @ts-ignore - StaggeredMenu is a JSX component without TypeScript definitions */}
         <StaggeredMenu
           position="right"
           colors={["#5b46f8", "#8b5cf6", "#a78bfa"]}
-          // @ts-ignore
+          // @ts-expect-error - StaggeredMenu items prop type not defined
           items={staggeredMenuItems}
-          // @ts-ignore
+          // @ts-expect-error - StaggeredMenu socialItems prop type not defined
           socialItems={socialItems}
           displaySocials={true}
           displayItemNumbering={true}

@@ -22,7 +22,7 @@ export default function SmoothScroll() {
 
     return () => {
       gsap.ticker.remove(ticker);
-      lenis.off("scroll", onScroll as any);
+      lenis.off("scroll", onScroll as () => void);
       lenis.destroy();
     };
   }, []);
