@@ -1,33 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
-import "@/components/ProfileCard/ProfileCard.css";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
-import { BlueprintContainer } from "@/components/ui/blueprint-container";
-import { FullWidthDivider } from "@/components/ui/divider";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  display: "swap",
-  variable: "--font-poppins",
-});
-
-const galgo = localFont({
-  src: [
-    {
-      path: "./fonts/Galgo.ttf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  display: "swap",
-  variable: "--font-heading",
-  fallback: ["sans-serif"],
-});
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "Daniel Ntandika | Portfolio",
@@ -75,21 +51,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} ${galgo.variable} ${poppins.className} antialiased bg-gray-50 dark:bg-gray-900`}>
+      <head>
+        <style>{`@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');`}</style>
+      </head>
+      <body className="antialiased bg-background">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <BlueprintContainer maxWidth="6xl" className="py-20 pb-28 md:pb-32 min-h-screen">
+          <SmoothScroll />
+          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
             <Header />
             <main>
               {children}
             </main>
-            <FullWidthDivider className="my-12" />
             <Footer />
-          </BlueprintContainer>
+          </div>
         </ThemeProvider>
       </body>
     </html>

@@ -8,31 +8,23 @@ import Projects from "@/components/sections/projects";
 // import Testimonials from "@/components/sections/testimonials";
 import SkillsSlider from "@/components/sections/skills";
 import Stats from "@/components/sections/stats";
-import { FullWidthDivider } from "@/components/ui/divider";
 
 export default function Home() {
   return (
     <>
       <Hero />
 
-      <FullWidthDivider />
-      <Stats /> 
+      <Stats />
 
-      <FullWidthDivider />
       <AboutMe />
 
-      <FullWidthDivider />
       <Process />
 
-      <FullWidthDivider />
       <SkillsSlider />
 
-      <FullWidthDivider />
       <Projects />
 
-      <FullWidthDivider />
       <Contact />
-
     </>
   );
 }

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import SmoothDrawer from "@/components/smooth-drawer";
-import { Spotlight } from "@/components/motion-primitives/spotlight";
 import { sendEmail } from "@/lib/api/email";
 
 export default function ContactSection() {
@@ -49,14 +48,12 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="bg-gray-50 dark:bg-gray-900 py-12">
-      <div className="mx-auto px-4">
+    <section id="contact" className="relative py-12 overflow-hidden w-screen -mx-[calc((100vw-100%)/2)]">
+      <div className="mx-auto px-4 relative z-10">
         <div className="relative rounded-xl p-8 text-center overflow-hidden">
-          <Spotlight className="-z-0" size={300} />
-          
           <div className="relative z-10">
             <h2 className="text-8xl font-bold mb-4 text-primary">Let&apos;s work together</h2>
-            <p className="mb-6 max-w-2xl mx-auto">
+            <p className="mb-6 max-w-2xl mx-auto text-foreground">
               Have a project in mind or want to discuss collaboration opportunities?
             </p>
             

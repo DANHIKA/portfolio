@@ -21,10 +21,10 @@ export function BlueprintContainer({
   return (
     <div className={cn("relative mx-auto ", maxWidthClass, className)}>
       {/* Left vertical line */}
-      <div className="absolute left-0 top-0 bottom-0 w-px bg-border/20 hidden md:block" />
+      <div className="absolute left-0 top-0 bottom-0 w-px bg-border dark:bg-white hidden md:block" />
       
       {/* Right vertical line */}
-      <div className="absolute right-0 top-0 bottom-0 w-px bg-border/20 hidden md:block" />
+      <div className="absolute right-0 top-0 bottom-0 w-px bg-border dark:bg-white hidden md:block" />
       
       
       {/* Content */}

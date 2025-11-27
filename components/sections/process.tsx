@@ -59,10 +59,10 @@ export default function Process() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="process" className="relative py-24">
+    <section ref={sectionRef} id="process" className="relative py-24 w-screen -mx-[calc((100vw-100%)/2)]">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-20 text-center">
-          <p className="text-sm font-medium tracking-wider text-gray-500 dark:text-gray-400">Process</p>
+          <p className="text-sm font-medium tracking-wider text-muted-foreground">Process</p>
           <h2 className="mt-3 text-5xl font-bold tracking-tight text-primary">
             How ideas become shipped experiences
           </h2>

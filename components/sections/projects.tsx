@@ -4,18 +4,23 @@ import {
   motion
 } from "framer-motion";
 import { Safari } from "@/components/ui/safari";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Iphone } from "@/components/ui/iphone";
 
 export default function Projects() {
+  const router = useRouter();
   const sites = [
     { name: "MarketWeb MW", url: "https://www.marketwebmw.com" },
     { name: "MalawiNest", url: "https://malawinest.com/home" },
     { name: "Excellence Jobs MW", url: "https://excellencejobsmw.com" },
     { name: "VJ Marketing", url: "https://vj-marketing.vercel.app" },
     { name: "QR Code Generator", url: "https://qr-code-generator-silk-seven.vercel.app" },
+    { name: "Safe Home", url: "/case-studies/safe-home", internal: true, previewSrc: "/projects/Safe%20Home/wireframes/Home.png" },
   ];
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-transparent py-6">
+    <section className="relative flex min-h-screen w-screen -mx-[calc((100vw-100%)/2)] flex-col items-center justify-center overflow-hidden py-6">
       <div className="relative z-10 flex w-full flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,15 +43,27 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative cursor-pointer flex h-full flex-col overflow-hidden transition-all duration-300"
-                onClick={() => window.open(site.url, '_blank', 'noopener,noreferrer')}
+                onClick={() => {
+                  // Internal items navigate within the app; external open a new tab
+                  // @ts-ignore - internal flag only present on some items
+                  if ((site as any).internal) {
+                    router.push(site.url as string);
+                  } else {
+                    window.open(site.url as string, '_blank', 'noopener,noreferrer');
+                  }
+                }}
               >
                 {/* Safari mockup */}
                 <div className="relative m-4 mb-2 flex-1">
-                  <Safari
-                    url={site.url.replace(/^https?:\/\//, "")}
-                    mode="simple"
-                    className="w-full drop-shadow-lg"
-                  />
+                  {"internal" in site ? (
+                    <Iphone src={(site as any).previewSrc} className="mx-auto h-72 w-auto drop-shadow-lg" />
+                  ) : (
+                    <Safari
+                      url={(site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, ""))}
+                      mode="simple"
+                      className="w-full drop-shadow-lg"
+                    />
+                  )}
 
                   {/* Hover overlay */}
                   <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -54,12 +71,20 @@ export default function Projects() {
 
                 {/* Project info */}
                 <div className="p-4 pt-2">
-                  <h3 className="text-6xl font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
+                  <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
                     {site.name}
                   </h3>
                   <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                    {site.url.replace(/^https?:\/\//, "")}
+                    {site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, "")}
                   </p>
+                  {/* Underlined case study link for internal case study items */}
+                  {"internal" in site ? (
+                    <div className="mt-2">
+                      <Link href={site.url} className="text-sm underline underline-offset-4">
+                        Case study
+                      </Link>
+                    </div>
+                  ) : null}
                 </div>
               </motion.div>
             ))}

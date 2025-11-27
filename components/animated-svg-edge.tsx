@@ -87,9 +87,22 @@ export function AnimatedSvgEdge({
     path,
   });
 
+  const {
+    animated,
+    sourceHandleId,
+    targetHandleId,
+    pathOptions,
+    id: _ignoredId,
+    ...cleanDelegated
+  } = delegated as Record<string, unknown>;
+
   return (
     <>
-      <BaseEdge id={id} path={path} {...delegated} />
+      <BaseEdge
+        id={id}
+        path={path}
+        {...(cleanDelegated as Omit<EdgeProps<AnimatedSvgEdge>, "id">)}
+      />
       <Shape animateMotionProps={animateMotionProps} />
     </>
   );

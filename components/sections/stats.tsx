@@ -39,75 +39,66 @@ export default function DeveloperStats() {
   const containerRef = useRef(null)
   const isInView = useInView(containerRef, { once: true })
 
+  const stats = [
+    {
+      number: 16,
+      suffix: "+",
+      label: "Projects",
+      description: "Delivered across various industries"
+    },
+    {
+      number: 3,
+      suffix: "+",
+      label: "Years",
+      description: "Professional experience in modern web development"
+    },
+    {
+      number: 2.5,
+      suffix: "k",
+      label: "Git Commits",
+      description: "Consistent code contributions"
+    }
+  ]
+
   return (
-    <section className="w-full py-4 md:py-6" ref={containerRef}>
+    <section className="w-screen -mx-[calc((100vw-100%)/2)] py-4 md:py-6" ref={containerRef}>
       <div className="max-w-4xl mx-auto px-4">
-        <div className="mb-12 ">
-          <p className="text-center text-base font-semibold leading-7 text-gray-900 dark:text-gray-100 ">Stats</p>
+        <div className="mb-12">
+          <p className="text-center text-base font-semibold leading-7 text-foreground">Stats</p>
           <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
-          My Development Journey So Far
+            My development journey so far.
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 items-end">
-          {/* First column - shortest height */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-            className="bg-gray-50 p-6 rounded-xl relative border border-dashed border-gray-300 h-[160px]"
-          >
-            <div className="space-y-2">
-              <div className="text-4xl font-bold tracking-tight flex items-center text-gray-900">
-                <Counter from={0} to={16} className="text-4xl font-bold text-gray-900" />
-                <span className="ml-1 text-gray-900">+</span>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="mt-16 bg-primary rounded-lg p-8 md:p-12 space-y-0"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`py-8 ${index !== stats.length - 1 ? 'border-b border-primary-foreground/20' : ''}`}
+            >
+              <div className="flex items-start justify-between gap-8 mb-3">
+                <div className="text-6xl font-bold text-primary-foreground flex items-baseline">
+                  <Counter from={0} to={stat.number} className="text-6xl font-bold text-primary-foreground" />
+                  <span className="ml-1 text-6xl font-bold text-primary-foreground">{stat.suffix}</span>
+                </div>
+                <div className="text-xl font-semibold text-primary-foreground text-right flex-shrink-0">
+                  {stat.label}
+                </div>
               </div>
-              <h3 className="text-4xl font-medium text-gray-900">Projects</h3>
-              <p className="text-gray-600 text-sm">
-                Delivered across various industries
+              <p className="text-base text-primary-foreground/80 max-w-2xl">
+                {stat.description}
               </p>
-            </div>
-          </motion.div>
-
-          {/* Second column - tallest height */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="bg-[#0f1729] text-white p-6 rounded-xl relative overflow-hidden border border-dashed border-gray-700 h-[320px]"
-          >
-            <SketchBackground className="pointer-events-none opacity-30" strokeClassName="stroke-white/15" />
-            <div className="space-y-2">
-              <div className="text-4xl font-bold tracking-tight flex items-center">
-                <Counter from={0} to={3} className="text-4xl font-bold" />
-                <span className="ml-1">+</span>
-              </div>
-              <h3 className="text-4xl font-medium">Years</h3>
-              <p className="text-gray-400 text-sm">
-                Professional experience in modern web development
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Third column - medium height */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="bg-[#5b46f8] text-white p-6 rounded-xl relative border border-dashed border-indigo-400 h-[240px]"
-          >
-            <div className="space-y-2">
-              <div className="text-4xl font-bold tracking-tight flex items-center">
-                <Counter from={0} to={2.5} className="text-4xl font-bold" />
-                <span className="ml-1">k</span>
-              </div>
-              <h3 className="text-4xl font-medium">Git Commits</h3>
-              <p className="text-gray-200 text-sm">
-                Consistent code contributions
-              </p>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

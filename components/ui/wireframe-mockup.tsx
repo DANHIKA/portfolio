@@ -56,7 +56,7 @@ const TextLines = () => (
 
 export function WireframeMockup({ className, mode = "default" }: WireframeMockupProps) {
   return (
-    <div className={cn("w-full max-w-sm", className)}>
+    <div className={cn("w-full", className)}>
       {/* Top Grid */}
       <div className="grid grid-cols-3 gap-4">
         <div className="flex flex-col gap-3">

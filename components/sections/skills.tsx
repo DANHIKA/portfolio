@@ -29,7 +29,7 @@ export default function SkillsCarousel() {
   ];
 
   return (
-    <section id="skills" className="py-6 overflow-hidden bg-gray-50 dark:bg-gray-900">
+    <section id="skills" className="py-6 overflow-hidden w-screen -mx-[calc((100vw-100%)/2)]">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

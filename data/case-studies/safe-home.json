@@ -1,0 +1,111 @@
+{
+  "id": "safe-home",
+  "title": "Safe Home",
+  "subtitle": "A simple, accessible directory of essential services for the homeless",
+  "summary": "Safe Home helps people experiencing homelessness quickly find nearby services like shelters, food, showers, jobs, and healthcare with both list and map views.",
+  "problem": "People experiencing homelessness face significant challenges when trying to find essential services in their area. They need a fast, phone-friendly way to discover nearby shelters, food banks, healthcare facilities, job centers, and other critical resources. Current solutions often require internet access, complex navigation, or knowledge of specific service names, creating barriers for those who may be unfamiliar with digital interfaces or have limited connectivity. Users need to quickly understand service eligibility requirements, operating hours, and how to physically reach these locations, often while dealing with urgent needs and limited resources.",
+  "solution": "A lightweight, mobile-first web experience designed specifically for accessibility and ease of use. The solution features clear visual categories with intuitive icons, powerful search functionality with autocomplete suggestions, comprehensive map views with real-time location tracking, and step-by-step navigation directions. The entire interface is designed to be readable with high contrast, adjustable text sizes, and screen reader compatibility. The application prioritizes speed and simplicity, ensuring users can find what they need quickly without unnecessary complexity or barriers to access.",
+  "technologies": ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion", "Google Maps"],
+  "pages": [
+    {
+      "name": "Home Page",
+      "purpose": "Acts as the starting point for users to quickly access services and provides an intuitive entry point into the application with clear visual hierarchy and immediate access to core functionality.",
+      "features": [
+        "Search Bar: Users can type in keywords to find specific services with real-time suggestions and autocomplete functionality that helps narrow down results quickly.",
+        "Service Categories: Icons for Shelter, Food, Shower, Job, Health, and other essential services with clear visual indicators that make navigation intuitive even for users unfamiliar with digital interfaces.",
+        "Location Services: Automatic location detection with permission prompts that enable personalized results based on the user's current geographic position."
+      ],
+      "wireframe": "/projects/Safe%20Home/wireframes/Home.png"
+    },
+    {
+      "name": "Search Results / Service List Page",
+      "purpose": "Shows available services based on user search or selected category with comprehensive filtering options and detailed information cards that help users make informed decisions quickly.",
+      "features": [
+        "Service Cards: Each card displays title, location, operating hours, amenities, description, eligibility requirements, and contact information in a scannable format.",
+        "Map Toggle Button: Switch to map view with pins for each service, allowing users to visualize geographic distribution and proximity of available resources.",
+        "Distance Indicators: Clear display of travel distance and estimated time for each service, calculated based on the user's current location and preferred transportation method.",
+        "Availability Status: Real-time indicators showing whether services are currently open, closed, or have limited availability to prevent wasted trips."
+      ],
+      "wireframe": "/projects/Safe%20Home/wireframes/Search.png"
+    },
+    {
+      "name": "Map Page",
+      "purpose": "Visualizes all search results geographically with interactive markers and detailed information overlays that help users understand spatial relationships between services.",
+      "features": [
+        "Interactive Map: Google Maps integration with custom pins for each service location, color-coded by service type for quick visual identification.",
+        "Travel Estimates: Real-time calculations showing travel time and distance by multiple modes including walking, cycling, public transit, and driving when applicable.",
+        "Pin Interactions: Tap pins to preview service details in a bottom sheet, or tap again to open full service information page with comprehensive details.",
+        "Route Visualization: Optional route preview showing the path from user location to selected service, with turn-by-turn directions available on tap."
+      ],
+      "wireframe": "/projects/Safe%20Home/wireframes/Map.png"
+    },
+    {
+      "name": "Service Details Page",
+      "purpose": "Provides comprehensive information about a single service including all relevant details, requirements, and actions users can take to access the service.",
+      "features": [
+        "Complete Description: Full service description including what services are offered, who qualifies, and any special requirements or restrictions that users should know beforehand.",
+        "Operating Hours: Detailed schedule showing regular hours, holiday hours, and any special events or closures, with clear indicators for current status.",
+        "Contact Information: Multiple contact methods including phone numbers, email addresses, and physical address with one-tap calling and email functionality.",
+        "Directions Button: One-tap access to turn-by-turn navigation using the device's default mapping application for seamless wayfinding.",
+        "Eligibility Requirements: Comprehensive list of requirements, documentation needed, and any restrictions that might prevent access, helping users prepare appropriately."
+      ],
+      "wireframe": "/projects/Safe%20Home/wireframes/Search%20Details.png"
+    },
+    {
+      "name": "Directions / Navigation Frame",
+      "purpose": "Helps users reach the service location with integrated navigation that provides real-time directions and route optimization based on their current location.",
+      "features": [
+        "Google Maps Integration: Embedded Google Maps iframe with live, interactive directions that update in real-time as the user moves, ensuring accurate navigation.",
+        "Multiple Travel Modes: Support for walking, cycling, public transit, and driving directions, with estimated time and distance for each mode to help users choose the best option.",
+        "Turn-by-Turn Instructions: Step-by-step navigation guidance with clear visual indicators and voice prompts when enabled, making navigation accessible even while walking.",
+        "Dynamic Origin Detection: Automatically uses the user's current location as the starting point, or allows manual entry of a different origin address for planning purposes."
+      ],
+      "wireframe": "/projects/Safe%20Home/wireframes/Emergency.png"
+    }
+  ],
+  "additionalWireframes": [
+    {
+      "name": "Welcome",
+      "path": "/projects/Safe%20Home/wireframes/Welcome.png",
+      "purpose": "Introduce the app and prompt the user to start quickly with an engaging first impression that clearly communicates the app's value proposition.",
+      "features": [
+        "Get Started Button: Large, high-contrast call-to-action button that immediately guides users into the application without requiring account creation.",
+        "Service Overview: Short, visually appealing overview of main service categories with icons and brief descriptions that help users understand what's available.",
+        "Visual Design: High contrast, readable layout with large text and clear visual hierarchy that ensures accessibility for users with varying visual abilities."
+      ]
+    },
+    {
+      "name": "Login",
+      "path": "/projects/Safe%20Home/wireframes/Login.png",
+      "purpose": "Authenticate returning users with minimal friction while maintaining security and providing clear feedback throughout the authentication process.",
+      "features": [
+        "Flexible Input: Accept email address or phone number as username, accommodating users who may not have consistent access to email accounts.",
+        "Password Field: Secure password input with show/hide toggle and strength indicators to help users create and enter passwords confidently.",
+        "Forgot Password Link: Prominent link to password recovery flow that helps users regain access to their accounts without frustration.",
+        "Error Handling: Clear inline error messages that appear immediately when credentials are incorrect, with helpful suggestions for common mistakes."
+      ]
+    },
+    {
+      "name": "Sign Up",
+      "path": "/projects/Safe%20Home/wireframes/Sign%20Up.png",
+      "purpose": "Let new users create a lightweight account with minimal required information while still providing enough data to personalize their experience.",
+      "features": [
+        "Minimal Fields: Only essential information required including name, contact method, and password, reducing barriers to account creation.",
+        "Contact Flexibility: Users can choose phone number or email address as their primary contact method, accommodating different user preferences and access patterns.",
+        "Password Requirements: Clear password requirements displayed upfront with real-time validation feedback to help users create secure passwords efficiently.",
+        "Terms Acceptance: Consent checkboxes for terms of service and privacy policy with links to full documents, ensuring users understand their rights and responsibilities."
+      ]
+    },
+    {
+      "name": "Bookings",
+      "path": "/projects/Safe%20Home/wireframes/Bookings.png",
+      "purpose": "Allow users to manage service appointments and bookings with clear status indicators and easy access to relevant actions.",
+      "features": [
+        "Booking Cards: Individual cards for each booking showing service name, date, time, location, and current status in a scannable format.",
+        "Status Indicators: Visual status indicators for upcoming appointments, completed visits, and canceled bookings with color coding for quick recognition.",
+        "Action Buttons: Quick access buttons for Directions, Reschedule, and Cancel actions that are prominently displayed on each booking card.",
+        "Details Summary: Comprehensive booking details including service description, contact information, and any special instructions or requirements."
+      ]
+    }
+  ]
+}

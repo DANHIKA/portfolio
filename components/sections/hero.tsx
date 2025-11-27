@@ -52,22 +52,46 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-32 lg:py-40">
-      <div className="absolute inset-0 -z-20" aria-hidden="true" />
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center gap-10 text-center">
-          <h1 className="mx-auto mt-2 max-w-2xl text-center text-8xl font-semibold tracking-tight text-primary">
-            Fearless digital experiences.
+    <section className="relative overflow-hidden pt-8 md:pt-12 lg:pt-16 w-screen -mx-[calc((100vw-100%)/2)]">
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col items-center justify-center text-center py-12 lg:py-16 min-h-[60vh]">
+          {/* Decorative badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/20 w-fit animate-fade-in mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-sm font-medium text-primary">Available for projects</span>
+          </div>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight animate-fade-in-up mb-6">
+            A creative{" "}
+            <span className="text-primary inline-block hover:scale-105 transition-transform duration-300 cursor-default">
+              developer
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
+              & digital designer
+            </span>
           </h1>
-          <p className="max-w-2xl text-lg text-muted-foreground sm:text-xl">
-            Transforming ambitious ideas into immersive digital journeys with clarity, performance, and a touch of drama.
+
+          <p className="text-lg text-muted-foreground sm:text-xl max-w-2xl leading-relaxed animate-fade-in-up delay-100 mb-8">
+            I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <Link href="#projects" className="sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto">
-                View Projects
-              </Button>
-            </Link>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 animate-fade-in-up delay-200">
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="w-full sm:w-auto group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              asChild
+            >
+              <Link href="/resume.pdf" target="_blank">
+                <span className="relative z-10">My Resume</span>
+                <span className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              </Link>
+            </Button>
             <SmoothDrawer 
               type="contact"
               formState={formState}
@@ -79,6 +103,52 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out;
+        }
+
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out;
+        }
+
+        .delay-100 {
+          animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+          animation-delay: 0.3s;
+        }
+
+        .delay-1000 {
+          animation-delay: 1s;
+        }
+      `}</style>
     </section>
   );
 }

@@ -30,11 +30,11 @@ import { Button } from "@/components/ui/button";
 const formNodeStyle: React.CSSProperties = {
   border: "2px solid hsl(var(--foreground))",
   borderRadius: 12,
-  padding: 16,
+  padding: 12,
   background: "hsl(var(--background))",
   color: "hsl(var(--foreground))",
   fontWeight: 600,
-  minWidth: 200,
+  minWidth: 180,
 };
 
 const dbNodeStyle: React.CSSProperties = {
@@ -44,12 +44,12 @@ const dbNodeStyle: React.CSSProperties = {
   background: "hsl(var(--background))",
   color: "hsl(var(--foreground))",
   fontWeight: 600,
-  minWidth: 220,
+  minWidth: 200,
   overflow: "hidden",
 };
 
 const FormNode = () => (
-  <BaseNode className="min-w-[220px]">
+  <BaseNode className="min-w-[180px]">
     <BaseNodeHeader>
       <BaseNodeHeaderTitle className="text-xl font-semibold uppercase tracking-[0.2em]">
         User Login
@@ -110,14 +110,14 @@ export default function FullStackFlowDiagram() {
     () => [
       {
         id: "ui",
-        position: { x: 50, y: 50 },
+        position: { x: 20, y: 20 },
         data: { label: <FormNode /> },
         type: "input",
         style: formNodeStyle,
       },
       {
         id: "db",
-        position: { x: 420, y: 50 },
+        position: { x: 320, y: 20 },
         data: { label: <DbEntityNode /> },
         type: "output",
         style: dbNodeStyle,
@@ -169,7 +169,7 @@ export default function FullStackFlowDiagram() {
     <div
       style={{
         width: "100%",
-        height: 360,
+        height: 280,
         border: "1px solid hsl(var(--border))",
         borderRadius: 12,
         overflow: "hidden",
