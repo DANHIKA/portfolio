@@ -1,145 +1,152 @@
 "use client";
 
-import { ArcTimeline } from "@/components/magicui/arc-timeline";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface Experience {
   company: string;
   position: string;
   period: string;
-  description: string[];
-  technologies: string[];
+  responsibilities: string[];
+  logo?: string;
 }
 
 export default function ExperienceSection() {
-
   const experiences: Experience[] = [
     {
+      company: "MERA",
+      position: "ICT Officer Intern",
+      period: "Sept 2024 — Present",
+      responsibilities: [
+        "Conducted User Acceptance Testing (UAT) for the new licensing system to ensure that all functionality and usability requirements were met before launch.",
+        "Supported contractors in deploying and maintaining the renewal licensing system, ensuring smooth operation and successful integration with existing infrastructure.",
+        "Developed a fuel voucher system for motorcyclists that generates daily QR codes based on national IDs, helping to prevent fuel smuggling and misuse.",
+        "Built an ICT issue ticketing and document repository system to organize support requests and improve access to technical documentation.",
+        "Created an ICT inventory management system to track the issuance and return of ICT equipment, improving accountability and record accuracy.",
+        "Designed a simplified forms application, similar to Microsoft Forms, to streamline meeting processes and internal data collection.",
+        "Developed automated Excel macros and functions for fuel inspection reports, improving the accuracy and efficiency of data processing for Oil Marketing Companies.",
+        "Guided external contractors during the setup of servers and services in the data center.",
+        "Worked with Bosch systems, including fingerprint access control, CCTV, and fire alarm systems.",
+        "Supported and managed tools such as Sophos, Microsoft 365, Active Directory, Bosch, and Sage ESS and Payroll.",
+      ],
+      logo: "/experience/mera.png",
+    },
+    {
       company: "Ministry of Energy Malawi",
-      position: "ICT Intern",
-      period: "Sept 2024 - Present",
-      description: [
+      position: "ICT Officer Intern",
+      period: "March 2024 — Sept 2024",
+      responsibilities: [
         "Assisted in organizing and tracking daily ICT support tasks to ensure timely resolution of technical issues.",
         "Provided basic technical support for office equipment, including printers, scanners, and other devices.",
-        "Supported staff with common software and hardware issues, ensuring smooth day-to-day operations."
+        "Supported staff with common software and hardware issues, ensuring smooth day-to-day operations.",
       ],
-      technologies: ["Microsoft 365", "Windows", "macOS", "Networking", "Helpdesk"]
+      logo: "/experience/energy.png",
     },
-    {
-      company: "MERA",
-      position: "ICT Intern",
-      period: "March 2024 - Sept 2024",
-      description: [
-        "Guided external contractors during the setup of servers and services in the data center.",
-        "Assisted in the configuration and registration of IP phones.",
-        "Worked with Bosch systems, including fingerprint access control, CCTV, and fire alarm systems.",
-        "Provided technical support for various systems and applications.",
-        "Supported and managed tools such as Sophos, Microsoft 365, Active Directory, Bosch, and Sage ESS and Payroll.",
-        "Adapted quickly to using macOS for daily operations, improving cross-platform efficiency.",
-        "Assisted in documenting technical specifications and troubleshooting processes.",
-        "Helped deliver training sessions to staff on software tools and ICT best practices.",
-        "Participated in the integration of new systems into MERA’s existing infrastructure, ensuring smooth performance and compatibility."
-      ],
-      technologies: ["Active Directory", "Sophos", "Bosch Systems", "IP Telephony", "Windows Server", "macOS"]
-    },
-    {
-      company: "Staxo Group",
-      position: "Helpdesk Volunteer",
-      period: "Oct 2023 - Apr 2024",
-      description: [
-        "Received, logged, and tracked IT support tickets from staff, ensuring timely resolution of technical issues.",
-        "Provided first-line support for hardware and software problems, including desktops, laptops, printers, and office applications.",
-        "Assisted users with troubleshooting network connectivity issues, email, and system access.",
-        "Escalated complex technical issues to senior IT staff while maintaining follow-up communication with end users.",
-        "Documented solutions and maintained records of recurring issues to improve helpdesk knowledge and efficiency.",
-        "Assisted in configuring and deploying new user accounts, devices, and software applications."
-      ],
-      technologies: ["Ticketing", "Windows", "Office Applications", "Networking", "User Provisioning"]
-    }
   ];
 
-  const timelineData = experiences.map((exp) => ({
-    time: exp.period,
-    steps: [
-      {
-        icon: <BriefcaseIcon />,
-        content: (
-          <span>
-            {exp.position} @ {exp.company}
-          </span>
-        ),
-      },
-      ...exp.description.slice(0, 3).map((d, i) => ({
-        icon: <DotIcon key={`desc-${i}`} />,
-        content: d,
-      })),
-      {
-        icon: <TechIcon />,
-        content: exp.technologies.join(" • "),
-      },
-    ],
-  }));
-
   return (
-    <section id="experience" className="py-6 max-w-4xl mx-auto px-4">
-      <h2>Experience</h2>
+    <section id="experience" className="py-12 md:py-16 lg:py-24 w-screen -mx-[calc((100vw-100%)/2)]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Left Side - Intro */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
+              Experience
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I have worked with innovative organizations to help build their top-notch products and systems, delivering impactful solutions that drive efficiency and growth.
+            </p>
+          </motion.div>
 
-      <ArcTimeline
-        className="w-full"
-        data={timelineData}
-        arcConfig={{
-          circleWidth: 1600,
-          angleBetweenMinorSteps: 1,
-          lineCountFillBetweenSteps: 6,
-          boundaryPlaceholderLinesCount: 24,
-        }}
-        defaultActiveStep={{ time: experiences[0]?.period, stepIndex: 0 }}
-      />
+          {/* Right Side - Accordion Timeline */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {experiences.map((exp, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="border border-border/60 rounded-lg px-4 bg-background/40 hover:bg-background/60 transition-colors"
+                >
+                  <AccordionTrigger className="hover:no-underline py-4">
+                    <div className="flex gap-4 items-start w-full">
+                      {/* Logo */}
+                      <div className="flex-shrink-0 mt-1">
+                        {exp.logo ? (
+                          <div className="h-10 w-10 rounded-full bg-background border border-border/60 flex items-center justify-center overflow-hidden">
+                            <Image
+                              src={exp.logo}
+                              alt={exp.company}
+                              width={40}
+                              height={40}
+                              className="object-contain p-1"
+                            />
+                          </div>
+                        ) : (
+                          <div className="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/20 flex items-center justify-center">
+                            <span className="text-base font-bold text-primary">
+                              {exp.company.charAt(0)}
+                            </span>
+                          </div>
+                        )}
+                      </div>
 
-      <div className="mt-12 text-center">
-        <a
-          href="#"
-          className="text-sm border-b border-gray-400 hover:border-gray-600 dark:border-gray-500 dark:hover:border-gray-300 pb-0.5 transition-colors"
-        >
-          Download full resume
-        </a>
+                      {/* Content */}
+                      <div className="flex-1 text-left">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                          <div>
+                            <h3 className="text-lg font-semibold text-foreground">
+                              {exp.position}
+                            </h3>
+                            <p className="text-sm text-muted-foreground mt-0.5">
+                              @{exp.company}
+                            </p>
+                          </div>
+                          <p className="text-xs text-muted-foreground sm:text-right whitespace-nowrap">
+                            {exp.period}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </AccordionTrigger>
+
+                  <AccordionContent className="pt-0 pb-4">
+                    <div className="pl-14">
+                      <ul className="space-y-2.5">
+                        {exp.responsibilities.map((resp, i) => (
+                          <li
+                            key={i}
+                            className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2"
+                          >
+                            <span className="text-primary/60 mt-1.5 flex-shrink-0">•</span>
+                            <span>{resp}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+        </div>
       </div>
     </section>
-  );
-}
-
-function BriefcaseIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M10 4h4a2 2 0 0 1 2 2v1h3a1 1 0 0 1 1 1v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a1 1 0 0 1 1-1h3V6a2 2 0 0 1 2-2Zm0 3h4V6a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v1Zm-4 5v7h12v-7h-3v1a1 1 0 1 1-2 0v-1h-2v1a1 1 0 1 1-2 0v-1H6Z" />
-    </svg>
-  );
-}
-
-function DotIcon() {
-  return (
-    <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="5" cy="5" r="5" />
-    </svg>
-  );
-}
-
-function TechIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M4 6h16v10H4z" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M8 18h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
   );
 }
