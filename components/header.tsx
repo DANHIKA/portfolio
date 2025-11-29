@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 import { StaggeredMenu } from "./StaggeredMenu";
 
@@ -13,9 +12,8 @@ const navItems = [
 ];
 
 const socialItems = [
-  { label: "Twitter", link: "https://twitter.com/yourusername" },
-  { label: "LinkedIn", link: "https://linkedin.com/in/yourusername" },
-  { label: "GitHub", link: "https://github.com/yourusername" },
+  { label: "LinkedIn", link: "https://linkedin.com/in/hika-ntandika-34961b28" },
+  { label: "GitHub", link: "https://github.com/DANHIKA" },
 ];
 
 export default function Header() {
@@ -63,9 +61,6 @@ export default function Header() {
                 {item.name}
               </a>
             ))}
-            <Button size="sm" className="ml-2">
-              Get in Touch
-            </Button>
             <AnimatedThemeToggler className="ml-2 h-9 w-9 rounded-md border border-border hover:bg-accent" />
           </nav>
         </div>
