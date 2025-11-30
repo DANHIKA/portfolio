@@ -4,13 +4,10 @@ import {
   motion
 } from "framer-motion";
 import { Safari } from "@/components/ui/safari";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Iphone } from "@/components/ui/iphone";
 import { AnimatedLink } from "@/components/ui/animated-link";
 
 export default function Projects() {
-  const router = useRouter();
   const sites = [
     { name: "MarketWeb MW", url: "https://www.marketwebmw.com" },
     { name: "MalawiNest", url: "https://malawinest.com/home" },
