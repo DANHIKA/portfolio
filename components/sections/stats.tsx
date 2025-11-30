@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion"
 
-function Counter({ from, to, className }: { from: number; to: number; className?: string }) {
+function Counter({ from, to, className, isMobile }: { from: number; to: number; className?: string; isMobile: boolean }) {
   const ref = useRef<HTMLSpanElement>(null)
   const motionValue = useMotionValue(from)
   const springValue = useSpring(motionValue, {
@@ -13,12 +13,22 @@ function Counter({ from, to, className }: { from: number; to: number; className?
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   useEffect(() => {
-    if (isInView) {
+    if (isMobile) {
+      // On mobile, set the final value immediately
+      if (ref.current) {
+        ref.current.textContent = Intl.NumberFormat("en-US", {
+          notation: to > 999 ? "compact" : "standard",
+          maximumFractionDigits: 1,
+        }).format(to)
+      }
+    } else if (isInView) {
       motionValue.set(to)
     }
-  }, [motionValue, to, isInView])
+  }, [motionValue, to, isInView, isMobile])
 
   useEffect(() => {
+    if (isMobile) return // Skip animation on mobile
+    
     const unsubscribe = springValue.on("change", (latest) => {
       if (ref.current) {
         ref.current.textContent = Intl.NumberFormat("en-US", {
@@ -29,7 +39,7 @@ function Counter({ from, to, className }: { from: number; to: number; className?
     })
 
     return () => unsubscribe()
-  }, [springValue, to])
+  }, [springValue, to, isMobile])
 
   return <span ref={ref} className={className} />
 }
@@ -37,6 +47,17 @@ function Counter({ from, to, className }: { from: number; to: number; className?
 export default function DeveloperStats() {
   const containerRef = useRef(null)
   const isInView = useInView(containerRef, { once: true })
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768) // md breakpoint
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const stats = [
     {
@@ -70,22 +91,22 @@ export default function DeveloperStats() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={isMobile ? false : { opacity: 0, y: 20 }}
+          animate={isMobile || isInView ? { opacity: 1, y: 0 } : {}}
+          transition={isMobile ? { duration: 0 } : { duration: 0.7 }}
           className="mt-16 bg-primary rounded-lg p-8 md:p-12 space-y-0"
         >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={isMobile ? false : { opacity: 0, y: 20 }}
+              animate={isMobile || isInView ? { opacity: 1, y: 0 } : {}}
+              transition={isMobile ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
               className={`py-8 ${index !== stats.length - 1 ? 'border-b border-primary-foreground/20' : ''}`}
             >
               <div className="flex items-start justify-between gap-8 mb-3">
                 <div className="text-6xl font-bold text-primary-foreground flex items-baseline">
-                  <Counter from={0} to={stat.number} className="text-6xl font-bold text-primary-foreground" />
+                  <Counter from={0} to={stat.number} className="text-6xl font-bold text-primary-foreground" isMobile={isMobile} />
                   <span className="ml-1 text-6xl font-bold text-primary-foreground">{stat.suffix}</span>
                 </div>
                 <div className="text-xl font-semibold text-primary-foreground text-right flex-shrink-0">
