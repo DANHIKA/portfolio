@@ -53,7 +53,7 @@ export default function ContactSection() {
         <div className="relative rounded-xl p-6 sm:p-8 lg:p-12 text-center overflow-hidden">
           <div className="relative z-10">
             <p className="text-center text-base font-semibold leading-7 text-white">Contact</p>
-            <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-white">
+            <h2 className="mx-auto mt-2 max-w-2xl text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white">
               Let&apos;s work together
             </h2>
             <p className="mt-4 mb-6 sm:mb-8 max-w-2xl mx-auto text-center text-white text-sm sm:text-base lg:text-lg">

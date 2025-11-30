@@ -6,14 +6,11 @@ import {
   GanttProvider,
   GanttHeader,
   GanttSidebar,
-  GanttSidebarGroup,
   GanttSidebarItem,
   GanttTimeline,
   GanttFeatureList,
   GanttFeatureRow,
-  GanttFeatureItem,
   GanttToday,
-  useGanttScrollX,
   type GanttFeature,
   type GanttStatus,
 } from "@/components/kibo-ui/gantt";
@@ -188,7 +185,7 @@ export default function Process() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-12">
           <p className="text-center text-base font-semibold leading-7 text-foreground">Process</p>
-          <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
+          <h2 className="mx-auto mt-2 max-w-2xl text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
             How ideas become shipped experiences
           </h2>
         </div>

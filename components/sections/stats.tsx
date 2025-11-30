@@ -64,7 +64,7 @@ export default function DeveloperStats() {
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-12">
           <p className="text-center text-base font-semibold leading-7 text-foreground">Stats</p>
-          <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
+          <h2 className="mx-auto mt-2 max-w-2xl text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
             My development journey so far.
           </h2>
         </div>

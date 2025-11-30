@@ -26,7 +26,7 @@ export default function AboutMe() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <p className="text-center text-base font-semibold leading-7 text-foreground">About</p>
-          <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
+          <h2 className="mx-auto mt-2 max-w-2xl text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
             Full-stack Developer & Digital Designer
           </h2>
         </div>
