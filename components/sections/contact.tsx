@@ -48,17 +48,20 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-12 overflow-hidden w-screen -mx-[calc((100vw-100%)/2)]">
-      <div className="mx-auto px-4 relative z-10">
-        <div className="relative rounded-xl p-8 text-center overflow-hidden">
+    <section id="contact" className="relative py-12 md:py-16 lg:py-20 overflow-hidden w-screen -mx-[calc((100vw-100%)/2)] bg-primary">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative rounded-xl p-6 sm:p-8 lg:p-12 text-center overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-8xl font-bold mb-4 text-primary">Let&apos;s work together</h2>
-            <p className="mb-6 max-w-2xl mx-auto text-foreground">
+            <p className="text-center text-base font-semibold leading-7 text-white">Contact</p>
+            <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-white">
+              Let&apos;s work together
+            </h2>
+            <p className="mt-4 mb-6 sm:mb-8 max-w-2xl mx-auto text-center text-white text-sm sm:text-base lg:text-lg">
               Have a project in mind or want to discuss collaboration opportunities?
             </p>
             
-            
-            <SmoothDrawer 
+            <div className="flex justify-center">
+              <SmoothDrawer 
               type="contact"
               formState={formState}
               onFormChange={handleChange}
@@ -66,6 +69,7 @@ export default function ContactSection() {
               status={status}
               error={error}
             />
+            </div>
           </div>
         </div>
       </div>

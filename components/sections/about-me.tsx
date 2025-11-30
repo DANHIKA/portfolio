@@ -24,6 +24,12 @@ export default function AboutMe() {
   return (
     <section id="about" className="py-12 md:py-16 w-screen -mx-[calc((100vw-100%)/2)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12">
+          <p className="text-center text-base font-semibold leading-7 text-foreground">About</p>
+          <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
+            Full-stack Developer & Digital Designer
+          </h2>
+        </div>
         <div className="rounded-3xl border border-border/60 bg-background/60">
           <div className="px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
             <div className="grid divide-y divide-border bg-transparent">

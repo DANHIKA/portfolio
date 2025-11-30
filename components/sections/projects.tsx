@@ -20,15 +20,16 @@ export default function Projects() {
   ];
 
   return (
-    <section className="relative flex min-h-screen w-screen -mx-[calc((100vw-100%)/2)] flex-col items-center justify-center overflow-hidden py-6">
+    <section className="relative flex w-screen -mx-[calc((100vw-100%)/2)] flex-col items-center justify-center overflow-hidden py-6">
       <div className="relative z-10 flex w-full flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="mb-8 flex flex-col items-center justify-center gap-4 px-4 text-center"
+          className="mb-6 flex flex-col items-center justify-center px-4 text-center"
         >
-            <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
+          <p className="text-center text-base font-semibold leading-7 text-foreground">Projects</p>
+          <h2 className="mx-auto mt-2 max-w-2xl text-center text-6xl font-semibold tracking-tight text-primary">
             Featured Projects
           </h2>
         </motion.div>

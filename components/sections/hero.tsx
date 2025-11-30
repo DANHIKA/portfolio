@@ -53,7 +53,6 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden pt-8 md:pt-12 lg:pt-16 w-screen -mx-[calc((100vw-100%)/2)]">
-
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center text-center py-12 lg:py-16 min-h-[60vh]">
           {/* Decorative badge */}
