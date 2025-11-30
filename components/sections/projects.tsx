@@ -29,7 +29,7 @@ export default function Projects() {
           className="mb-6 flex flex-col items-center justify-center px-4 text-center"
         >
           <p className="text-center text-base font-semibold leading-7 text-foreground">Projects</p>
-          <h2 className="mx-auto mt-2 max-w-2xl text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
+          <h2 className="mx-auto mt-2 max-w-2xl text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
             Featured Projects
           </h2>
         </motion.div>
