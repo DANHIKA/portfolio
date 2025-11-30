@@ -20,7 +20,7 @@ export default function Projects() {
   ];
 
   return (
-    <section className="relative flex w-screen -mx-[calc((100vw-100%)/2)] flex-col items-center justify-center overflow-hidden py-6">
+    <section id="projects" className="relative flex w-screen -mx-[calc((100vw-100%)/2)] flex-col items-center justify-center overflow-hidden py-6">
       <div className="relative z-10 flex w-full flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

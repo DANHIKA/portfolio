@@ -410,6 +410,31 @@ export const StaggeredMenu = ({
                       href={it.link}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
+                      onClick={(e) => {
+                        // If it's an anchor link, handle smooth scroll
+                        if (it.link.startsWith('#')) {
+                          e.preventDefault();
+                          const targetId = it.link.substring(1);
+                          const targetElement = document.getElementById(targetId);
+                          
+                          if (targetElement) {
+                            // Close menu first
+                            if (openRef.current) {
+                              toggleMenu();
+                            }
+                            
+                            // Smooth scroll to target after a short delay to allow menu to start closing
+                            setTimeout(() => {
+                              targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 100);
+                          }
+                        } else {
+                          // For external links, just close the menu
+                          if (openRef.current) {
+                            toggleMenu();
+                          }
+                        }
+                      }}
                     >
                       <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
                         {it.label}
