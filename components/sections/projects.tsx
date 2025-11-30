@@ -7,6 +7,7 @@ import { Safari } from "@/components/ui/safari";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Iphone } from "@/components/ui/iphone";
+import { AnimatedLink } from "@/components/ui/animated-link";
 
 export default function Projects() {
   const router = useRouter();
@@ -43,15 +44,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative cursor-pointer flex h-full flex-col overflow-hidden transition-all duration-300"
-                onClick={() => {
-                  // Internal items navigate within the app; external open a new tab
-                  if ((site as { internal?: boolean }).internal) {
-                    router.push(site.url as string);
-                  } else {
-                    window.open(site.url as string, '_blank', 'noopener,noreferrer');
-                  }
-                }}
+                className="group relative flex h-full flex-col overflow-hidden transition-all duration-300"
               >
                 {/* Safari mockup */}
                 <div className="relative m-4 mb-2 flex-1">
@@ -71,18 +64,27 @@ export default function Projects() {
 
                 {/* Project info */}
                 <div className="p-4 pt-2">
-                  <h3 className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
-                    {site.name}
-                  </h3>
+                  <div className="mb-1">
+                    <AnimatedLink
+                      href={site.url}
+                      className="font-semibold text-neutral-900 dark:text-neutral-100"
+                      target={(site as { internal?: boolean }).internal ? "_self" : "_blank"}
+                    >
+                      {site.name}
+                    </AnimatedLink>
+                  </div>
                   <p className="text-xs text-neutral-500 dark:text-neutral-400">
                     {site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, "")}
                   </p>
                   {/* Underlined case study link for internal case study items */}
                   {"internal" in site ? (
                     <div className="mt-2">
-                      <Link href={site.url} className="text-sm underline underline-offset-4">
+                      <AnimatedLink
+                        href={site.url}
+                        className="text-sm"
+                      >
                         Case study
-                      </Link>
+                      </AnimatedLink>
                     </div>
                   ) : null}
                 </div>

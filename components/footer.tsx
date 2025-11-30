@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
+import { AnimatedLink } from "@/components/ui/animated-link";
 
 export default function Footer() {
   return (
@@ -14,65 +14,63 @@ export default function Footer() {
 
           {/* Center: Navigation Links */}
           <nav className="flex flex-col flex-wrap gap-6 text-sm">
-            <a
+            <AnimatedLink
               href="#about"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+              target="_self"
             >
               About
-            </a>
-            <a
+            </AnimatedLink>
+            <AnimatedLink
               href="#projects"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+              target="_self"
             >
               Projects
-            </a>
-            <a
+            </AnimatedLink>
+            <AnimatedLink
               href="#experience"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+              target="_self"
             >
               Experience
-            </a>
-            <a
+            </AnimatedLink>
+            <AnimatedLink
               href="#contact"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+              target="_self"
             >
               Contact
-            </a>
+            </AnimatedLink>
           </nav>
 
           {/* Right: Contact & Social Links */}
           <div className="flex flex-col gap-3 text-sm">
-            <a
+            <AnimatedLink
               href="mailto:hdntandika@gmail.com"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
             >
               hdntandika@gmail.com
-            </a>
-            <a
+            </AnimatedLink>
+            <AnimatedLink
               href="tel:+265994425036"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
             >
               +265 994 425 036
-            </a>
+            </AnimatedLink>
             <div className="flex gap-4 mt-2">
-              <a
+              <AnimatedLink
                 href="https://linkedin.com/in/hika-ntandika-34961b28"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors flex items-center gap-1"
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
               >
                 LinkedIn
-                <ExternalLink className="h-3 w-3" />
-              </a>
-              <a
+              </AnimatedLink>
+              <AnimatedLink
                 href="https://github.com/DANHIKA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors flex items-center gap-1"
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
               >
                 GitHub
-                <ExternalLink className="h-3 w-3" />
-              </a>
+              </AnimatedLink>
             </div>
           </div>
         </div>
