@@ -32,19 +32,20 @@ export const AnimatedLink = ({
       target={finalTarget}
       rel={finalRel}
       className={cn(
-        "group relative flex items-center text-foreground",
+        "group relative flex items-center",
         "before:pointer-events-none before:absolute before:left-0 before:w-full before:bg-primary before:content-['']",
         "before:origin-right before:scale-x-0 before:transition-all before:duration-300 before:ease-[cubic-bezier(0.4,0,0.2,1)]",
         "before:origin-center md:before:bottom-0",
         "before:z-0 px-2 before:h-0 before:scale-x-100 hover:before:h-[1.4em]",
-        "relative z-10 hover:text-white transition-colors duration-300",
         className,
       )}
     >
-      {children}
+      <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+        {children}
+      </span>
       {isExternal && (
         <svg
-          className="z-0 ml-[0.6em] mt-[0em] size-[0.55em] translate-y-1 opacity-0 transition-all duration-300 [motion-reduce:transition-none] group-hover:translate-y-0 group-hover:rotate-45 group-hover:opacity-100 motion-reduce:transition-none"
+          className="relative z-10 ml-[0.6em] mt-[0em] size-[0.55em] translate-y-1 opacity-0 transition-all duration-300 [motion-reduce:transition-none] group-hover:translate-y-0 group-hover:rotate-45 group-hover:opacity-100 group-hover:text-white motion-reduce:transition-none"
           fill="none"
           viewBox="0 0 10 10"
           xmlns="http://www.w3.org/2000/svg"
