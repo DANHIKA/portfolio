@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
+import { ThemeToggleButton4 } from "@/components/ui/theme-toggle-button4";
 import { StaggeredMenu } from "./StaggeredMenu";
 
 const navItems = [
@@ -61,7 +61,7 @@ export default function Header() {
                 {item.name}
               </a>
             ))}
-            <AnimatedThemeToggler className="ml-2 h-9 w-9 rounded-md border border-border hover:bg-accent" />
+            <ThemeToggleButton4 className="ml-2 h-9 w-9 border border-border hover:bg-accent" />
           </nav>
         </div>
       </header>
