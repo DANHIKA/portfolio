@@ -33,10 +33,10 @@ export default function AboutMe() {
         <div className="rounded-3xl border border-border/60 bg-background/60">
           <div className="px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
             <div className="grid divide-y divide-border bg-transparent">
-          <div className="h-[1px] w-full bg-border" aria-hidden />
+          <div className="hidden sm:block h-[1px] w-full bg-border" aria-hidden />
 
           {/* Row 1 */}
-          <div className="relative border-b border-border sm:col-span-5 sm:grid sm:grid-cols-5">
+          <div className="relative border-b border-border sm:border-b-0 sm:col-span-5 sm:grid sm:grid-cols-5">
             {/* Intro panel */}
             <div className="relative p-5 sm:col-span-3 md:p-6 lg:p-7">
               <div className="absolute inset-y-0 right-0 hidden w-[1px] bg-border sm:block" aria-hidden />
@@ -64,7 +64,7 @@ export default function AboutMe() {
             </div>
 
             {/* Collaboration panel */}
-            <div className="relative border-l border-border p-5 sm:col-span-2 md:p-6 lg:p-7 flex flex-col">
+            <div className="relative border-l-0 sm:border-l sm:border-border p-5 sm:col-span-2 md:p-6 lg:p-7 flex flex-col">
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Global partnerships</h3>
                 <p className="text-muted-foreground text-sm">
@@ -78,12 +78,12 @@ export default function AboutMe() {
           </div>
 
           {/* Horizontal divider between rows */}
-          <div className="h-[1px] w-full bg-border" aria-hidden />
+          <div className="hidden sm:block h-[1px] w-full bg-border" aria-hidden />
 
           {/* Row 2 */}
           <div className="relative sm:col-span-5 sm:grid sm:grid-cols-5">
             {/* Activity panel */}
-            <div className="relative border-b border-border p-5 sm:col-span-2 sm:border-b-0 sm:border-r sm:border-border md:p-6 lg:p-7">
+            <div className="relative border-b-0 sm:border-b-0 sm:border-r sm:border-border p-5 sm:col-span-2 md:p-6 lg:p-7">
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Human-centered design</h3>
                 <p className="text-muted-foreground text-sm">
@@ -96,7 +96,7 @@ export default function AboutMe() {
             </div>
 
             {/* Toolkit panel */}
-            <div className="relative border-l border-border p-5 sm:col-span-3 md:p-6 lg:p-7">
+            <div className="relative border-l-0 sm:border-l sm:border-border p-5 sm:col-span-3 md:p-6 lg:p-7">
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Ecosystem & tools</h3>
                 <p className="text-muted-foreground max-w-xl text-sm">
