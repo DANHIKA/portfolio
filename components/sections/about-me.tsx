@@ -4,7 +4,8 @@ import * as React from "react";
 import { Globe } from "@/components/magicui/globe";
 import Image from "next/image";
 import { WireframeMockup } from "@/components/ui/wireframe-mockup";
-import { OrbitingCircles } from "@/components/ui/orbiting-circles";
+import ElasticLine from "@/components/fancy/physics/elastic-line";
+import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
 
 export default function AboutMe() {
   const toolLogos = React.useMemo(
@@ -32,58 +33,60 @@ export default function AboutMe() {
         </div>
         <div className="rounded-3xl border border-border/60 bg-background/60">
           <div className="px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
-            <div className="grid divide-y divide-border bg-transparent">
-          <div className="hidden sm:block h-[1px] w-full bg-border" aria-hidden />
-
+            <div className="grid bg-transparent">
           {/* Row 1 */}
-          <div className="relative border-b border-border sm:border-b-0 sm:col-span-5 sm:grid sm:grid-cols-5">
+          <div className="relative sm:col-span-5 sm:grid sm:grid-cols-5">
             {/* Intro panel */}
             <div className="relative p-5 sm:col-span-3 md:p-6 lg:p-7">
-              <div className="absolute inset-y-0 right-0 hidden w-[1px] bg-border sm:block" aria-hidden />
+              <div className="absolute inset-y-0 right-0 hidden w-1 sm:block text-border overflow-visible border-0 bg-transparent outline-none pointer-events-auto" aria-hidden style={{ border: 'none', boxShadow: 'none' }}>
+                <ElasticLine key="divider-right-1" isVertical={true} strokeWidth={1} className="text-border" />
+              </div>
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Full-stack Developer</h3>
                 <p className="text-muted-foreground max-w-xl text-sm">
                   Crafting performant, accessible products with React, Next.js, and TypeScript. Focused on developer experience and scalable architectures.
                 </p>
               </div>
-              <div className="mt-4 md:mt-5 relative flex h-[140px] md:h-[150px] w-full flex-col items-center justify-center overflow-hidden">
-                <OrbitingCircles iconSize={22} radius={85}>
-                  <i className="devicon-react-original colored text-xl" />
-                  <i className="devicon-typescript-plain colored text-xl" />
-                  <i className="devicon-nextjs-original text-xl" />
-                  <i className="devicon-nodejs-plain colored text-xl" />
-                  <i className="devicon-javascript-plain colored text-xl" />
-                </OrbitingCircles>
-                <OrbitingCircles iconSize={16} radius={52} reverse speed={2.2}>
-                  <i className="devicon-tailwindcss-plain colored text-base" />
-                  <i className="devicon-git-plain colored text-base" />
-                  <i className="devicon-docker-plain colored text-base" />
-                  <i className="devicon-graphql-plain colored text-base" />
-                </OrbitingCircles>
+              <div className="mt-4 md:mt-5 relative flex h-[350px] w-full flex-col items-center justify-center overflow-hidden">
+                <DatabaseWithRestApi
+                  className="w-full"
+                  title="RESTful API Integration"
+                  circleText="API"
+                  badgeTexts={{
+                    first: "GET",
+                    second: "POST",
+                    third: "PUT",
+                    fourth: "DELETE"
+                  }}
+                  buttonTexts={{
+                    first: "Backend",
+                    second: "Database"
+                  }}
+                />
               </div>
             </div>
 
             {/* Collaboration panel */}
-            <div className="relative border-l-0 sm:border-l sm:border-border p-5 sm:col-span-2 md:p-6 lg:p-7 flex flex-col">
+            <div className="relative p-5 sm:col-span-2 md:p-6 lg:p-7 flex flex-col">
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Global partnerships</h3>
                 <p className="text-muted-foreground text-sm">
                   Remote-first delivery across time zones, aligning teams to ship inclusive experiences.
                 </p>
               </div>
-              <div className="relative mt-4 md:mt-5 flex flex-1 items-end justify-center min-h-[120px] md:min-h-[130px]">
-                <Globe className="h-32 w-32 md:h-36 md:w-36 opacity-80" />
+              <div className="relative mt-4 md:mt-5 flex flex-1 items-end justify-center min-h-[200px] md:min-h-[220px]">
+                <Globe className="h-48 w-48 md:h-56 md:w-56 lg:h-64 lg:w-64 opacity-80" />
               </div>
             </div>
           </div>
 
-          {/* Horizontal divider between rows */}
-          <div className="hidden sm:block h-[1px] w-full bg-border" aria-hidden />
-
           {/* Row 2 */}
           <div className="relative sm:col-span-5 sm:grid sm:grid-cols-5">
             {/* Activity panel */}
-            <div className="relative border-b-0 sm:border-b-0 sm:border-r sm:border-border p-5 sm:col-span-2 md:p-6 lg:p-7">
+            <div className="relative p-5 sm:col-span-2 md:p-6 lg:p-7">
+              <div className="absolute inset-y-0 right-0 hidden w-1 sm:block text-border overflow-visible border-0 bg-transparent outline-none pointer-events-auto" aria-hidden style={{ border: 'none', boxShadow: 'none' }}>
+                <ElasticLine key="divider-right-2" isVertical={true} strokeWidth={1} className="text-border" />
+              </div>
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Human-centered design</h3>
                 <p className="text-muted-foreground text-sm">
@@ -96,7 +99,7 @@ export default function AboutMe() {
             </div>
 
             {/* Toolkit panel */}
-            <div className="relative border-l-0 sm:border-l sm:border-border p-5 sm:col-span-3 md:p-6 lg:p-7">
+            <div className="relative p-5 sm:col-span-3 md:p-6 lg:p-7">
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight">Ecosystem & tools</h3>
                 <p className="text-muted-foreground max-w-xl text-sm">

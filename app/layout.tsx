@@ -50,11 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="h-full">
       <head>
         <style>{`@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');`}</style>
       </head>
-      <body className="antialiased bg-background">
+      <body className="antialiased bg-background h-full">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -62,11 +62,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SmoothScroll />
-          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-            <Header />
-            <main>
-              {children}
-            </main>
+          <div className="w-full h-full overflow-auto">
+            <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+              <Header />
+              <main>
+                {children}
+              </main>
+            </div>
             <Footer />
           </div>
         </ThemeProvider>

@@ -4,7 +4,7 @@ import { AnimatedLink } from "@/components/ui/animated-link";
 
 export default function Footer() {
   return (
-    <footer className="bg-transparent">
+    <footer className="sticky z-0 bottom-0 left-0 w-full bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           {/* Left: Name */}

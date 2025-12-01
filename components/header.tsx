@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { ThemeToggleButton4 } from "@/components/ui/theme-toggle-button4";
 import { StaggeredMenu } from "./StaggeredMenu";
+import ElasticLine from "@/components/fancy/physics/elastic-line";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -38,10 +39,10 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled 
-            ? "backdrop-blur-md py-3 shadow-sm border-border" 
-            : "py-5 border-transparent"
+            ? "backdrop-blur-md py-3 shadow-sm" 
+            : "py-5"
         }`}
       >
         <div className="mx-auto w-full max-w-6xl flex items-center justify-between px-4 md:px-6">
@@ -63,6 +64,10 @@ export default function Header() {
             ))}
             <ThemeToggleButton4 className="ml-2 h-9 w-9 border border-border hover:bg-accent" />
           </nav>
+        </div>
+        {/* Elastic line divider below header */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 text-border overflow-visible border-0 bg-transparent outline-none pointer-events-auto" aria-hidden style={{ border: 'none', boxShadow: 'none' }}>
+          <ElasticLine isVertical={false} strokeWidth={1} className="text-border" />
         </div>
       </header>
 
