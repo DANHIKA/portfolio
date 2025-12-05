@@ -241,3 +241,65 @@
     animation: none;
     mix-blend-mode: normal;
 }
+
+/* Page Transition Preloader Styles */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.page-transition:not(.is-visible) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.page-transition .div {
+  position: fixed;
+  height: 100%;
+  bottom: 100%;
+  width: 14.2857%; /* 100% / 7 */
+}
+
+.page-transition .div-primary {
+  background-color: var(--primary);
+}
+
+.page-transition .div-secondary {
+  background-color: var(--secondary);
+}
+
+.page-transition .div:nth-child(1) {
+  left: 0%;
+}
+
+.page-transition .div:nth-child(2) {
+  left: 14.2857%;
+}
+
+.page-transition .div:nth-child(3) {
+  left: 28.5714%;
+}
+
+.page-transition .div:nth-child(4) {
+  left: 42.8571%;
+}
+
+.page-transition .div:nth-child(5) {
+  left: 57.1428%;
+}
+
+.page-transition .div:nth-child(6) {
+  left: 71.4285%;
+}
+
+.page-transition .div:nth-child(7) {
+  left: 85.7142%;
+}
