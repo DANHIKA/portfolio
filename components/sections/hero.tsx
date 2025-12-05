@@ -63,10 +63,6 @@ export default function Hero() {
               <span className="text-primary inline-block hover:scale-105 transition-transform duration-300 cursor-default">
                 developer
               </span>
-              <br />
-              <span className="bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
-                & digital designer
-              </span>
             </h1>
 
             <p className="text-lg text-muted-foreground sm:text-xl max-w-2xl leading-relaxed animate-fade-in-up delay-100 mb-8 text-left">
