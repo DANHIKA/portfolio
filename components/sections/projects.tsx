@@ -6,7 +6,6 @@ import {
 import { Safari } from "@/components/ui/safari";
 import { Iphone } from "@/components/ui/iphone";
 import { AnimatedLink } from "@/components/ui/animated-link";
-import { DrawText } from "../ui/draw-text";
 
 export default function Projects() {
   const sites = [
@@ -28,12 +27,9 @@ export default function Projects() {
           className="mb-6 flex flex-col items-center justify-center px-4 text-center"
         >
           <p className="text-center text-base font-semibold leading-7 text-foreground">Projects</p>
-          <DrawText
-            as="h2"
-            className="mx-auto mt-2 max-w-2xl text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary"
-          >
+          <h2 className="mx-auto mt-2 max-w-2xl text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
             Featured Projects
-          </DrawText>
+          </h2>
         </motion.div>
 
         <div className="mt-6 w-full max-w-6xl px-4">

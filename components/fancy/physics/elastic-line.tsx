@@ -73,16 +73,24 @@ const ElasticLine: React.FC<ElasticLineProps> = ({
         onComplete: () => setHasAnimatedIn(true),
       })
     }
-    x.set(dimensions.width / 2)
-    y.set(dimensions.height / 2)
-  }, [dimensions, hasAnimatedIn, opacity, animateInTransition])
+  }, [dimensions.width, dimensions.height, hasAnimatedIn, opacity, animateInTransition])
 
   useEffect(() => {
-    if (!isGrabbed && hasAnimatedIn) {
+    // Update position when dimensions change
+    if (dimensions.width > 0 && dimensions.height > 0) {
+      x.set(dimensions.width / 2)
+      y.set(dimensions.height / 2)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dimensions.width, dimensions.height])
+
+  useEffect(() => {
+    if (!isGrabbed && hasAnimatedIn && dimensions.width > 0 && dimensions.height > 0) {
       animate(x, dimensions.width / 2, transition)
       animate(y, dimensions.height / 2, transition)
     }
-  }, [isGrabbed])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isGrabbed, hasAnimatedIn, dimensions.width, dimensions.height])
 
   useAnimationFrame(() => {
     if (isGrabbed) {

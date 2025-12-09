@@ -1,12 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { Globe } from "@/components/magicui/globe";
+import RotatingEarth from "@/components/wireframe-dotted-globe";
 import Image from "next/image";
 import { WireframeMockup } from "@/components/ui/wireframe-mockup";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
 import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
-import { DrawText } from "../ui/draw-text";
 
 export default function AboutMe() {
   const toolLogos = React.useMemo(
@@ -28,12 +27,9 @@ export default function AboutMe() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <p className="text-center text-base font-semibold leading-7 text-foreground">About</p>
-          <DrawText
-            as="h2"
-            className="mx-auto mt-2 max-w-2xl text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary"
-          >
+          <h2 className="mx-auto mt-2 max-w-2xl text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
             Full-stack Developer & Digital Designer
-          </DrawText>
+          </h2>
         </div>
         <div className="rounded-3xl border border-border/60 bg-background/60">
           <div className="px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
@@ -46,9 +42,9 @@ export default function AboutMe() {
                 <ElasticLine key="divider-right-1" isVertical={true} strokeWidth={1} className="text-border" />
               </div>
               <div className="space-y-2">
-                <DrawText as="h3" className="text-xl md:text-2xl font-semibold tracking-tight">
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
                   Full-stack Developer
-                </DrawText>
+                </h3>
                 <p className="text-muted-foreground max-w-xl text-sm">
                   Crafting performant, accessible products with React, Next.js, and TypeScript. Focused on developer experience and scalable architectures.
                 </p>
@@ -75,15 +71,15 @@ export default function AboutMe() {
             {/* Collaboration panel */}
             <div className="relative p-5 sm:col-span-2 md:p-6 lg:p-7 flex flex-col">
               <div className="space-y-2">
-                <DrawText as="h3" className="text-xl md:text-2xl font-semibold tracking-tight">
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
                   Global partnerships
-                </DrawText>
+                </h3>
                 <p className="text-muted-foreground text-sm">
                   Remote-first delivery across time zones, aligning teams to ship inclusive experiences.
                 </p>
               </div>
               <div className="relative mt-4 md:mt-5 flex flex-1 items-end justify-center min-h-[200px] md:min-h-[220px]">
-                <Globe className="h-48 w-48 md:h-56 md:w-56 lg:h-64 lg:w-64 opacity-80" />
+                <RotatingEarth width={256} height={256} className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 opacity-80" />
               </div>
             </div>
           </div>
@@ -96,9 +92,9 @@ export default function AboutMe() {
                 <ElasticLine key="divider-right-2" isVertical={true} strokeWidth={1} className="text-border" />
               </div>
               <div className="space-y-2">
-                <DrawText as="h3" className="text-xl md:text-2xl font-semibold tracking-tight">
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
                   Human-centered design
-                </DrawText>
+                </h3>
                 <p className="text-muted-foreground text-sm">
                   Translating business goals into intuitive flows and interfaces. Prioritizing clarity and accessibility.
                 </p>
@@ -111,9 +107,9 @@ export default function AboutMe() {
             {/* Toolkit panel */}
             <div className="relative p-5 sm:col-span-3 md:p-6 lg:p-7">
               <div className="space-y-2">
-                <DrawText as="h3" className="text-xl md:text-2xl font-semibold tracking-tight">
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
                   Ecosystem & tools
-                </DrawText>
+                </h3>
                 <p className="text-muted-foreground max-w-xl text-sm">
                   A lean set of frameworks and integrations for fast feedback loops and user-focused experimentation.
                 </p>

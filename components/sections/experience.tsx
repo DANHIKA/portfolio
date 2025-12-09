@@ -8,7 +8,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DrawText } from "../ui/draw-text";
 
 interface Experience {
   company: string;
@@ -77,12 +76,9 @@ export default function ExperienceSection() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <DrawText
-              as="h2"
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary"
-            >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
               Experience
-            </DrawText>
+            </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               I have worked with innovative organizations to help build their top-notch products and systems, delivering impactful solutions that drive efficiency and growth.
             </p>
