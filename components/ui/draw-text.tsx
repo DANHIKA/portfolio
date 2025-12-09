@@ -120,7 +120,9 @@ export const DrawText: React.FC<DrawTextProps> = ({
 
     return () => {
       trigger?.kill();
-      boxRef.current && (boxRef.current.innerHTML = "");
+      if (boxRef.current) {
+        boxRef.current.innerHTML = "";
+      }
       isAnimating.current = false;
       hasAnimated.current = false;
     };

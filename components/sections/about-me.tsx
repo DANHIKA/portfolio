@@ -2,20 +2,31 @@
 
 import * as React from "react";
 import RotatingEarth from "@/components/wireframe-dotted-globe";
-import Image from "next/image";
 import { WireframeMockup } from "@/components/ui/wireframe-mockup";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
 import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
+import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 
 export default function AboutMe() {
-  const toolLogos = React.useMemo(
+  const ecosystemToolsOuter = React.useMemo(
     () => [
-      { type: "placeholder" as const, id: "placeholder-1" },
-      { type: "logo" as const, id: "linear", src: "https://oxymor-ns.tailus.io/logos/linear.svg", alt: "Linear" },
-      { type: "placeholder" as const, id: "placeholder-2" },
-      { type: "logo" as const, id: "netlify", src: "https://oxymor-ns.tailus.io/logos/netlify.svg", alt: "Netlify" },
-      { type: "placeholder" as const, id: "placeholder-3" },
-      { type: "logo" as const, id: "github", src: "https://oxymor-ns.tailus.io/logos/github.svg", alt: "GitHub" },
+      { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+      { name: "C#", icon: "devicon-csharp-plain colored" },
+      { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+      { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+      { name: "MySQL", icon: "devicon-mysql-plain colored" },
+      { name: "Redis", icon: "devicon-redis-plain colored" },
+    ],
+    []
+  );
+
+  const ecosystemToolsInner = React.useMemo(
+    () => [
+      { name: "React", icon: "devicon-react-original colored" },
+      { name: "Express", icon: "devicon-express-original" },
+      { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+      { name: "Docker", icon: "devicon-docker-plain colored" },
+      { name: "Kubernetes", icon: "devicon-kubernetes-plain colored" },
     ],
     []
   );
@@ -100,7 +111,7 @@ export default function AboutMe() {
                 </p>
               </div>
               <div className="mt-4 md:mt-5 p-3 md:p-4 flex items-center justify-center bg-transparent">
-                <WireframeMockup className="max-w-[160px] md:max-w-[180px] opacity-90" mode="simple" />
+                <WireframeMockup className="max-w-[240px] md:max-w-[280px] lg:max-w-[320px] opacity-90" mode="default" />
               </div>
             </div>
 
@@ -114,25 +125,51 @@ export default function AboutMe() {
                   A lean set of frameworks and integrations for fast feedback loops and user-focused experimentation.
                 </p>
               </div>
-              <div className="mt-4 md:mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-6">
-                {toolLogos.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex aspect-square items-center justify-center border border-border p-2.5"
-                  >
-                    {item.type === "logo" ? (
-                      <Image
-                        src={item.src}
-                        alt={`${item.alt} logo`}
-                        width={32}
-                        height={32}
-                        className="size-8 object-contain invert dark:invert-0"
-                      />
-                    ) : (
-                      <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground/60">soon</span>
-                    )}
+              <div className="mt-4 md:mt-5 relative flex items-center justify-center h-[400px] w-full">
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {/* Outer orbit */}
+                  <div className="absolute">
+                    <OrbitingCircles
+                      className="border-none bg-transparent"
+                      duration={20}
+                      radius={160}
+                      path={true}
+                      iconSize={60}
+                    >
+                      {ecosystemToolsOuter.map((tool, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-center rounded-full bg-background border border-border p-2 shadow-sm hover:shadow-md transition-shadow"
+                          title={tool.name}
+                        >
+                          <i className={`${tool.icon}`} style={{ fontSize: '1.75rem' }} />
+                        </div>
+                      ))}
+                    </OrbitingCircles>
                   </div>
-                ))}
+                  
+                  {/* Inner orbit */}
+                  <div className="absolute">
+                    <OrbitingCircles
+                      className="border-none bg-transparent"
+                      duration={15}
+                      radius={120}
+                      path={true}
+                      iconSize={50}
+                      reverse={true}
+                    >
+                      {ecosystemToolsInner.map((tool, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-center rounded-full bg-background border border-border p-2 shadow-sm hover:shadow-md transition-shadow"
+                          title={tool.name}
+                        >
+                          <i className={`${tool.icon}`} style={{ fontSize: '1.25rem' }} />
+                        </div>
+                      ))}
+                    </OrbitingCircles>
+                  </div>
+                </div>
               </div>
             </div>
               </div>

@@ -197,7 +197,7 @@ export function MechanicalWaves({
     let t = 0
     let baselineOffset = 0
     let phase = 0
-    let isMoving = true // keep lines moving upward
+    const isMoving = true // keep lines moving upward
     let isHovering = false
     let peak = { x: effectiveWidth / 2, y: effectiveHeight / 2 }
     // Track which lines have been activated by hover and where - they keep their noise shape as they move up
@@ -375,12 +375,10 @@ export function MechanicalWaves({
           }
           
           let peaksValue = 0
-          let numPeaks = 0
 
           for (let peakNodeIdx = 0; peakNodeIdx < numNodes; ++peakNodeIdx) {
             const age = peakNodes[peakNodeIdx] * speed
             if (age) {
-              ++numPeaks
               const ageDiff = age - PEAK_AGE
               const rising = ageDiff <= 0
               // Use noise for peak shaping if line is hovered or activated

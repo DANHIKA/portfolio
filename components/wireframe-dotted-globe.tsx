@@ -9,6 +9,23 @@ interface RotatingEarthProps {
   className?: string
 }
 
+interface GeoJSONFeature {
+  type: string
+  geometry: {
+    type: string
+    coordinates: number[][][] | number[][][][]
+  }
+  properties?: {
+    featurecla?: string
+    [key: string]: unknown
+  }
+}
+
+interface GeoJSONFeatureCollection {
+  type: string
+  features: GeoJSONFeature[]
+}
+
 // Helper to get CSS variable value and convert to hex
 const getThemeColor = (varName: string): string => {
   if (typeof window === "undefined") return "#000000"
@@ -53,7 +70,6 @@ const getThemeColor = (varName: string): string => {
 
 export default function RotatingEarth({ width = 800, height = 600, className = "" }: RotatingEarthProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -100,31 +116,32 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       return inside
     }
 
-    const pointInFeature = (point: [number, number], feature: any): boolean => {
+    const pointInFeature = (point: [number, number], feature: GeoJSONFeature): boolean => {
       const geometry = feature.geometry
 
       if (geometry.type === "Polygon") {
-        const coordinates = geometry.coordinates
+        const coordinates = geometry.coordinates as number[][][]
         // Check if point is in outer ring
-        if (!pointInPolygon(point, coordinates[0])) {
+        if (!pointInPolygon(point, coordinates[0] as number[][])) {
           return false
         }
         // Check if point is in any hole (inner rings)
         for (let i = 1; i < coordinates.length; i++) {
-          if (pointInPolygon(point, coordinates[i])) {
+          if (pointInPolygon(point, coordinates[i] as number[][])) {
             return false // Point is in a hole
           }
         }
         return true
       } else if (geometry.type === "MultiPolygon") {
         // Check each polygon in the MultiPolygon
-        for (const polygon of geometry.coordinates) {
+        const coordinates = geometry.coordinates as number[][][][]
+        for (const polygon of coordinates) {
           // Check if point is in outer ring
-          if (pointInPolygon(point, polygon[0])) {
+          if (pointInPolygon(point, polygon[0] as number[][])) {
             // Check if point is in any hole
             let inHole = false
             for (let i = 1; i < polygon.length; i++) {
-              if (pointInPolygon(point, polygon[i])) {
+              if (pointInPolygon(point, polygon[i] as number[][])) {
                 inHole = true
                 break
               }
@@ -140,9 +157,9 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       return false
     }
 
-    const generateDotsInPolygon = (feature: any, dotSpacing = 16) => {
+    const generateDotsInPolygon = (feature: GeoJSONFeature, dotSpacing = 16) => {
       const dots: [number, number][] = []
-      const bounds = d3.geoBounds(feature)
+      const bounds = d3.geoBounds(feature as d3.GeoPermissibleObjects)
       const [[minLng, minLat], [maxLng, maxLat]] = bounds
 
       const stepSize = dotSpacing * 0.08
@@ -172,7 +189,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     }
 
     const allDots: DotData[] = []
-    let landFeatures: any
+    let landFeatures: GeoJSONFeatureCollection | null = null
     
     // Cache theme colors - use foreground (black in light, white in dark)
     // Use a function to always get fresh color
@@ -187,8 +204,6 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     }
     
     let foregroundColor = getCurrentColor()
-    let frameCount = 0
-    let lastColorCheck = 0
 
     const render = () => {
       if (!landFeatures) return // Don't render until data is loaded
@@ -224,8 +239,8 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
 
       // Draw land outlines
       context.beginPath()
-      landFeatures.features.forEach((feature: any) => {
-        path(feature)
+      landFeatures.features.forEach((feature: GeoJSONFeature) => {
+        path(feature as d3.GeoPermissibleObjects)
       })
       context.strokeStyle = foregroundColor
       context.lineWidth = 1 * scaleFactor
@@ -251,18 +266,16 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
 
     const loadWorldData = async () => {
       try {
-        setIsLoading(true)
-
         const response = await fetch(
           "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json",
         )
         if (!response.ok) throw new Error("Failed to load land data")
 
-        landFeatures = await response.json()
+        landFeatures = (await response.json()) as GeoJSONFeatureCollection
 
         // Generate dots for all land features
         let totalDots = 0
-        landFeatures.features.forEach((feature: any) => {
+        landFeatures.features.forEach((feature: GeoJSONFeature) => {
           const dots = generateDotsInPolygon(feature, 16)
           dots.forEach(([lng, lat]) => {
             allDots.push({ lng, lat, visible: true })
@@ -273,10 +286,8 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
         console.log(`[v0] Total dots generated: ${totalDots} across ${landFeatures.features.length} land features`)
 
         render()
-        setIsLoading(false)
-      } catch (err) {
+      } catch {
         setError("Failed to load land map data")
-        setIsLoading(false)
       }
     }
 
