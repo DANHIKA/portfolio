@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import SmoothDrawer from "../smooth-drawer";
 import { sendEmail } from "@/lib/api/email";
+import { DrawText } from "../ui/draw-text";
 
 export default function Hero() {
   const [formState, setFormState] = useState({
@@ -58,12 +59,15 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 py-12 lg:py-16 min-h-[60vh]">
           {/* Left side - Text content */}
           <div className="flex-1 w-full lg:text-left text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight animate-fade-in-up mb-6 text-left">
+            <DrawText
+              as="h1"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight animate-fade-in-up mb-6 text-left"
+            >
               A creative{" "}
               <span className="text-primary inline-block hover:scale-105 transition-transform duration-300 cursor-default">
                 developer
               </span>
-            </h1>
+            </DrawText>
 
             <p className="text-lg text-muted-foreground sm:text-xl max-w-2xl leading-relaxed animate-fade-in-up delay-100 mb-8 text-left">
               I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.

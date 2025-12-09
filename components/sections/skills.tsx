@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { LogoLoop } from "@/components/logo-loop";
+import { DrawText } from "../ui/draw-text";
 
 export default function SkillsCarousel() {
   const skills = [
@@ -38,9 +39,12 @@ export default function SkillsCarousel() {
           className="mb-12"
         >
           <p className="text-center text-base font-semibold leading-7 text-foreground">Skills</p>
-          <h2 className="mx-auto mt-2 max-w-2xl text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
+          <DrawText
+            as="h2"
+            className="mx-auto mt-2 max-w-2xl text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary"
+          >
             Skills & Technologies
-          </h2>
+          </DrawText>
         </motion.div>
 
         <LogoLoop items={skills} />

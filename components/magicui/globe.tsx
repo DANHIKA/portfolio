@@ -2,7 +2,8 @@
 
 import createGlobe, { COBEOptions } from "cobe";
 import { useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
 
@@ -43,11 +44,14 @@ export function Globe({
   className?: string;
   config?: COBEOptions;
 }) {
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const phiRef = useRef(0);
   const widthRef = useRef(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
+  const globeRef = useRef<ReturnType<typeof createGlobe> | null>(null);
 
   const r = useMotionValue(0);
   const rs = useSpring(r, {
@@ -55,6 +59,71 @@ export function Globe({
     damping: 30,
     stiffness: 100,
   });
+
+  // Detect if we're in dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Get primary color from theme and convert to RGB array [0-1]
+  const getPrimaryColorRGB = useCallback((): [number, number, number] => {
+    if (typeof window === 'undefined') return [0.5, 0, 0.5]; // Default purple
+    
+    try {
+      const root = document.documentElement;
+      const colorValue = getComputedStyle(root).getPropertyValue('--primary').trim();
+      
+      if (!colorValue) return [0.5, 0, 0.5];
+      
+      // Create a temporary element to let browser convert oklch/rgb to computed RGB
+      const tempEl = document.createElement('div');
+      tempEl.style.color = colorValue;
+      tempEl.style.position = 'absolute';
+      tempEl.style.visibility = 'hidden';
+      tempEl.style.width = '1px';
+      tempEl.style.height = '1px';
+      document.body.appendChild(tempEl);
+      
+      const computedColor = getComputedStyle(tempEl).color;
+      document.body.removeChild(tempEl);
+      
+      // Parse rgb(r, g, b) or rgba(r, g, b, a) to RGB array
+      const rgbMatch = computedColor.match(/\d+/g);
+      if (rgbMatch && rgbMatch.length >= 3) {
+        const r = parseInt(rgbMatch[0]) / 255;
+        const g = parseInt(rgbMatch[1]) / 255;
+        const b = parseInt(rgbMatch[2]) / 255;
+        return [r, g, b] as [number, number, number];
+      }
+    } catch (e) {
+      console.warn('Failed to get primary color:', e);
+    }
+    
+    return [0.5, 0, 0.5]; // Default purple fallback
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      const checkDarkMode = () => {
+        const isDark = document.documentElement.classList.contains("dark") ||
+          resolvedTheme === "dark" ||
+          theme === "dark";
+        setIsDarkMode(isDark);
+      };
+      
+      checkDarkMode();
+      
+      // Watch for theme changes
+      const observer = new MutationObserver(() => {
+        checkDarkMode();
+      });
+
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+
+      return () => observer.disconnect();
+    }
+  }, [mounted, theme, resolvedTheme]);
 
   const updatePointerInteraction = (value: number | null) => {
     pointerInteracting.current = value;
@@ -72,6 +141,12 @@ export function Globe({
   };
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const onResize = () => {
       if (canvasRef.current) {
         widthRef.current = canvasRef.current.offsetWidth;
@@ -81,8 +156,34 @@ export function Globe({
     window.addEventListener("resize", onResize);
     onResize();
 
-    const globe = createGlobe(canvasRef.current!, {
+    // Clean up previous globe instance
+    if (globeRef.current) {
+      globeRef.current.destroy();
+      // Reset opacity for smooth transition
+      if (canvasRef.current) {
+        canvasRef.current.style.opacity = "0";
+      }
+    }
+
+    // Get primary color for markers
+    const primaryColorRGB = getPrimaryColorRGB();
+
+    // Create theme-aware config
+    const themeConfig: COBEOptions = {
       ...config,
+      dark: isDarkMode ? 1 : 0,
+      baseColor: isDarkMode 
+        ? [0.2, 0.2, 0.25] // Darker base for dark mode
+        : [1, 1, 1], // White base for light mode
+      glowColor: isDarkMode
+        ? [0.4, 0.4, 0.5] // Softer glow for dark mode
+        : [0.9, 0.9, 1], // Brighter glow for light mode
+      markerColor: primaryColorRGB, // Use primary theme color for markers
+      mapBrightness: isDarkMode ? 0.8 : 1.2,
+    };
+
+    const globe = createGlobe(canvasRef.current!, {
+      ...themeConfig,
       width: widthRef.current * 2,
       height: widthRef.current * 2,
       onRender: (state) => {
@@ -93,12 +194,20 @@ export function Globe({
       },
     });
 
-    setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0);
+    globeRef.current = globe;
+
+    // Fade in the globe
+    setTimeout(() => {
+      if (canvasRef.current) {
+        canvasRef.current.style.opacity = "1";
+      }
+    }, 50);
+
     return () => {
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };
-  }, [rs, config]);
+  }, [rs, config, mounted, isDarkMode, getPrimaryColorRGB]);
 
   return (
     <div

@@ -9,13 +9,18 @@ import Projects from "@/components/sections/projects";
 import SkillsSlider from "@/components/sections/skills";
 import Stats from "@/components/sections/stats";
 import Experience from "@/components/sections/experience";
+import Summary from "@/components/sections/summary";
 
 export default function Home() {
   return (
     <>
       <Hero />
 
+      <Summary />
+
       <Experience />
+
+
 
       <Stats />
 
@@ -26,6 +31,8 @@ export default function Home() {
       <SkillsSlider />
 
       <Projects />
+
+
 
       <Contact />
     </>
