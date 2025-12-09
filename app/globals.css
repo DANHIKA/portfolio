@@ -237,6 +237,16 @@
   }
 }
 
+@layer utilities {
+  .animate-orbit {
+    animation: orbit calc(var(--duration) * 1s) linear infinite;
+  }
+  
+  .animate-orbit[style*="animation-direction:reverse"] {
+    animation-direction: reverse;
+  }
+}
+
 ::view-transition-old(root), ::view-transition-new(root) {
     animation: none;
     mix-blend-mode: normal;

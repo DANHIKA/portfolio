@@ -28,7 +28,7 @@ export function OrbitingCircles({
 }: OrbitingCirclesProps) {
   const calculatedDuration = duration / speed
   return (
-    <>
+    <div className="relative w-full h-full" style={{ width: `${radius * 2 + iconSize}px`, height: `${radius * 2 + iconSize}px` }}>
       {path && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,27 +46,32 @@ export function OrbitingCircles({
       )}
       {React.Children.map(children, (child, index) => {
         const angle = (360 / React.Children.count(children)) * index
+        const { style, ...restProps } = props
         return (
           <div
-            style={
-              {
-                "--duration": calculatedDuration,
-                "--radius": radius,
-                "--angle": angle,
-                "--icon-size": `${iconSize}px`,
-              } as React.CSSProperties
-            }
+            key={index}
             className={cn(
               `animate-orbit absolute flex size-[var(--icon-size)] transform-gpu items-center justify-center rounded-full`,
-              { "[animation-direction:reverse]": reverse },
               className
             )}
-            {...props}
+            style={{
+              "--duration": calculatedDuration,
+              "--radius": radius,
+              "--angle": angle,
+              "--icon-size": `${iconSize}px`,
+              left: '50%',
+              top: '50%',
+              marginLeft: `calc(-1 * var(--icon-size) / 2)`,
+              marginTop: `calc(-1 * var(--icon-size) / 2)`,
+              animationDirection: reverse ? 'reverse' : 'normal',
+              ...(style as React.CSSProperties || {}),
+            } as React.CSSProperties}
+            {...restProps}
           >
             {child}
           </div>
         )
       })}
-    </>
+    </div>
   )
 }

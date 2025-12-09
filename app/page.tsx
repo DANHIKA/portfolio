@@ -6,7 +6,6 @@ import Hero from "@/components/sections/hero";
 import Process from "@/components/sections/process";
 import Projects from "@/components/sections/projects";
 // import Testimonials from "@/components/sections/testimonials";
-import SkillsSlider from "@/components/sections/skills";
 import Stats from "@/components/sections/stats";
 import Experience from "@/components/sections/experience";
 import Summary from "@/components/sections/summary";
@@ -28,7 +27,6 @@ export default function Home() {
 
       <Process />
 
-      <SkillsSlider />
 
       <Projects />
 
