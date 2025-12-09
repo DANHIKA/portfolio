@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import SmoothDrawer from "../smooth-drawer";
 import { sendEmail } from "@/lib/api/email";
-import { DrawText } from "../ui/draw-text";
+import { MechanicalWaves } from "../mechanical-waves";
 
 export default function Hero() {
   const [formState, setFormState] = useState({
@@ -54,37 +54,68 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-8 md:pt-12 lg:pt-16">
-      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-7xl">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 py-12 lg:py-16 min-h-[60vh]">
-          {/* Left side - Text content */}
-          <div className="flex-1 w-full lg:text-left text-center">
-            <DrawText
-              as="h1"
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight animate-fade-in-up mb-6 text-left"
+    <section className="relative w-screen -mx-[calc((100vw-100%)/2)] overflow-hidden min-h-[80vh] flex items-center">
+      {/* Background Image - extends to whole hero */}
+      <div className="absolute inset-0 z-0">
+        <div className="relative w-full h-full">
+          
+          {/* Mechanical Waves Background */}
+          <MechanicalWaves
+            fill
+            backgroundColor="transparent"
+            foregroundColor="hsl(var(--primary))"
+            speed={0.03}
+            amplitude={12}
+            peakHeight={36}
+            className=""
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-background/60 dark:bg-background/80 pointer-events-none"></div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10 max-w-7xl w-full py-20 pointer-events-none">
+        <div className="flex flex-col items-center justify-center min-h-[70vh]">
+          {/* Large Text with Image Integrated */}
+          <div className="relative mb-12 flex items-center justify-center">
+            <div className="relative max-w-5xl text-center z-10">
+              <h1 className="text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold tracking-tight leading-[0.9] text-foreground text-center">
+                <span className="block">Software</span>
+                <span className="block">Developer</span>
+              </h1>
+              {/* Image overlapping the text */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                <div className="relative w-20 h-28 md:w-28 md:h-40 lg:w-36 lg:h-52 xl:w-44 xl:h-64 rounded-full overflow-hidden border-4 border-primary shadow-2xl">
+                  <Image
+                    src="/me.png"
+                    alt="Daniel Ntandika"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground text-center mb-12 max-w-2xl animate-fade-in-up delay-100">
+            Designing human experiences in code.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 animate-fade-in-up delay-200 pointer-events-auto">
+            <Button 
+              size="lg" 
+              variant="default"
+              className="w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              asChild
             >
-              A creative{" "}
-              <span className="text-primary inline-block hover:scale-105 transition-transform duration-300 cursor-default">
-                developer
-              </span>
-            </DrawText>
-
-            <p className="text-lg text-muted-foreground sm:text-xl max-w-2xl leading-relaxed animate-fade-in-up delay-100 mb-8 text-left">
-              I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.
-            </p>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 animate-fade-in-up delay-200 lg:justify-start justify-center">
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="w-full sm:w-auto group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                asChild
-              >
-                <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                  <span className="relative z-10">My Resume</span>
-                  <span className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                </Link>
-              </Button>
+              <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                My Resume
+              </Link>
+            </Button>
+            <div className="pointer-events-auto">
               <SmoothDrawer 
                 type="contact"
                 formState={formState}
@@ -93,29 +124,6 @@ export default function Hero() {
                 status={status}
                 error={error}
               />
-            </div>
-          </div>
-
-          {/* Right side - Image */}
-          <div className="flex-1 w-full flex justify-center lg:justify-end">
-            <div className="relative bg-primary rounded-2xl p-4 md:p-6 lg:p-8 w-full max-w-md animate-fade-in-up delay-300">
-              {/* Decorative badge - positioned on image */}
-              <div className="absolute -top-2 -right-2 z-10 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background border border-primary/20 w-fit animate-fade-in shadow-lg">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                <span className="text-sm font-medium text-primary">Available for projects</span>
-              </div>
-              <div className="relative w-full aspect-square rounded-xl overflow-hidden">
-                <Image
-                  src="/me.png"
-                  alt="Daniel Ntandika"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
             </div>
           </div>
         </div>
