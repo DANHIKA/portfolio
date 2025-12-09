@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { DrawText } from "../ui/draw-text";
 
 interface Experience {
   company: string;
@@ -20,20 +21,34 @@ interface Experience {
 export default function ExperienceSection() {
   const experiences: Experience[] = [
     {
+      company: "CodeTechMw",
+      position: "Software Developer",
+      period: "May 2023 — Present",
+      responsibilities: [
+        "Developed full-stack web applications using JavaScript (ES6+), TypeScript, Node.js, React.js, Vue.js, PHP, and C# (.NET).",
+        "Designed and implemented RESTful APIs, database schemas, and secure authentication workflows.",
+        "Built Nordin (nordin.mw): Social platform with posts, comments, likes, surveys, referrals, and rewards system. Managed frontend, backend, and database design.",
+        "Built MalawiNest (malawinest.com): Dynamic tourism website with enhanced UI/UX and interactive features.",
+        "Built Excellence Jobs MW (excellencejobsmw.com): Dynamic job recruitment platform with secure data management.",
+        "Built Owl Planet Shop (owlplanetshop.com): E-commerce platform with PayPal and PayChangu payment integration.",
+        "Built SmartDrive Car Hire (smartdrivecarhire.vercel.app): Car rental platform with booking system, vehicle management, payment integration, and responsive UI/UX.",
+      ],
+    },
+    {
       company: "MERA",
-      position: "ICT Officer Intern",
+      position: "Officer and Software Developer Intern",
       period: "Sept 2024 — Present",
       responsibilities: [
-        "Conducted User Acceptance Testing (UAT) for the new licensing system to ensure that all functionality and usability requirements were met before launch.",
-        "Supported contractors in deploying and maintaining the renewal licensing system, ensuring smooth operation and successful integration with existing infrastructure.",
-        "Developed a fuel voucher system for motorcyclists that generates daily QR codes based on national IDs, helping to prevent fuel smuggling and misuse.",
-        "Built an ICT issue ticketing and document repository system to organize support requests and improve access to technical documentation.",
-        "Created an ICT inventory management system to track the issuance and return of ICT equipment, improving accountability and record accuracy.",
-        "Designed a simplified forms application, similar to Microsoft Forms, to streamline meeting processes and internal data collection.",
-        "Developed automated Excel macros and functions for fuel inspection reports, improving the accuracy and efficiency of data processing for Oil Marketing Companies.",
-        "Guided external contractors during the setup of servers and services in the data center.",
-        "Worked with Bosch systems, including fingerprint access control, CCTV, and fire alarm systems.",
-        "Supported and managed tools such as Sophos, Microsoft 365, Active Directory, Bosch, and Sage ESS and Payroll.",
+        "Conducted User Acceptance Testing (UAT) for the new licensing system, ensuring functionality and usability requirements were met before launch.",
+        "Supported contractors in deploying and maintaining the renewal licensing system, ensuring smooth integration with existing infrastructure.",
+        "Developed a fuel voucher system for motorcyclists generating daily QR codes from national IDs, reducing fuel misuse and smuggling.",
+        "Built an ICT issue ticketing and document repository system to organize support requests and improve documentation access.",
+        "Created an ICT inventory management system to track issuance and return of equipment, enhancing accountability and record accuracy.",
+        "Designed a simplified forms application similar to Microsoft Forms to streamline meetings and internal data collection.",
+        "Developed automated Excel macros and functions for fuel inspection reports, improving processing speed and accuracy.",
+        "Assisted in systems integration and setup of servers, IP phones, and Bosch security systems (CCTV, fingerprint access, fire alarms).",
+        "Provided technical support for software tools and enterprise applications (Sophos, Microsoft 365, Active Directory, Sage ESS/Payroll).",
+        "Documented technical specifications, troubleshooting processes, and delivered staff training on software tools and ICT best practices.",
       ],
       logo: "/experience/mera.png",
     },
@@ -62,9 +77,12 @@ export default function ExperienceSection() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
+            <DrawText
+              as="h2"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary"
+            >
               Experience
-            </h2>
+            </DrawText>
             <p className="text-lg text-muted-foreground leading-relaxed">
               I have worked with innovative organizations to help build their top-notch products and systems, delivering impactful solutions that drive efficiency and growth.
             </p>
