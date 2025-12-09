@@ -11,12 +11,16 @@ interface RotatingEarthProps {
 
 // Helper to get CSS variable value and convert to hex
 const getThemeColor = (varName: string): string => {
-  if (typeof window === "undefined") return "#ffffff"
+  if (typeof window === "undefined") return "#000000"
   try {
     const root = document.documentElement
     const colorValue = getComputedStyle(root).getPropertyValue(varName).trim()
     
-    if (!colorValue) return "#ffffff"
+    if (!colorValue) {
+      // Fallback: check if dark mode is active
+      const isDark = root.classList.contains("dark")
+      return isDark ? "#ffffff" : "#000000"
+    }
     
     // Create a temporary element to let browser convert oklch/rgb/hsl to computed RGB
     const tempEl = document.createElement("div")
@@ -36,12 +40,15 @@ const getThemeColor = (varName: string): string => {
       const r = parseInt(rgbMatch[0])
       const g = parseInt(rgbMatch[1])
       const b = parseInt(rgbMatch[2])
-      return `#${[r, g, b].map(x => x.toString(16).padStart(2, "0")).join("")}`
+      const hex = `#${[r, g, b].map(x => x.toString(16).padStart(2, "0")).join("")}`
+      return hex
     }
   } catch (e) {
     console.warn(`Failed to get theme color for ${varName}:`, e)
   }
-  return "#ffffff"
+  // Fallback based on dark mode
+  const isDark = document.documentElement.classList.contains("dark")
+  return isDark ? "#ffffff" : "#000000"
 }
 
 export default function RotatingEarth({ width = 800, height = 600, className = "" }: RotatingEarthProps) {
@@ -167,69 +174,79 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     const allDots: DotData[] = []
     let landFeatures: any
     
-    // Cache theme colors and recompute periodically - use foreground (black in light, white in dark)
-    let foregroundColor = getThemeColor("--foreground")
+    // Cache theme colors - use foreground (black in light, white in dark)
+    // Use a function to always get fresh color
+    const getCurrentColor = (): string => {
+      const color = getThemeColor("--foreground")
+      // Validate color is a valid hex
+      if (!color || !/^#[0-9A-Fa-f]{6}$/.test(color)) {
+        const isDark = document.documentElement.classList.contains("dark")
+        return isDark ? "#ffffff" : "#000000"
+      }
+      return color
+    }
+    
+    let foregroundColor = getCurrentColor()
     let frameCount = 0
+    let lastColorCheck = 0
 
     const render = () => {
+      if (!landFeatures) return // Don't render until data is loaded
+      
+      // Always get fresh color to ensure it's current
+      const currentColor = getCurrentColor()
+      if (currentColor !== foregroundColor) {
+        foregroundColor = currentColor
+      }
+
       // Clear canvas
       context.clearRect(0, 0, containerWidth, containerHeight)
 
       const currentScale = projection.scale()
       const scaleFactor = currentScale / radius
 
-      // Recompute color every 60 frames (roughly once per second at 60fps) to adapt to theme changes
-      frameCount++
-      if (frameCount % 60 === 0) {
-        foregroundColor = getThemeColor("--foreground")
-      }
-
-      // Draw ocean (globe background) - transparent
+      // Draw ocean (globe background) - no fill, just stroke
       context.beginPath()
       context.arc(containerWidth / 2, containerHeight / 2, currentScale, 0, 2 * Math.PI)
-      context.fillStyle = "transparent"
-      context.fill()
       context.strokeStyle = foregroundColor
       context.lineWidth = 2 * scaleFactor
       context.stroke()
 
-      if (landFeatures) {
-        // Draw graticule
-        const graticule = d3.geoGraticule()
-        context.beginPath()
-        path(graticule())
-        context.strokeStyle = foregroundColor
-        context.lineWidth = 1 * scaleFactor
-        context.globalAlpha = 0.25
-        context.stroke()
-        context.globalAlpha = 1
+      // Draw graticule
+      const graticule = d3.geoGraticule()
+      context.beginPath()
+      path(graticule())
+      context.strokeStyle = foregroundColor
+      context.lineWidth = 1 * scaleFactor
+      context.globalAlpha = 0.25
+      context.stroke()
+      context.globalAlpha = 1
 
-        // Draw land outlines
-        context.beginPath()
-        landFeatures.features.forEach((feature: any) => {
-          path(feature)
-        })
-        context.strokeStyle = foregroundColor
-        context.lineWidth = 1 * scaleFactor
-        context.stroke()
+      // Draw land outlines
+      context.beginPath()
+      landFeatures.features.forEach((feature: any) => {
+        path(feature)
+      })
+      context.strokeStyle = foregroundColor
+      context.lineWidth = 1 * scaleFactor
+      context.stroke()
 
-        // Draw halftone dots
-        allDots.forEach((dot) => {
-          const projected = projection([dot.lng, dot.lat])
-          if (
-            projected &&
-            projected[0] >= 0 &&
-            projected[0] <= containerWidth &&
-            projected[1] >= 0 &&
-            projected[1] <= containerHeight
-          ) {
-            context.beginPath()
-            context.arc(projected[0], projected[1], 1.2 * scaleFactor, 0, 2 * Math.PI)
-            context.fillStyle = foregroundColor
-            context.fill()
-          }
-        })
-      }
+      // Draw halftone dots
+      allDots.forEach((dot) => {
+        const projected = projection([dot.lng, dot.lat])
+        if (
+          projected &&
+          projected[0] >= 0 &&
+          projected[0] <= containerWidth &&
+          projected[1] >= 0 &&
+          projected[1] <= containerHeight
+        ) {
+          context.beginPath()
+          context.arc(projected[0], projected[1], 1.2 * scaleFactor, 0, 2 * Math.PI)
+          context.fillStyle = foregroundColor
+          context.fill()
+        }
+      })
     }
 
     const loadWorldData = async () => {
@@ -264,7 +281,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     }
 
     // Set up rotation and interaction
-    const rotation = [0, 0]
+    const rotation: [number, number] = [0, 0]
     let autoRotate = true
     const rotationSpeed = 0.5
 
@@ -281,6 +298,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
 
     const handleMouseDown = (event: MouseEvent) => {
       autoRotate = false
+      canvas.style.cursor = "grabbing"
       const startX = event.clientX
       const startY = event.clientY
       const startRotation = [...rotation]
@@ -291,14 +309,14 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
         const dy = moveEvent.clientY - startY
 
         rotation[0] = startRotation[0] + dx * sensitivity
-        rotation[1] = startRotation[1] - dy * sensitivity
-        rotation[1] = Math.max(-90, Math.min(90, rotation[1]))
+        rotation[1] = Math.max(-90, Math.min(90, startRotation[1] - dy * sensitivity))
 
         projection.rotate(rotation)
         render()
       }
 
       const handleMouseUp = () => {
+        canvas.style.cursor = "grab"
         document.removeEventListener("mousemove", handleMouseMove)
         document.removeEventListener("mouseup", handleMouseUp)
 
@@ -322,6 +340,26 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     canvas.addEventListener("mousedown", handleMouseDown)
     canvas.addEventListener("wheel", handleWheel)
 
+    // Watch for theme changes
+    const observer = new MutationObserver(() => {
+      // Small delay to ensure theme CSS has been applied
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const newColor = getCurrentColor()
+          if (newColor && newColor !== foregroundColor) {
+            foregroundColor = newColor
+            // Force immediate render to update colors
+            render()
+          }
+        })
+      })
+    })
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
+
     // Load the world data
     loadWorldData()
 
@@ -330,6 +368,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
       rotationTimer.stop()
       canvas.removeEventListener("mousedown", handleMouseDown)
       canvas.removeEventListener("wheel", handleWheel)
+      observer.disconnect()
     }
   }, [width, height])
 
@@ -348,7 +387,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
     <div className={`relative ${className}`}>
       <canvas
         ref={canvasRef}
-        className="w-full h-auto"
+        className="w-full h-auto cursor-grab active:cursor-grabbing"
         style={{ maxWidth: "100%", height: "auto" }}
       />
     </div>
