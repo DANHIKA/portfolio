@@ -52,6 +52,7 @@ export default function Projects() {
                   ) : (
                     <Safari
                       url={(site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, ""))}
+                      iframeSrc={site.url}
                       mode="simple"
                       className="w-full drop-shadow-lg"
                     />

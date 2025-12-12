@@ -19,12 +19,14 @@ export interface SafariProps extends HTMLAttributes<HTMLDivElement> {
   url?: string
   imageSrc?: string
   videoSrc?: string
+  iframeSrc?: string
   mode?: SafariMode
 }
 
 export function Safari({
   imageSrc,
   videoSrc,
+  iframeSrc,
   url,
   mode = "default",
   className,
@@ -32,7 +34,8 @@ export function Safari({
   ...props
 }: SafariProps) {
   const hasVideo = !!videoSrc
-  const hasMedia = hasVideo || !!imageSrc
+  const hasIframe = !!iframeSrc
+  const hasMedia = hasVideo || !!imageSrc || hasIframe
 
   return (
     <div
@@ -65,7 +68,36 @@ export function Safari({
         </div>
       )}
 
-      {!hasVideo && imageSrc && (
+      {hasIframe && (
+        <div
+          className="pointer-events-auto absolute z-0 overflow-hidden"
+          style={{
+            left: `${LEFT_PCT}%`,
+            top: `${TOP_PCT}%`,
+            width: `${WIDTH_PCT}%`,
+            height: `${HEIGHT_PCT}%`,
+            borderRadius: "0 0 11px 11px",
+          }}
+        >
+          <iframe
+            src={iframeSrc}
+            className="block border-0"
+            style={{
+              width: "133.33%",
+              height: "133.33%",
+              transform: "scale(0.75)",
+              transformOrigin: "top left",
+            }}
+            title={url || "Website preview"}
+            scrolling="no"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
+      )}
+
+      {!hasVideo && !hasIframe && imageSrc && (
         <div
           className="pointer-events-none absolute z-0 overflow-hidden"
           style={{
