@@ -3,17 +3,15 @@
 import {
   motion
 } from "framer-motion";
-import { Safari } from "@/components/ui/safari";
 import { Iphone } from "@/components/ui/iphone";
 import { AnimatedLink } from "@/components/ui/animated-link";
 
 export default function Projects() {
   const sites = [
+    { name: "School Management System", url: "https://edunest-bay.vercel.app/" },
     { name: "MarketWeb MW", url: "https://www.marketwebmw.com" },
     { name: "MalawiNest", url: "https://malawinest.com/home" },
     { name: "Excellence Jobs MW", url: "https://excellencejobsmw.com" },
-    { name: "VJ Marketing", url: "https://vj-marketing.vercel.app" },
-    { name: "QR Code Generator", url: "https://qr-code-generator-silk-seven.vercel.app" },
     { name: "Safe Home", url: "/case-studies/safe-home", internal: true, previewSrc: "/projects/Safe%20Home/wireframes/Home.png" },
   ];
 
@@ -33,7 +31,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="mt-6 w-full max-w-6xl px-4">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {sites.map((site, index) => (
               <motion.div
                 key={site.url}
@@ -43,16 +41,35 @@ export default function Projects() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative flex h-full flex-col overflow-hidden transition-all duration-300"
               >
-                {/* Safari mockup */}
-                <div className="relative m-4 mb-2 flex-1">
+                {/* Iframe or iPhone for internal case studies */}
+                <div className="relative m-4 mb-2 flex-1 min-h-[400px]">
                   {"internal" in site ? (
                     <Iphone src={(site as { previewSrc?: string }).previewSrc || ""} className="mx-auto h-72 w-auto drop-shadow-lg" />
                   ) : (
-                    <Safari
-                      url={(site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, ""))}
-                      mode="simple"
-                      className="w-full drop-shadow-lg"
-                    />
+                    <div className="relative w-full h-full min-h-[400px] rounded-lg overflow-hidden border border-border bg-background shadow-lg">
+                      <div style={{ 
+                        width: "125%", 
+                        height: "125%", 
+                        transform: "scale(0.8)", 
+                        transformOrigin: "top left",
+                        position: "relative"
+                      }}>
+                        <iframe
+                          src={site.url}
+                          className="border-0"
+                          style={{ 
+                            width: "100%", 
+                            height: "100%",
+                            minWidth: "100%"
+                          }}
+                          title={site.name}
+                          scrolling="no"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
                   )}
 
                   {/* Hover overlay */}

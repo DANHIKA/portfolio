@@ -9,14 +9,11 @@ import Projects from "@/components/sections/projects";
 import Stats from "@/components/sections/stats";
 import Experience from "@/components/sections/experience";
 import Summary from "@/components/sections/summary";
-import SchoolDemo from "@/components/sections/school-demo";
 
 export default function Home() {
   return (
     <>
       <Hero />
-
-      <SchoolDemo />
 
       <Summary />
 
