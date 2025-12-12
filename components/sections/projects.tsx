@@ -10,6 +10,7 @@ export default function Projects() {
   const sites = [
     { name: "Nordin", url: "https://nordin.mw/" },
     { name: "School Management System", url: "https://edunest-bay.vercel.app/" },
+    { name: "SmartDrive Car Hire", url: "https://smartdrivecarhire.vercel.app/" },
     { name: "Owl Planet Shop", url: "https://www.owlplanetshop.com/" },
     { name: "MarketWeb MW", url: "https://www.marketwebmw.com" },
     { name: "MalawiNest", url: "https://malawinest.com/home" },
