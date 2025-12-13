@@ -135,10 +135,10 @@ I'm available for:
 - 👥 Team collaborations
 
 **Get in touch:**
-- 📧 Email: [your-email@example.com]
-- 💼 LinkedIn: [linkedin.com/in/hika-ntandika-34961b28](https://linkedin.com/in/hika-ntandika-34961b28)
+- 📧 Email: [hdntandika@gmail.com]
+- 💼 LinkedIn: [linkedin.com/in/hika-ntandika-34961b28](https://www.linkedin.com/in/daniel-hikantandika-34961b28a/)
 - 🐙 GitHub: [@DANHIKA](https://github.com/DANHIKA)
-- 🌐 Portfolio: [danielntandika.com](https://danielntandika.com)
+- 🌐 Portfolio: [danielntandika.com](https://portfolio-vert-zeta-3zljuxqg7n.vercel.app/)
 
 ---
 
