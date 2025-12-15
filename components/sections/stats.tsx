@@ -64,19 +64,19 @@ export default function DeveloperStats() {
       number: 16,
       suffix: "+",
       label: "Projects",
-      description: "Delivered across various industries"
+      description: "Successfully delivered across various industries including fintech, e-commerce, and healthcare platforms"
     },
     {
       number: 3,
       suffix: "+",
       label: "Years",
-      description: "Professional experience in modern web development"
+      description: "Professional experience in modern web development with expertise in React, Node.js, and cloud technologies"
     },
     {
       number: 2.5,
       suffix: "k",
       label: "Git Commits",
-      description: "Consistent code contributions"
+      description: "Consistent code contributions to open source projects and enterprise applications"
     }
   ]
 
@@ -104,18 +104,20 @@ export default function DeveloperStats() {
               transition={isMobile ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
               className={`py-8 ${index !== stats.length - 1 ? 'border-b border-primary-foreground/20' : ''}`}
             >
-              <div className="flex items-start justify-between gap-8 mb-3">
-                <div className="text-6xl font-bold text-primary-foreground flex items-baseline">
-                  <Counter from={0} to={stat.number} className="text-6xl font-bold text-primary-foreground" isMobile={isMobile} />
-                  <span className="ml-1 text-6xl font-bold text-primary-foreground">{stat.suffix}</span>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-8">
+                <div className="text-7xl font-normal text-primary-foreground flex items-baseline">
+                  <Counter from={0} to={stat.number} className="text-7xl font-normal text-primary-foreground" isMobile={isMobile} />
+                  <span className="ml-1 text-7xl font-normal text-primary-foreground">{stat.suffix}</span>
                 </div>
-                <div className="text-xl font-semibold text-primary-foreground text-right flex-shrink-0">
-                  {stat.label}
+                <div className="sm:ml-auto sm:self-end">
+                  <div className="text-xl font-semibold text-primary-foreground mb-1">
+                    {stat.label}
+                  </div>
+                  <p className="text-base text-primary-foreground/80 max-w-md mb-2">
+                    {stat.description}
+                  </p>
                 </div>
               </div>
-              <p className="text-base text-primary-foreground/80 max-w-2xl">
-                {stat.description}
-              </p>
             </motion.div>
           ))}
         </motion.div>

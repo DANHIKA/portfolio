@@ -127,7 +127,7 @@ export default function ExperienceSection() {
           <Accordion defaultValue="item-0" type="single">
             {experiences.map((exp, index) => (
               <AccordionItem
-                className="first:border-t last:border-b data-[state=open]:bg-card"
+                className="first:border-t last:border-b data-[state=open]:bg-card px-4"
                 key={index}
                 value={`item-${index}`}
               >
@@ -174,8 +174,8 @@ export default function ExperienceSection() {
                 </AccordionTrigger>
 
                 <AccordionContent className="pt-0 pb-4">
-                  <div className="pl-14">
-                    <ul className="space-y-2.5">
+                  <div className="pl-14 pr-2">
+                    <ul className="space-y-3">
                       {exp.responsibilities.map((resp, i) => (
                         <li
                           key={i}
