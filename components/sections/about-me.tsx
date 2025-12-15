@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import RotatingEarth from "@/components/wireframe-dotted-globe";
-import { WireframeMockup } from "@/components/ui/wireframe-mockup";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
 import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
 import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
+import AnimatedOTP from "@/components/ui/clerk-otp";
 
 export default function AboutMe() {
   const ecosystemToolsOuter = React.useMemo(
@@ -105,14 +105,18 @@ export default function AboutMe() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
-                  Human-centered design
+                  Secure Authentication
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Translating business goals into intuitive flows and interfaces. Prioritizing <TextHighlighter highlightColor="hsl(160, 50%, 70%)">clarity and accessibility</TextHighlighter>.
+                  Implementing robust <TextHighlighter highlightColor="hsl(160, 50%, 70%)">multi-factor authentication</TextHighlighter> systems with secure workflows and user verification.
                 </p>
               </div>
-              <div className="mt-4 md:mt-5 p-3 md:p-4 flex items-center justify-center bg-transparent">
-                <WireframeMockup className="max-w-[240px] md:max-w-[280px] lg:max-w-[320px] opacity-90" mode="default" />
+              <div className="mt-4 md:mt-5 flex items-center justify-center bg-transparent">
+                <AnimatedOTP 
+                  cardTitle="Secure User Verification"
+                  cardDescription="Multi-factor authentication with time-based one-time passwords for enhanced security."
+                  whileHover={true}
+                />
               </div>
             </div>
 
