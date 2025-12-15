@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ThemeToggleButton4 } from "@/components/ui/theme-toggle-button4";
-import { StaggeredMenu } from "./StaggeredMenu";
+import { SimpleStaggeredMenu } from "./SimpleStaggeredMenu";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
 
 const navItems = [
@@ -83,21 +83,15 @@ export default function Header() {
 
       {/* Mobile Staggered Menu */}
       <div className="md:hidden fixed inset-0 z-50">
-        <StaggeredMenu
+        <SimpleStaggeredMenu
           position="right"
-          colors={["#5b46f8", "#8b5cf6", "#a78bfa"]}
           // @ts-expect-error - StaggeredMenu items prop type not defined
           items={staggeredMenuItems}
           // @ts-expect-error - StaggeredMenu socialItems prop type not defined
           socialItems={socialItems}
           displaySocials={true}
           displayItemNumbering={true}
-          isFixed={true}
-          accentColor="#5b46f8"
-          menuButtonColor="#e9e9ef"
-          openMenuButtonColor="#000"
-          changeMenuColorOnOpen={true}
-          // logoUrl="https://api.dicebear.com/7.x/notionists/svg?seed=Daniel&backgroundColor=5b46f8"
+          accentColor="hsl(var(--primary))"
         />
       </div>
     </>
