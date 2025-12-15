@@ -43,14 +43,14 @@ export default function AboutMe() {
             Full-stack Developer & Digital Designer
           </h2>
         </div>
-        <div className="rounded-3xl border border-border/60 bg-background/60">
-          <div className="px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
+        <div className="border border-border/60 bg-background/60">
+          <div className="px-0 py-0">
             <div className="grid bg-transparent">
           {/* Row 1 */}
           <div className="relative sm:col-span-5 sm:grid sm:grid-cols-5">
             {/* Intro panel */}
-            <div className="relative p-5 sm:col-span-3 md:p-6 lg:p-7">
-              <div className="absolute inset-y-0 right-0 hidden w-1 sm:block text-border overflow-visible border-0 bg-transparent outline-none pointer-events-auto" aria-hidden style={{ border: 'none', boxShadow: 'none' }}>
+            <div className="relative p-5 sm:col-span-3 md:p-6 lg:p-7 -mr-0.5">
+              <div className="absolute inset-y-0 -right-0.5 hidden w-1 sm:block text-border overflow-visible border-0 bg-transparent outline-none pointer-events-auto" aria-hidden style={{ border: 'none', boxShadow: 'none' }}>
                 <ElasticLine key="divider-right-1" isVertical={true} strokeWidth={1} className="text-border" />
               </div>
               <div className="space-y-2">
@@ -87,7 +87,7 @@ export default function AboutMe() {
                   Global partnerships
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Remote-first delivery across time zones, aligning teams to ship inclusive experiences.
+                  Remote-first <TextHighlighter highlightColor="hsl(160, 50%, 70%)">delivery across time zones</TextHighlighter>, aligning teams to ship inclusive experiences.
                 </p>
               </div>
               <div className="relative mt-4 md:mt-5 flex flex-1 items-end justify-center min-h-[200px] md:min-h-[220px]">
@@ -99,8 +99,8 @@ export default function AboutMe() {
           {/* Row 2 */}
           <div className="relative sm:col-span-5 sm:grid sm:grid-cols-5">
             {/* Activity panel */}
-            <div className="relative p-5 sm:col-span-2 md:p-6 lg:p-7">
-              <div className="absolute inset-y-0 right-0 hidden w-1 sm:block text-border overflow-visible border-0 bg-transparent outline-none pointer-events-auto" aria-hidden style={{ border: 'none', boxShadow: 'none' }}>
+            <div className="relative p-5 sm:col-span-2 md:p-6 lg:p-7 -mr-0.5">
+              <div className="absolute inset-y-0 -right-0.5 hidden w-1 sm:block text-border overflow-visible border-0 bg-transparent outline-none pointer-events-auto" aria-hidden style={{ border: 'none', boxShadow: 'none' }}>
                 <ElasticLine key="divider-right-2" isVertical={true} strokeWidth={1} className="text-border" />
               </div>
               <div className="space-y-2">
@@ -108,7 +108,7 @@ export default function AboutMe() {
                   Human-centered design
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Translating business goals into intuitive flows and interfaces. Prioritizing clarity and accessibility.
+                  Translating business goals into intuitive flows and interfaces. Prioritizing <TextHighlighter highlightColor="hsl(160, 50%, 70%)">clarity and accessibility</TextHighlighter>.
                 </p>
               </div>
               <div className="mt-4 md:mt-5 p-3 md:p-4 flex items-center justify-center bg-transparent">
@@ -123,7 +123,7 @@ export default function AboutMe() {
                   Ecosystem & tools
                 </h3>
                 <p className="text-muted-foreground max-w-xl text-sm">
-                  A lean set of frameworks and integrations for fast feedback loops and user-focused experimentation.
+                  A lean set of frameworks and integrations for <TextHighlighter highlightColor="hsl(160, 50%, 70%)">fast feedback loops</TextHighlighter> and user-focused experimentation.
                 </p>
               </div>
               <div className="mt-4 md:mt-5 relative flex items-center justify-center h-[400px] w-full">
@@ -140,7 +140,7 @@ export default function AboutMe() {
                       {ecosystemToolsOuter.map((tool, index) => (
                         <div
                           key={index}
-                          className="flex items-center justify-center rounded-full bg-background border border-border p-2 shadow-sm hover:shadow-md transition-shadow"
+                          className="flex items-center justify-center bg-background border border-border p-2 shadow-sm hover:shadow-md transition-shadow"
                           title={tool.name}
                         >
                           <i className={`${tool.icon}`} style={{ fontSize: '1.75rem' }} />
@@ -162,7 +162,7 @@ export default function AboutMe() {
                       {ecosystemToolsInner.map((tool, index) => (
                         <div
                           key={index}
-                          className="flex items-center justify-center rounded-full bg-background border border-border p-2 shadow-sm hover:shadow-md transition-shadow"
+                          className="flex items-center justify-center bg-background border border-border p-2 shadow-sm hover:shadow-md transition-shadow"
                           title={tool.name}
                         >
                           <i className={`${tool.icon}`} style={{ fontSize: '1.25rem' }} />

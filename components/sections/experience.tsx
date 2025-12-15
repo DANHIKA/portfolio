@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import {
   Accordion,
@@ -8,7 +7,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 
 interface Experience {
   company: string;
@@ -66,102 +64,84 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="py-12 md:py-16 lg:py-24 w-screen -mx-[calc((100vw-100%)/2)]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left Side - Intro */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
-              Experience
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I have worked with innovative organizations to help build their top-notch products and systems, delivering <TextHighlighter highlightColor="hsl(160, 50%, 70%)">impactful solutions</TextHighlighter> that drive efficiency and growth.
-            </p>
-          </motion.div>
+    <div className="mx-auto min-h-screen w-full max-w-7xl lg:border-x">
+      <div className="mx-4 grid grid-cols-1 border-x md:mx-0 md:grid-cols-2 md:border-x-0">
+        <div className="space-y-4 px-4 pt-12 pb-4 md:border-r">
+          <h2 className="font-black text-4xl md:text-5xl lg:text-6xl text-primary">Experience</h2>
+          <p className="text-muted-foreground">
+            Here's a timeline of my professional journey and the impactful work I've done at various organizations.
+          </p>
+        </div>
+        <div className="place-items-start pt-12">
+          <Accordion collapsible defaultValue="item-0" type="single">
+            {experiences.map((exp, index) => (
+              <AccordionItem
+                className="first:border-t last:border-b data-[state=open]:bg-card"
+                key={index}
+                value={`item-${index}`}
+              >
+                <AccordionTrigger className="hover:no-underline py-4">
+                  <div className="flex gap-4 items-start w-full">
+                    {/* Logo */}
+                    <div className="flex-shrink-0 mt-0.5">
+                      {exp.logo ? (
+                        <div className="h-10 w-10 rounded bg-background flex items-center justify-center overflow-hidden">
+                          <Image
+                            src={exp.logo}
+                            alt={exp.company}
+                            width={40}
+                            height={40}
+                            className="object-contain p-1"
+                          />
+                        </div>
+                      ) : (
+                        <div className="h-10 w-10 rounded bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                          <span className="text-base font-bold text-primary">
+                            {exp.company.charAt(0)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
 
-          {/* Right Side - Accordion Timeline */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {experiences.map((exp, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="border border-border/60 rounded-lg px-4 bg-background/40 hover:bg-background/60 transition-colors"
-                >
-                  <AccordionTrigger className="hover:no-underline py-4">
-                    <div className="flex gap-4 items-start w-full">
-                      {/* Logo */}
-                      <div className="flex-shrink-0 mt-1">
-                        {exp.logo ? (
-                          <div className="h-10 w-10 rounded-full bg-background border border-border/60 flex items-center justify-center overflow-hidden">
-                            <Image
-                              src={exp.logo}
-                              alt={exp.company}
-                              width={40}
-                              height={40}
-                              className="object-contain p-1"
-                            />
-                          </div>
-                        ) : (
-                          <div className="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/20 flex items-center justify-center">
-                            <span className="text-base font-bold text-primary">
-                              {exp.company.charAt(0)}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 text-left">
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                          <div>
-                            <h3 className="text-lg font-semibold text-foreground">
-                              {exp.position}
-                            </h3>
-                            <p className="text-sm text-muted-foreground mt-0.5">
-                              @{exp.company}
-                            </p>
-                          </div>
-                          <p className="text-xs text-muted-foreground sm:text-right whitespace-nowrap">
-                            {exp.period}
+                    {/* Content */}
+                    <div className="flex-1 text-left">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                        <div>
+                          <h3 className="text-lg font-semibold text-foreground">
+                            {exp.position}
+                          </h3>
+                          <p className="text-sm text-muted-foreground mt-0.5">
+                            @{exp.company}
                           </p>
                         </div>
+                        <p className="text-xs text-muted-foreground self-start mt-0.5">
+                          {exp.period}
+                        </p>
                       </div>
                     </div>
-                  </AccordionTrigger>
+                  </div>
+                </AccordionTrigger>
 
-                  <AccordionContent className="pt-0 pb-4">
-                    <div className="pl-14">
-                      <ul className="space-y-2.5">
-                        {exp.responsibilities.map((resp, i) => (
-                          <li
-                            key={i}
-                            className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2"
-                          >
-                            <span className="text-primary/60 mt-1.5 flex-shrink-0">•</span>
-                            <span>{resp}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </motion.div>
+                <AccordionContent className="pt-0 pb-4">
+                  <div className="pl-14">
+                    <ul className="space-y-2.5">
+                      {exp.responsibilities.map((resp, i) => (
+                        <li
+                          key={i}
+                          className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2"
+                        >
+                          <span className="text-primary/60 mt-1.5 flex-shrink-0">•</span>
+                          <span>{resp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
