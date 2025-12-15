@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 
 interface Experience {
   company: string;
@@ -17,6 +18,56 @@ interface Experience {
 }
 
 export default function ExperienceSection() {
+  // Function to highlight important technical terms in responsibility descriptions
+  const highlightKeywords = (text: string) => {
+    // Define important technical terms to highlight
+    const keywords = [
+      // Core technologies and frameworks
+      'JavaScript', 'TypeScript', 'Node.js', 'React.js', 'Vue.js', 'C#', '.NET', 'PHP',
+      'RESTful APIs', 'database schemas', 'UI/UX', 'secure authentication workflows',
+      
+      // Tools and platforms
+      'PayPal', 'PayChangu', 'Microsoft 365', 'Active Directory', 'Sophos', 'Sage ESS/Payroll', 'Bosch',
+      
+      // Specific technical terms requested
+      'CCTV', 'fingerprint access', 'fire alarms', 'Excel macros', 
+      'ICT inventory management system', 'fuel voucher system', 'User Acceptance Testing',
+      'licensing system', 'renewal licensing system', 'ICT issue ticketing and document repository system',
+      'delivered staff training', 'troubleshooting processes', 'Documented technical specifications',
+      // Platform names and descriptions
+      'nordin.mw', 'Social platform', 'malawinest.com', 'tourism website',
+      'excellencejobsmw.com', 'job recruitment platform', 'owlplanetshop.com', 'E-commerce platform'
+    ];
+
+    // Split text into words and highlight matching keywords
+    let result: React.ReactNode[] = [text];
+    
+    keywords.forEach(keyword => {
+      const newResult: React.ReactNode[] = [];
+      result.forEach((part, index) => {
+        if (typeof part === 'string') {
+          const parts = part.split(new RegExp(`(${keyword})`, 'gi'));
+          parts.forEach((str, i) => {
+            if (str.toLowerCase() === keyword.toLowerCase()) {
+              newResult.push(
+                <TextHighlighter key={`${index}-${i}`} highlightColor="hsl(160, 50%, 70%)">
+                  {str}
+                </TextHighlighter>
+              );
+            } else {
+              newResult.push(str);
+            }
+          });
+        } else {
+          newResult.push(part);
+        }
+      });
+      result = newResult;
+    });
+
+    return result;
+  };
+
   const experiences: Experience[] = [
     {
       company: "CodeTechMw",
@@ -73,7 +124,7 @@ export default function ExperienceSection() {
           </p>
         </div>
         <div className="place-items-start pt-12">
-          <Accordion collapsible defaultValue="item-0" type="single">
+          <Accordion defaultValue="item-0" type="single">
             {experiences.map((exp, index) => (
               <AccordionItem
                 className="first:border-t last:border-b data-[state=open]:bg-card"
@@ -131,7 +182,7 @@ export default function ExperienceSection() {
                           className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2"
                         >
                           <span className="text-primary/60 mt-1.5 flex-shrink-0">•</span>
-                          <span>{resp}</span>
+                          <span>{highlightKeywords(resp)}</span>
                         </li>
                       ))}
                     </ul>
