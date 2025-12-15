@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import SmoothDrawer from "../smooth-drawer";
 import { sendEmail } from "@/lib/api/email";
 import { MechanicalWaves } from "../mechanical-waves";
+import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 
 export default function Hero() {
   const [formState, setFormState] = useState({
@@ -99,8 +100,8 @@ export default function Hero() {
           </div>
 
           {/* Tagline */}
-          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground text-center mb-12 max-w-2xl animate-fade-in-up delay-100">
-            Designing human experiences in code.
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground text-center mb-12 max-w-3xl animate-fade-in-up delay-100">
+            Crafting intuitive digital <TextHighlighter highlightColor="hsl(160, 50%, 70%)">experiences</TextHighlighter> through clean, efficient code and thoughtful design.
           </p>
 
           {/* Action Buttons */}

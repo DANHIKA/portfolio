@@ -6,6 +6,7 @@ import { WireframeMockup } from "@/components/ui/wireframe-mockup";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
 import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
 import { OrbitingCircles } from "@/components/ui/orbiting-circles";
+import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 
 export default function AboutMe() {
   const ecosystemToolsOuter = React.useMemo(
@@ -57,7 +58,7 @@ export default function AboutMe() {
                   Full-stack Developer
                 </h3>
                 <p className="text-muted-foreground max-w-xl text-sm">
-                  Crafting performant, accessible products with React, Next.js, and TypeScript. Focused on developer experience and scalable architectures.
+                  Crafting performant, accessible products with React, Next.js, and TypeScript. Focused on <TextHighlighter highlightColor="hsl(160, 50%, 70%)">developer experience</TextHighlighter> and scalable architectures.
                 </p>
               </div>
               <div className="mt-4 md:mt-5 relative flex h-[350px] w-full flex-col items-center justify-center overflow-hidden">

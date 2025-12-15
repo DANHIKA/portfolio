@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 
 interface Experience {
   company: string;
@@ -80,7 +81,7 @@ export default function ExperienceSection() {
               Experience
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I have worked with innovative organizations to help build their top-notch products and systems, delivering impactful solutions that drive efficiency and growth.
+              I have worked with innovative organizations to help build their top-notch products and systems, delivering <TextHighlighter highlightColor="hsl(160, 50%, 70%)">impactful solutions</TextHighlighter> that drive efficiency and growth.
             </p>
           </motion.div>
 

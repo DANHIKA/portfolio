@@ -111,7 +111,7 @@ export function Safari({
           <img
             src={imageSrc}
             alt=""
-            className="block size-full object-cover object-top"
+            className="block size-full object-contain"
           />
         </div>
       )}

@@ -6,16 +6,15 @@ import {
 import { Safari } from "@/components/ui/safari";
 import { Iphone } from "@/components/ui/iphone";
 import { AnimatedLink } from "@/components/ui/animated-link";
+import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 
 export default function Projects() {
   const sites = [
-    { name: "Nordin", url: "https://nordin.mw/" },
-    { name: "School Management System", url: "https://edunest-bay.vercel.app/" },
-    { name: "SmartDrive Car Hire", url: "https://smartdrivecarhire.vercel.app/" },
-    { name: "Owl Planet Shop", url: "https://www.owlplanetshop.com/" },
-    { name: "MarketWeb MW", url: "https://www.marketwebmw.com" },
-    { name: "MalawiNest", url: "https://malawinest.com/home" },
-    { name: "Excellence Jobs MW", url: "https://excellencejobsmw.com" },
+    { name: "Nordin", url: "https://nordin.mw/", previewSrc: "/projects/nordin.png" },
+    { name: "School Management System", url: "https://edunest-bay.vercel.app/", previewSrc: "/projects/edunest.png" },
+    { name: "Owl Planet Shop", url: "https://www.owlplanetshop.com/", previewSrc: "/projects/shop.png" },
+    { name: "MarketWeb MW", url: "https://www.marketwebmw.com", previewSrc: "/projects/marketweb.png" },
+    { name: "MalawiNest", url: "https://malawinest.com/home", previewSrc: "/projects/malawinest.png" },
     { name: "Safe Home", url: "/case-studies/safe-home", internal: true, previewSrc: "/projects/Safe%20Home/wireframes/Home.png" },
   ];
 
@@ -52,7 +51,8 @@ export default function Projects() {
                   ) : (
                     <Safari
                       url={(site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, ""))}
-                      iframeSrc={site.url}
+                      imageSrc={(site as { previewSrc?: string }).previewSrc || ""}
+                      iframeSrc={!site.previewSrc ? site.url : undefined}
                       mode="simple"
                       className="w-full drop-shadow-lg"
                     />

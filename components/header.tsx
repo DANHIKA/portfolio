@@ -9,7 +9,7 @@ const navItems = [
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   // { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const socialItems = [
@@ -47,20 +47,30 @@ export default function Header() {
       >
         <div className="mx-auto w-full max-w-6xl flex items-center justify-between px-4 md:px-6">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 sm:gap-3 z-50">
-              <span className="text-xl font-semibold text-primary">Daniel</span><span className="hidden sm:inline text-xl font-semibold text-primary"> Ntandika</span>
+          <a href="/" className="flex items-center gap-2 sm:gap-3 z-50">
+              <span className="text-xl font-heading font-semibold text-primary">DN</span>
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="px-3 py-2 text-sm font-medium text-foreground/70 rounded-md transition-colors hover:text-primary hover:bg-accent"
-              >
-                {item.name}
-              </a>
+              item.name === "Contact" ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="px-4 py-2 text-sm font-medium text-primary-foreground bg-primary rounded-md transition-colors hover:bg-primary/90"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="px-3 py-2 text-sm font-medium text-foreground/70 rounded-md transition-colors hover:text-primary hover:bg-accent"
+                >
+                  {item.name}
+                </a>
+              )
             ))}
             <ThemeToggleButton4 className="ml-2 h-9 w-9 border border-border hover:bg-accent" />
           </nav>

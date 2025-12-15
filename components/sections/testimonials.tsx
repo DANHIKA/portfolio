@@ -1,6 +1,7 @@
 "use client";
 
 import CardSwap, { Card } from "@/components/CardSwap/CardSwap";
+import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 
 export default function Testimonials() {
   return (
@@ -30,7 +31,7 @@ export default function Testimonials() {
               <div className="w-full h-full p-6 flex flex-col justify-between">
                 <p className="text-lg leading-relaxed">
                   &quot;Daniel transformed our legacy frontend into a modern, fast, and
-                  accessible React stack. Velocity increased by 40%.&quot;
+                  accessible React stack. Velocity increased by <TextHighlighter highlightColor="hsl(160, 50%, 70%)">40%</TextHighlighter>.&quot;
                 </p>
                 <div className="mt-6 flex items-center gap-3">
                   <div className="h-10 w-10 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-semibold">
@@ -48,7 +49,7 @@ export default function Testimonials() {
               <div className="w-full h-full p-6 flex flex-col justify-between">
                 <p className="text-lg leading-relaxed ">
                   &quot;Great UX instincts. He shipped a design system and reduced UI
-                  defects by more than half.&quot;
+                  defects by more than <TextHighlighter highlightColor="hsl(160, 50%, 70%)">half</TextHighlighter>.&quot;
                 </p>
                 <div className="mt-6 flex items-center gap-3">
                   <div className="h-10 w-10 rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-semibold">
@@ -66,7 +67,7 @@ export default function Testimonials() {
               <div className="w-full h-full p-6 flex flex-col justify-between">
                 <p className="text-lg leading-relaxed ">
                   &quot;End-to-end ownership: APIs, infra, and frontend. Reliable and
-                  proactive collaborator.&quot;
+                  proactive <TextHighlighter highlightColor="hsl(160, 50%, 70%)">collaborator</TextHighlighter>.&quot;
                 </p>
                 <div className="mt-6 flex items-center gap-3">
                   <div className="h-10 w-10 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-semibold">
