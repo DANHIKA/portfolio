@@ -222,7 +222,7 @@
       transform: translate(200%, 0);
     }
   }
-  
+
   @keyframes box2 {
     0% {
       transform: translate(0, 100%);
@@ -234,7 +234,7 @@
       transform: translate(100%, 0);
     }
   }
-  
+
   @keyframes box3 {
     0%,
     50% {
@@ -244,7 +244,7 @@
       transform: translate(0, 100%);
     }
   }
-  
+
   @keyframes box4 {
     0% {
       transform: translate(200%, 0);
@@ -254,6 +254,14 @@
     }
     100% {
       transform: translate(100%, 100%);
+    }
+  }
+  @keyframes move-x {
+  from {
+    transform: translateX(-100%);
+    }
+  to {
+    transform: translateX(100%);
     }
   }
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
+import { AnimatedShinyButton } from "@/components/ui/animated-shiny-button";
 
 export default function ContactSection() {
   return (
@@ -19,9 +20,9 @@ export default function ContactSection() {
             </p>
             
             <div className="flex justify-center">
-              <Button asChild size="lg" variant="secondary">
-                <Link href="/contact">Get in Touch</Link>
-              </Button>
+              <AnimatedShinyButton url="/contact">
+                Get in Touch
+              </AnimatedShinyButton>
             </div>
           </div>
         </div>

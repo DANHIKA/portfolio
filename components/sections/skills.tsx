@@ -1,31 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LogoLoop } from "@/components/logo-loop";
+import { LogoTimeline } from "@/components/ui/logo-timeline";
 
 export default function SkillsCarousel() {
   const skills = [
-    // Frontend
-    { name: "React", icon: "devicon-react-original colored" },
-    { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-    { name: "Next.js", icon: "devicon-nextjs-original" },
-    { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-    { name: "HTML5", icon: "devicon-html5-plain colored" },
-    { name: "CSS3", icon: "devicon-css3-plain colored" },
-    { name: "Redux", icon: "devicon-redux-original colored" },
-    { name: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
+    // Frontend - Row 1
+    { label: "React", icon: "devicon-react-original colored", animationDelay: 0, animationDuration: 20, row: 1 },
+    { label: "TypeScript", icon: "devicon-typescript-plain colored", animationDelay: -5, animationDuration: 20, row: 1 },
+    { label: "Next.js", icon: "devicon-nextjs-original", animationDelay: -10, animationDuration: 20, row: 1 },
+    { label: "JavaScript", icon: "devicon-javascript-plain colored", animationDelay: -15, animationDuration: 20, row: 1 },
     
-    // Backend
-    { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-    { name: "Express", icon: "devicon-express-original" },
-    { name: "GraphQL", icon: "devicon-graphql-plain colored" },
-    { name: "C#", icon: "devicon-csharp-plain colored" },
+    // Frontend - Row 2
+    { label: "HTML5", icon: "devicon-html5-plain colored", animationDelay: -2, animationDuration: 25, row: 2 },
+    { label: "CSS3", icon: "devicon-css3-plain colored", animationDelay: -7, animationDuration: 25, row: 2 },
+    { label: "Redux", icon: "devicon-redux-original colored", animationDelay: -12, animationDuration: 25, row: 2 },
+    { label: "Tailwind", icon: "devicon-tailwindcss-plain colored", animationDelay: -17, animationDuration: 25, row: 2 },
     
-    // Tools & Others
-    { name: "Git", icon: "devicon-git-plain colored" },
-    { name: "Figma", icon: "devicon-figma-plain colored" },
-    { name: "Docker", icon: "devicon-docker-plain colored" },
-    { name: "Jest", icon: "devicon-jest-plain colored" },
+    // Backend - Row 3
+    { label: "Node.js", icon: "devicon-nodejs-plain colored", animationDelay: -3, animationDuration: 30, row: 3 },
+    { label: "Express", icon: "devicon-express-original", animationDelay: -8, animationDuration: 30, row: 3 },
+    { label: "GraphQL", icon: "devicon-graphql-plain colored", animationDelay: -13, animationDuration: 30, row: 3 },
+    { label: "C#", icon: "devicon-csharp-plain colored", animationDelay: -18, animationDuration: 30, row: 3 },
+    
+    // Tools & Others - Row 4
+    { label: "Git", icon: "devicon-git-plain colored", animationDelay: -4, animationDuration: 35, row: 4 },
+    { label: "Figma", icon: "devicon-figma-plain colored", animationDelay: -9, animationDuration: 35, row: 4 },
+    { label: "Docker", icon: "devicon-docker-plain colored", animationDelay: -14, animationDuration: 35, row: 4 },
+    { label: "Jest", icon: "devicon-jest-plain colored", animationDelay: -19, animationDuration: 35, row: 4 },
   ];
 
   return (
@@ -43,7 +45,11 @@ export default function SkillsCarousel() {
           </h2>
         </motion.div>
 
-        <LogoLoop items={skills} />
+        <LogoTimeline 
+          items={skills}
+          height="h-[500px]"
+          animateOnHover={false}
+        />
         
 
         {/* Add Devicon stylesheet */}

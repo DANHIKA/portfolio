@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { ThemeToggleButton4 } from "@/components/ui/theme-toggle-button4";
 import { SimpleStaggeredMenu } from "./SimpleStaggeredMenu";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
+import { AnimatedShinyButton } from "@/components/ui/animated-shiny-button";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -55,13 +56,9 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
               item.name === "Contact" ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="px-4 py-2 text-sm font-medium text-primary-foreground bg-primary rounded-md transition-colors hover:bg-primary/90"
-                >
+                <AnimatedShinyButton key={item.name} url={item.href}>
                   {item.name}
-                </a>
+                </AnimatedShinyButton>
               ) : (
                 <a
                   key={item.name}

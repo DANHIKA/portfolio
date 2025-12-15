@@ -5,7 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Iphone } from "@/components/ui/iphone";
 import { Button } from "@/components/ui/button";
-import SmoothDrawer from "@/components/smooth-drawer";
+import { AnimatedShinyButton } from "@/components/ui/animated-shiny-button";
+
 import { sendEmail } from "@/lib/api/email";
 import {
   Breadcrumb,
@@ -283,16 +284,7 @@ export default function CaseStudyClient({ data }: { data: CaseStudyData }) {
       >
         <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight">Interested in working together?</h3>
         <p className="text-base md:text-lg text-muted-foreground">Let&apos;s discuss your next project</p>
-        <div className="flex justify-center pt-4">
-          <SmoothDrawer
-            type="contact"
-            formState={formState}
-            onFormChange={handleChange}
-            onSubmit={handleSubmit}
-            status={status}
-            error={error}
-          />
-        </div>
+        
       </motion.div>
 
       <motion.div
@@ -302,12 +294,12 @@ export default function CaseStudyClient({ data }: { data: CaseStudyData }) {
         transition={{ duration: 0.5 }}
         className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-12 border-t"
       >
-        <Button variant="ghost" asChild>
-          <Link href="/">← Home</Link>
-        </Button>
-        <Button variant="ghost" asChild>
-          <Link href="/case-studies">All Case Studies</Link>
-        </Button>
+        <AnimatedShinyButton url="/">
+          ← Home
+        </AnimatedShinyButton>
+        <AnimatedShinyButton url="/case-studies">
+          All Case Studies
+        </AnimatedShinyButton>
       </motion.div>
     </section>
   );

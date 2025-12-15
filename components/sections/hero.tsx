@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import SmoothDrawer from "../smooth-drawer";
+import { AnimatedShinyButton } from "@/components/ui/animated-shiny-button";
+
 import { sendEmail } from "@/lib/api/email";
 import { MechanicalWaves } from "../mechanical-waves";
 import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
@@ -106,26 +107,12 @@ export default function Hero() {
 
           {/* Action Buttons */}
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 animate-fade-in-up delay-200 pointer-events-auto">
-            <Button 
-              size="lg" 
-              variant="default"
-              className="w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              asChild
-            >
+            <AnimatedShinyButton>
               <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 My Resume
               </Link>
-            </Button>
-            <div className="pointer-events-auto">
-              <SmoothDrawer 
-                type="contact"
-                formState={formState}
-                onFormChange={handleChange}
-                onSubmit={handleSubmit}
-                status={status}
-                error={error}
-              />
-            </div>
+            </AnimatedShinyButton>
+            
           </div>
         </div>
       </div>
