@@ -17,10 +17,10 @@ export default function Summary() {
   return (
     <section 
       ref={sectionRef}
-      className="py-20 px-6 flex items-center justify-center"
+      className="py-20 px-6 flex items-center justify-center bg-background"
     >
       <div className="text-center max-w-3xl w-full">
-        <p className="text-4xl md:text-5xl font-light leading-tight">
+        <p className="text-4xl md:text-5xl font-light leading-tight text-foreground">
           {PARAGRAPH.content}
         </p>
       </div>
