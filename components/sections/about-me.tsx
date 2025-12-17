@@ -7,6 +7,30 @@ import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
 import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
 import AnimatedOTP from "@/components/ui/clerk-otp";
+import { cn } from "@/lib/utils";
+
+// PlusIcon component (stolen from Grid)
+const PlusIcon = ({ className, ...rest }: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      width={24}
+      height={24}
+      strokeWidth="1"
+      stroke="currentColor"
+      aria-hidden="true"
+      {...rest}
+      className={cn(
+        "absolute size-6 text-black dark:text-white",
+        className
+      )}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+    </svg>
+  )
+}
 
 export default function AboutMe() {
   const ecosystemToolsOuter = React.useMemo(
@@ -35,7 +59,7 @@ export default function AboutMe() {
   
 
   return (
-    <section id="about" className="py-12 md:py-16 w-screen -mx-[calc((100vw-100%)/2)]">
+    <section id="about" className="py-12 md:py-16 w-screen -mx-[calc((100vw-100%)/2)] relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <p className="text-center text-base font-semibold leading-7 text-foreground">About</p>
@@ -43,7 +67,10 @@ export default function AboutMe() {
             Full-stack Developer & Digital Designer
           </h2>
         </div>
-        <div className="border border-border/60 bg-background/60">
+        <div className="border border-border/60 bg-background/60 relative">
+          {/* Plus icons positioned around the border container - hidden on small screens */}
+          <PlusIcon className="absolute -top-5 -left-5 h-10 w-10 z-10 hidden sm:block" />
+          <PlusIcon className="absolute -bottom-5 -right-5 h-10 w-10 z-10 hidden sm:block" />
           <div className="px-0 py-0">
             <div className="grid bg-transparent">
           {/* Row 1 */}

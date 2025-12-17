@@ -10,32 +10,20 @@ import Skills from "@/components/sections/skills";
 import Stats from "@/components/sections/stats";
 import Experience from "@/components/sections/experience";
 import Summary from "@/components/sections/summary";
+import WhyChooseMe from "@/components/sections/why-choose-me";
 
 export default function Home() {
   return (
     <>
       <Hero />
-
-
-      <Skills />
-
-      <Summary />
-
-      <Experience />
-
-
-
-      <Stats />
-
       <AboutMe />
-
-      <Process />
-
-
+      <Stats />
+      <Skills />
+      <Experience />
       <Projects />
-
-
-
+      <WhyChooseMe />
+      <Process />
+      <Summary />
       <Contact />
     </>
   );
