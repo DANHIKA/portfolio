@@ -74,7 +74,7 @@ export default function ContactPage() {
           </div>
         </div>
         
-        <div className="relative z-10 h-full flex items-center justify-center px-6 py-12 lg:px-12 lg:py-16">
+        <div className="relative z-10 h-full flex items-center justify-center px-6 py-12 lg:px-12 lg:py-16 pt-20 lg:pt-16">
           <div className="text-left max-w-xl lg:ml-16">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-4">
               Let&apos;s work together
@@ -89,15 +89,6 @@ export default function ContactPage() {
       {/* Right side - Contact form */}
       <div className="lg:w-1/2 w-full flex items-center justify-center p-8 lg:p-16 bg-background">
         <div className="w-full max-w-md">
-          <div className="mb-8">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
-              Get in touch
-            </h2>
-            <p className="text-muted-foreground">
-              Fill out the form below and I&apos;ll get back to you as soon as possible.
-            </p>
-          </div>
-
           {status === "success" ? (
             <div className="text-center py-8">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 mb-4">
