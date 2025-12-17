@@ -11,6 +11,7 @@ import Stats from "@/components/sections/stats";
 import Experience from "@/components/sections/experience";
 import Summary from "@/components/sections/summary";
 import WhyChooseMe from "@/components/sections/why-choose-me";
+import Certifications from "@/components/sections/certifications";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Skills />
       <Experience />
       <Projects />
+      <Certifications />
       <WhyChooseMe />
       <Process />
       <Summary />

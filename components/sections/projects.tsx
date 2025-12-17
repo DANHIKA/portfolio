@@ -113,16 +113,14 @@ export default function Projects() {
                 className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 border border-border rounded-lg p-4"
               >
                 {/* Safari mockup or iPhone for internal case studies */}
-                <div className="relative m-4 mb-2 flex-1">
+                <div className="relative mb-2 flex-1">
                   {site.internal ? (
                     <Iphone src={site.previewSrc || ""} className="mx-auto h-72 w-auto drop-shadow-lg" />
                   ) : (
-                    <Safari
-                      url={site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, "")}
-                      imageSrc={site.previewSrc || ""}
-                      iframeSrc={!site.previewSrc ? site.url : undefined}
-                      mode="simple"
-                      className="w-full drop-shadow-lg"
+                    <img 
+                      src={site.previewSrc || ""} 
+                      alt={site.name}
+                      className="w-full h-auto object-cover drop-shadow-lg"
                     />
                   )}
                 </div>
@@ -174,16 +172,14 @@ export default function Projects() {
                 className="group relative flex h-full flex-col overflow-hidden transition-all duration-300 p-4"
               >
                 {/* Safari mockup or iPhone for internal case studies */}
-                <div className="relative m-4 mb-2 flex-1">
+                <div className="relative m-4 mb-2 flex-1 min-h-[300px]">
                   {site.internal ? (
                     <Iphone src={site.previewSrc || ""} className="mx-auto h-72 w-auto drop-shadow-lg" />
                   ) : (
-                    <Safari
-                      url={site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, "")}
-                      imageSrc={site.previewSrc || ""}
-                      iframeSrc={!site.previewSrc ? site.url : undefined}
-                      mode="simple"
-                      className="w-full drop-shadow-lg"
+                    <img 
+                      src={site.previewSrc || ""} 
+                      alt={site.name}
+                      className="w-full h-auto object-cover drop-shadow-lg"
                     />
                   )}
                 </div>
