@@ -116,7 +116,7 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-7xl lg:border-x">
+    <section id="experience" className="mx-auto min-h-screen w-full max-w-7xl lg:border-x">
       <div className="mx-4 grid grid-cols-1 border-x md:mx-0 md:grid-cols-2 md:border-x-0">
         <div className="space-y-4 px-4 pt-12 pb-4 md:border-r">
           <h2 className="font-black text-4xl md:text-5xl lg:text-6xl text-primary">Experience</h2>
@@ -194,6 +194,6 @@ export default function ExperienceSection() {
           </Accordion>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

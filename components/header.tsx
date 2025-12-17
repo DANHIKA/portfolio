@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { ThemeToggleButton4 } from "@/components/ui/theme-toggle-button4";
 import { SimpleStaggeredMenu } from "./SimpleStaggeredMenu";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
@@ -8,8 +9,10 @@ import { AnimatedShinyButton } from "@/components/ui/animated-shiny-button";
 const navItems = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
-  // { name: "Experience", href: "#experience" },
+  { name: "Certifications", href: "#certifications" },
+  { name: "Why Me", href: "#why-choose-me" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -20,6 +23,7 @@ const socialItems = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +33,20 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Handle navigation click
+  const handleNavClick = (href: string) => {
+    if (pathname !== "/") {
+      // If not on home page, navigate to home page with hash
+      window.location.href = `/${href}`;
+    } else {
+      // If on home page, just scroll to section
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   // Convert navItems to StaggeredMenu format
   const staggeredMenuItems = navItems.map((item) => ({
@@ -60,13 +78,13 @@ export default function Header() {
                   {item.name}
                 </AnimatedShinyButton>
               ) : (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
+                  onClick={() => handleNavClick(item.href)}
                   className="px-3 py-2 text-sm font-medium text-foreground/70 rounded-md transition-colors hover:text-primary hover:bg-accent"
                 >
                   {item.name}
-                </a>
+                </button>
               )
             ))}
             <ThemeToggleButton4 className="ml-2 h-9 w-9 border border-border hover:bg-accent" />

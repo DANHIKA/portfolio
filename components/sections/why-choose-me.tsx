@@ -125,7 +125,7 @@ export default function WhyChooseMe() {
     );
   };
   return (
-    <section className="relative flex flex-col items-center overflow-hidden py-16">
+    <section id="why-choose-me" className="relative flex flex-col items-center overflow-hidden py-16">
       <div className="relative z-10 flex w-full flex-col items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
