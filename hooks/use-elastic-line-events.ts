@@ -32,7 +32,9 @@ export function useElasticLineEvents(
       const isOutsideBounds = x < 0 || x > width || y < 0 || y > height
 
       if (isOutsideBounds) {
-        setIsGrabbed(false)
+        if (isGrabbed) {
+          setIsGrabbed(false)
+        }
         return
       }
 
@@ -63,7 +65,7 @@ export function useElasticLineEvents(
         setIsGrabbed(false)
       }
     }
-  }, [mousePosition, isVertical, isGrabbed, grabThreshold, releaseThreshold])
+  }, [mousePosition.x, mousePosition.y, dimensions.width, dimensions.height, isVertical, grabThreshold, releaseThreshold])
 
   return { isGrabbed, controlPoint }
 }

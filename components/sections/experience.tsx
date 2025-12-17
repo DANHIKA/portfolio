@@ -41,16 +41,17 @@ export default function ExperienceSection() {
 
     // Split text into words and highlight matching keywords
     let result: React.ReactNode[] = [text];
+    let keyCounter = 0;
     
     keywords.forEach(keyword => {
       const newResult: React.ReactNode[] = [];
-      result.forEach((part, index) => {
+      result.forEach((part) => {
         if (typeof part === 'string') {
           const parts = part.split(new RegExp(`(${keyword})`, 'gi'));
-          parts.forEach((str, i) => {
+          parts.forEach((str) => {
             if (str.toLowerCase() === keyword.toLowerCase()) {
               newResult.push(
-                <TextHighlighter key={`${index}-${i}`} highlightColor="hsl(160, 50%, 70%)">
+                <TextHighlighter key={`highlight-${keyCounter++}`} highlightColor="hsl(160, 50%, 70%)">
                   {str}
                 </TextHighlighter>
               );

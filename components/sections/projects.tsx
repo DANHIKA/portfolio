@@ -6,36 +6,102 @@ import {
 import { Safari } from "@/components/ui/safari";
 import { Iphone } from "@/components/ui/iphone";
 import { AnimatedLink } from "@/components/ui/animated-link";
-import { TextHighlighter } from "@/components/fancy/text/text-highlighter";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useState } from "react";
+
+interface Site {
+  name: string;
+  url: string;
+  internal: boolean;
+  tech: string;
+  previewSrc: string;
+}
 
 export default function Projects() {
-  const sites = [
-    { name: "Nordin", url: "https://nordin.mw/", previewSrc: "/projects/nordin.png" },
-    { name: "School Management System", url: "https://edunest-bay.vercel.app/", previewSrc: "/projects/edunest.png" },
-    { name: "Owl Planet Shop", url: "https://www.owlplanetshop.com/", previewSrc: "/projects/shop.png" },
-    { name: "MarketWeb MW", url: "https://www.marketwebmw.com", previewSrc: "/projects/marketweb.png" },
-    { name: "MalawiNest", url: "https://malawinest.com/home", previewSrc: "/projects/malawinest.png" },
-    { name: "Safe Home", url: "/case-studies/safe-home", internal: true, previewSrc: "/projects/Safe%20Home/wireframes/Home.png" },
+  const [filter, setFilter] = useState("all");
+  
+  const sites: Site[] = [
+    { 
+      name: "Nordin", 
+      url: "https://nordin.mw/", 
+      internal: false, 
+      tech: "React, Next.js, Tailwind CSS",
+      previewSrc: "/projects/nordin.png"
+    },
+    { 
+      name: "School Management System", 
+      url: "https://edunest-bay.vercel.app/", 
+      internal: false, 
+      tech: "Next.js, TypeScript, Prisma, PostgreSQL",
+      previewSrc: "/projects/edunest.png"
+    },
+    { 
+      name: "Owl Planet Shop", 
+      url: "https://www.owlplanetshop.com/", 
+      internal: false, 
+      tech: "Shopify, Liquid, JavaScript",
+      previewSrc: "/projects/shop.png"
+    },
+    { 
+      name: "MarketWeb MW", 
+      url: "https://www.marketwebmw.com", 
+      internal: false, 
+      tech: "WordPress, PHP, MySQL",
+      previewSrc: "/projects/marketweb.png"
+    },
+    { 
+      name: "MalawiNest", 
+      url: "https://malawinest.com/home", 
+      internal: false, 
+      tech: "React, Node.js, MongoDB",
+      previewSrc: "/projects/malawinest.png"
+    },
+    { 
+      name: "Safe Home", 
+      url: "/case-studies/safe-home", 
+      internal: true, 
+      tech: "Figma, React, TypeScript",
+      previewSrc: "/projects/Safe%20Home/wireframes/Home.png"
+    },
   ];
 
+  const filteredSites = sites.filter(site => {
+    if (filter === "all") return true;
+    if (filter === "web") return !site.internal;
+    if (filter === "case") return site.internal;
+    return true;
+  });
+
   return (
-    <section id="projects" className="relative flex w-screen -mx-[calc((100vw-100%)/2)] flex-col items-center justify-center overflow-hidden py-6">
+    <section id="projects" className="relative flex flex-col items-center overflow-hidden py-6">
       <div className="relative z-10 flex w-full flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="mb-6 flex flex-col items-center justify-center px-4 text-center"
+          className="mb-6 px-4 w-full max-w-6xl flex justify-between items-center"
         >
-          <p className="text-center text-base font-semibold leading-7 text-foreground">Projects</p>
-          <h2 className="mx-auto mt-2 max-w-2xl text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary">
-            Featured Projects
-          </h2>
+          <div className="flex flex-col">
+            <p className="text-base font-semibold leading-7 text-foreground text-left">Projects</p>
+            <h2 className="mt-2 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-primary text-left">
+              Featured Projects
+            </h2>
+          </div>
+          <Select value={filter} onValueChange={setFilter}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Filter projects" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Projects</SelectItem>
+              <SelectItem value="web">Web Projects</SelectItem>
+              <SelectItem value="case">Case Studies</SelectItem>
+            </SelectContent>
+          </Select>
         </motion.div>
 
         <div className="mt-6 w-full max-w-6xl px-4">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {sites.map((site, index) => (
+            {filteredSites.map((site, index) => (
               <motion.div
                 key={site.url}
                 initial={{ opacity: 0, y: 10 }}
@@ -46,20 +112,17 @@ export default function Projects() {
               >
                 {/* Safari mockup or iPhone for internal case studies */}
                 <div className="relative m-4 mb-2 flex-1">
-                  {"internal" in site ? (
-                    <Iphone src={(site as { previewSrc?: string }).previewSrc || ""} className="mx-auto h-72 w-auto drop-shadow-lg" />
+                  {site.internal ? (
+                    <Iphone src={site.previewSrc || ""} className="mx-auto h-72 w-auto drop-shadow-lg" />
                   ) : (
                     <Safari
-                      url={(site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, ""))}
-                      imageSrc={(site as { previewSrc?: string }).previewSrc || ""}
+                      url={site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, "")}
+                      imageSrc={site.previewSrc || ""}
                       iframeSrc={!site.previewSrc ? site.url : undefined}
                       mode="simple"
                       className="w-full drop-shadow-lg"
                     />
                   )}
-
-                  {/* Hover overlay */}
-                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
 
                 {/* Project info */}
@@ -68,25 +131,22 @@ export default function Projects() {
                     <AnimatedLink
                       href={site.url}
                       className="font-semibold text-neutral-900 dark:text-neutral-100"
-                      target={(site as { internal?: boolean }).internal ? "_self" : "_blank"}
+                      target={site.internal ? "_self" : "_blank"}
                     >
                       {site.name}
                     </AnimatedLink>
                   </div>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                    {site.url.startsWith("/") ? site.url : site.url.replace(/^https?:\/\//, "")}
-                  </p>
-                  {/* Underlined case study link for internal case study items */}
-                  {"internal" in site ? (
-                    <div className="mt-2">
-                      <AnimatedLink
-                        href={site.url}
-                        className="text-sm"
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {site.tech.split(', ').map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 bg-muted text-muted-foreground rounded-full text-xs font-medium border border-border/50"
                       >
-                        Case study
-                      </AnimatedLink>
-                    </div>
-                  ) : null}
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  {/* Underlined case study link for internal case study items */}
                 </div>
               </motion.div>
             ))}

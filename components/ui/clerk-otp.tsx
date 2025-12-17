@@ -53,11 +53,15 @@ const OTPinput = ({
 }: AnimatedOTPProps) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [fadeOut, setFadeOut] = useState(false)
-  const [digits] = useState(() => generateRandomDigits())
+  const [digits, setDigits] = useState<string[]>([])
   const [isCardHovered, setIsCardHovered] = useState(false)
 
   useEffect(() => {
-    if (activeIndex > digits.length - 1) return
+    setDigits(generateRandomDigits())
+  }, [])
+
+  useEffect(() => {
+    if (digits.length === 0 || activeIndex > digits.length - 1) return
 
     const shouldAnimate = !whileHover || (whileHover && isCardHovered)
 

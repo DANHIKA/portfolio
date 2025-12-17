@@ -4,7 +4,6 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
-import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/preloader";
 
 export const metadata: Metadata = {
@@ -64,7 +63,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScroll />
           <div className="w-full h-full overflow-auto page-reveal">
             <div className="relative mx-auto w-full px-4 sm:px-6 lg:px-8">
               <Header />
