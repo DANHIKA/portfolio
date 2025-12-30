@@ -9,7 +9,7 @@ import Skills from "@/components/sections/skills";
 // import Testimonials from "@/components/sections/testimonials";
 import Stats from "@/components/sections/stats";
 import Experience from "@/components/sections/experience";
-import Summary from "@/components/sections/summary";
+import Quote from "@/components/sections/summary";
 import WhyChooseMe from "@/components/sections/why-choose-me";
 import Certifications from "@/components/sections/certifications";
 
@@ -18,6 +18,7 @@ export default function Home() {
     <>
       <Hero />
       <AboutMe />
+      <Quote />
       <Stats />
       <Skills />
       <Experience />
@@ -25,7 +26,6 @@ export default function Home() {
       <Certifications />
       <WhyChooseMe />
       <Process />
-      <Summary />
       <Contact />
     </>
   );
