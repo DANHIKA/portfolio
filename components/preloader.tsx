@@ -31,6 +31,9 @@ export default function Preloader() {
   const [currentTip, setCurrentTip] = useState(0);
 
   useEffect(() => {
+    // Initialize a random tip on mount to avoid hydration mismatch
+    setCurrentTip(Math.floor(Math.random() * webDevTips.length));
+
     // Rotate tips every 2 seconds
     const tipInterval = setInterval(() => {
       setCurrentTip((prev) => (prev + 1) % webDevTips.length);

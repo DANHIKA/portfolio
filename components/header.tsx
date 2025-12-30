@@ -4,7 +4,8 @@ import { usePathname } from "next/navigation";
 import { ThemeToggleButton4 } from "@/components/ui/theme-toggle-button4";
 import { SimpleStaggeredMenu } from "./SimpleStaggeredMenu";
 import ElasticLine from "@/components/fancy/physics/elastic-line";
-import { AnimatedShinyButton } from "@/components/ui/animated-shiny-button";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -23,19 +24,47 @@ const socialItems = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      if (pathname !== "/") {
+        setActiveSection(pathname);
+        return;
+      }
+
+      // Simple active section detection
+      const sections = navItems
+        .filter(item => item.href.startsWith("#"))
+        .map(item => item.href.substring(1));
+      
+      let found = false;
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section);
+        if (element && element.getBoundingClientRect().top <= 150) {
+          setActiveSection(`#${section}`);
+          found = true;
+          break;
+        }
+      }
+      if (!found) setActiveSection("");
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Handle navigation click
   const handleNavClick = (href: string) => {
+    if (href.startsWith("/")) {
+      window.location.href = href;
+      return;
+    }
+
     if (pathname !== "/") {
       // If not on home page, navigate to home page with hash
       window.location.href = `/${href}`;
@@ -71,17 +100,25 @@ export default function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               item.name === "Contact" ? (
-                <AnimatedShinyButton key={item.name} url={item.href}>
+                <Button 
+                  key={item.name} 
+                  onClick={() => handleNavClick(item.href)}
+                  size="sm"
+                  className="font-mono uppercase"
+                >
                   {item.name}
-                </AnimatedShinyButton>
+                </Button>
               ) : (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  className="px-3 py-2 text-sm font-medium text-foreground/70 rounded-md transition-colors hover:text-primary hover:bg-accent"
+                  className={cn(
+                    "relative py-1 text-sm font-medium text-foreground/70 transition-colors hover:text-primary uppercase font-mono link-underline",
+                    (activeSection === item.href || (item.href === "/" && pathname === "/")) && "text-primary link-underline-active"
+                  )}
                 >
                   {item.name}
                 </button>
