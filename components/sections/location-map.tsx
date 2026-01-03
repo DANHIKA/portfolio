@@ -1,7 +1,89 @@
 "use client";
 
-import { Map, MapMarker } from "@/components/ui/map";
-import { motion } from "framer-motion";
+import { Map, useMap } from "@/components/ui/map";
+import { useEffect, useMemo } from "react";
+
+function CitySelection({ center }: { center: { lat: number; lng: number } }) {
+  const { map, isLoaded } = useMap();
+
+  const geojsonData = useMemo(() => {
+    // Generate a circular polygon around the center
+    const radiusInKm = 4;
+    const points = 64;
+    const coords = [];
+    const distanceX = radiusInKm / (111.32 * Math.cos((center.lat * Math.PI) / 180));
+    const distanceY = radiusInKm / 110.574;
+
+    for (let i = 0; i < points; i++) {
+      const theta = (i / points) * (2 * Math.PI);
+      const x = distanceX * Math.cos(theta);
+      const y = distanceY * Math.sin(theta);
+      coords.push([center.lng + x, center.lat + y]);
+    }
+    coords.push(coords[0]);
+
+    return {
+      type: "FeatureCollection" as const,
+      features: [
+        {
+          type: "Feature" as const,
+          properties: { name: "Lilongwe" },
+          geometry: {
+            type: "Polygon" as const,
+            coordinates: [coords],
+          },
+        },
+      ],
+    };
+  }, [center]);
+
+  useEffect(() => {
+    if (!map || !isLoaded) return;
+
+    // Add source if it doesn't exist
+    if (!map.getSource("city-selection")) {
+      map.addSource("city-selection", {
+        type: "geojson",
+        data: geojsonData,
+      });
+    }
+
+    // Add fill layer (the selection highlight)
+    if (!map.getLayer("city-fill")) {
+      map.addLayer({
+        id: "city-fill",
+        type: "fill",
+        source: "city-selection",
+        paint: {
+          "fill-color": "hsl(160, 100%, 50%)", // Matches your primary color theme roughly
+          "fill-opacity": 0.15,
+        },
+      });
+    }
+
+    // Add outline layer
+    if (!map.getLayer("city-outline")) {
+      map.addLayer({
+        id: "city-outline",
+        type: "line",
+        source: "city-selection",
+        paint: {
+          "line-color": "hsl(160, 100%, 50%)",
+          "line-width": 2,
+          "line-opacity": 0.3,
+        },
+      });
+    }
+
+    return () => {
+      if (map.getLayer("city-fill")) map.removeLayer("city-fill");
+      if (map.getLayer("city-outline")) map.removeLayer("city-outline");
+      if (map.getSource("city-selection")) map.removeSource("city-selection");
+    };
+  }, [map, isLoaded, geojsonData]);
+
+  return null;
+}
 
 export default function LocationMap() {
   // Coordinates for Lilongwe, Malawi
@@ -14,25 +96,7 @@ export default function LocationMap() {
         zoom={12}
         attributionControl={false}
       >
-        <MapMarker latitude={position.lat} longitude={position.lng}>
-          <div className="relative flex items-center justify-center pointer-events-none">
-            {/* Large selection area highlight */}
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute h-[250px] w-[250px] rounded-full bg-primary/10 border border-primary/20 backdrop-blur-[2px]" 
-            />
-            {/* Subtle pulsing ring to indicate center of selection */}
-            <motion.div 
-              animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.1, 0.2] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute h-[180px] w-[180px] rounded-full bg-primary/5 border border-primary/10" 
-            />
-            {/* Very faint inner circle */}
-            <div className="h-4 w-4 rounded-full bg-primary/20 blur-sm" />
-          </div>
-        </MapMarker>
+        <CitySelection center={position} />
       </Map>
     </div>
   );
