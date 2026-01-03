@@ -10,13 +10,9 @@ export default function LocationMap() {
   return (
     <div className="h-full w-full grayscale-[0.2] dark:grayscale-[0.5] contrast-[1.1] [&_.maplibregl-ctrl-attrib]:hidden [&_.maplibregl-ctrl-logo]:hidden">
       <Map
-        initialViewState={{
-          latitude: position.lat,
-          longitude: position.lng,
-          zoom: 12,
-        }}
+        center={[position.lng, position.lat]}
+        zoom={12}
         attributionControl={false}
-        className="h-full w-full"
       >
         <MapMarker latitude={position.lat} longitude={position.lng}>
           <div className="relative flex h-12 w-12 items-center justify-center">
