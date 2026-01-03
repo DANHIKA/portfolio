@@ -10,7 +10,7 @@
 ║   ██████╔╝██║  ██║██║ ╚████║██║███████╗███████╗             ║
 ║   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚══════╝             ║
 ║                                                               ║
-║              FULL-STACK DEV × DIGITAL DESIGNER                ║
+║              FULL-STACK DEVELOPER × PROBLEM SOLVER              ║
 ║                   Malawi → Global Remote                      ║
 ║                                                               ║
 ╚═══════════════════════════════════════════════════════════════╝
@@ -58,4 +58,6 @@
 │                                              │
 │  Built with ♥ in Malawi                      │
 └──────────────────────────────────────────────┘
+
+[Press any key to continue...]
 ```
