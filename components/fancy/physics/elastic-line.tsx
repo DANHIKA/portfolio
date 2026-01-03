@@ -3,9 +3,9 @@
 import React, { useEffect, useRef, useState } from "react"
 import {
   animate,
+  motion,
   useAnimationFrame,
   useMotionValue,
-  useMotionValueEvent,
   ValueAnimationTransition,
 } from "motion/react"
 
@@ -59,11 +59,6 @@ const ElasticLine: React.FC<ElasticLineProps> = ({
   const x = useMotionValue(dimensions.width / 2)
   const y = useMotionValue(dimensions.height / 2)
   const opacity = useMotionValue(0)
-  const [opacityValue, setOpacityValue] = useState(0)
-
-  useMotionValueEvent(opacity, "change", (latest) => {
-    setOpacityValue(latest)
-  })
 
   useEffect(() => {
     // Initial draw animation
@@ -122,15 +117,18 @@ const ElasticLine: React.FC<ElasticLineProps> = ({
       preserveAspectRatio="none"
       style={{ border: 'none', outline: 'none', display: 'block' }}
     >
-      <path
+      <motion.path
         ref={pathRef}
         stroke="currentColor"
         strokeWidth={strokeWidth}
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
-        opacity={opacityValue}
-        style={{ strokeDasharray: 'none', strokeDashoffset: 0 }}
+        style={{ 
+          opacity,
+          strokeDasharray: 'none', 
+          strokeDashoffset: 0 
+        }}
       />
     </svg>
   )
