@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Iphone } from "@/components/ui/iphone";
 import { Button } from "@/components/ui/button";
-import { AnimatedShinyButton } from "@/components/ui/animated-shiny-button";
 
 import { sendEmail } from "@/lib/api/email";
 import {
@@ -294,12 +293,16 @@ export default function CaseStudyClient({ data }: { data: CaseStudyData }) {
         transition={{ duration: 0.5 }}
         className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-12 border-t"
       >
-        <AnimatedShinyButton url="/">
-          ← Home
-        </AnimatedShinyButton>
-        <AnimatedShinyButton url="/case-studies">
-          All Case Studies
-        </AnimatedShinyButton>
+        <Button asChild variant="outline" className="rounded-full">
+          <Link href="/">
+            ← Home
+          </Link>
+        </Button>
+        <Button asChild variant="default" className="rounded-full">
+          <Link href="/case-studies">
+            All Case Studies
+          </Link>
+        </Button>
       </motion.div>
     </section>
   );
