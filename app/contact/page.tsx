@@ -65,17 +65,6 @@ export default function ContactPage() {
             <div className="absolute inset-0 bg-background/40 dark:bg-background/60 pointer-events-none"></div>
           </div>
         </div>
-        
-        <div className="relative z-10 h-full flex items-center justify-center px-6 py-12 lg:px-12 lg:py-16 pt-20 lg:pt-16">
-          <div className="text-left max-w-xl lg:ml-16 bg-background/20 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-2xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-4">
-              Let&apos;s work together
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground/90 mt-4">
-              Have a project in mind or want to discuss collaboration opportunities?
-            </p>
-          </div>
-        </div>
       </div>
 
       {/* Right side - Contact form */}

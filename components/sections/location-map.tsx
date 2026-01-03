@@ -15,18 +15,22 @@ export default function LocationMap() {
         attributionControl={false}
       >
         <MapMarker latitude={position.lat} longitude={position.lng}>
-          <div className="relative flex h-12 w-12 items-center justify-center">
+          <div className="relative flex items-center justify-center pointer-events-none">
+            {/* Large selection area highlight */}
             <motion.div 
-              animate={{ scale: [1, 1.8, 1], opacity: [0.5, 0, 0.5] }}
-              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-              className="absolute h-full w-full rounded-full bg-primary/40" 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="absolute h-[250px] w-[250px] rounded-full bg-primary/10 border border-primary/20 backdrop-blur-[2px]" 
             />
+            {/* Subtle pulsing ring to indicate center of selection */}
             <motion.div 
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="absolute h-6 w-6 rounded-full bg-primary/20 border border-primary/50" 
+              animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.1, 0.2] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              className="absolute h-[180px] w-[180px] rounded-full bg-primary/5 border border-primary/10" 
             />
-            <div className="h-3 w-3 rounded-full bg-primary border-2 border-background shadow-[0_0_15px_rgba(var(--primary),0.5)] z-10" />
+            {/* Very faint inner circle */}
+            <div className="h-4 w-4 rounded-full bg-primary/20 blur-sm" />
           </div>
         </MapMarker>
       </Map>
