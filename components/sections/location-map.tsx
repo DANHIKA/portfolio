@@ -8,7 +8,7 @@ export default function LocationMap() {
   const position = { lat: -13.9626, lng: 33.7741 }; 
 
   return (
-    <div className="h-full w-full grayscale-[0.2] dark:grayscale-[0.5] contrast-[1.1]">
+    <div className="h-full w-full grayscale-[0.2] dark:grayscale-[0.5] contrast-[1.1] [&_.maplibregl-ctrl-attrib]:hidden [&_.maplibregl-ctrl-logo]:hidden">
       <Map
         initialViewState={{
           latitude: position.lat,
