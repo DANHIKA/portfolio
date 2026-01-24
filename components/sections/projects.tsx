@@ -33,7 +33,7 @@ export default function Projects() {
       name: "School Management System", 
       url: "https://edunest-bay.vercel.app/", 
       internal: false, 
-      tech: "WordPress, PHP, MySQL",
+      tech: "Umbraco, C#, SQL Server",
       previewSrc: "/projects/edunest.png"
     },
     { 
